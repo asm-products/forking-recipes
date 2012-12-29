@@ -1,3 +1,4 @@
 class Recipe < ActiveRecord::Base
-  attr_accessible :body, :revision, :title, :user_id
+  belongs_to :user
+  attr_accessible :body, :commit_message, :revision, :title
 end
