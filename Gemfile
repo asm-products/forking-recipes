@@ -44,6 +44,7 @@ end
 # gem 'debugger'
 
 gem "devise"
+gem "differ"
 gem "haml", ">= 3.0.0"
 gem "haml-rails"
 gem "jquery-rails"
