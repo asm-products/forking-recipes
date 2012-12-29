@@ -8,5 +8,8 @@ RecipeHub::Application.routes.draw do
     get "login",  :to => "devise/sessions#create"
   end
 
-  resources :recipes
+  resources :recipes do
+    resources :recipe_revisions, :only => [:index, :show]
+  end
+
 end

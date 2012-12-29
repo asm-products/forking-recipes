@@ -11,18 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121229220919) do
+ActiveRecord::Schema.define(:version => 20121229220034) do
 
   create_table "recipe_revisions", :force => true do |t|
     t.string   "title"
     t.text     "body"
     t.string   "commit_message"
     t.integer  "user_id"
+    t.integer  "recipe_id"
     t.integer  "revision"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.integer  "recipes_id"
-    t.integer  "users_id"
   end
 
   add_index "recipe_revisions", ["user_id"], :name => "index_recipe_revisions_on_user_id"

@@ -5,6 +5,7 @@ class CreateRecipeRevisions < ActiveRecord::Migration
       t.text :body
       t.string :commit_message
       t.references :user
+      t.references :recipe
       t.integer :revision
 
       t.timestamps
