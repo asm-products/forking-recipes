@@ -3,6 +3,8 @@ class Recipe < ActiveRecord::Base
   has_many :recipe_revisions
   attr_accessible :body, :commit_message, :revision, :title
 
+  validates :commit_message, :presence => {:message => 'Commit Message cannot be blank'}
+
   def increment_revision!
     self.revision = self.revision + 1
   end
