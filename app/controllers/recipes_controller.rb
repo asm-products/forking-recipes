@@ -1,6 +1,10 @@
 class RecipesController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
 
+  def index
+    @recipes = Recipe.where(:user_id => current_user)
+  end
+
   def show
     @recipe = Recipe.find(params[:id])
 

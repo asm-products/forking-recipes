@@ -1,8 +1,9 @@
-- if current_user
-  %h2 Your Recipes
-- else
-  %h2 Recently Created Recipes
+%h2 Your Recipes
 
 %ul
   - @recipes.each do |recipe|
     %li= link_to recipe.title, recipe_path(recipe)
+
+%br
+%br
+= link_to "New Recipe", new_recipe_path

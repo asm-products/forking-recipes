@@ -45,6 +45,7 @@ end
 
 gem "devise"
 gem "differ"
+gem 'bootstrap-sass'
 gem "haml", ">= 3.0.0"
 gem "haml-rails"
 gem "jquery-rails"
