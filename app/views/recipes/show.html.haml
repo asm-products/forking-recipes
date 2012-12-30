@@ -1,11 +1,12 @@
-%p#notice= notice
+%p
+  %h3= @recipe.title
 
 %p
-  %b Title:
-  = @recipe.title
-%p
-  %b Body:
-  = @recipe.body
+  %pre
+    = @recipe.body
+
+%hr
+
 %p
   %b Commit message:
   = @recipe.commit_message

@@ -13,5 +13,6 @@
     %li
       = link_to('Sign up', new_user_registration_path)
 %ul.nav.pull-left
-  %li
-    = link_to('Your Recipes', recipes_path)
+  - if user_signed_in?
+    %li
+      = link_to('Your Recipes', recipes_path)
