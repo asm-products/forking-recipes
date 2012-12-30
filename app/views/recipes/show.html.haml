@@ -12,10 +12,9 @@
 %p
   %b Revision:
   = @recipe.revision
-%p
-  %b User:
-  = @recipe.user.id
 
 = link_to 'Edit', edit_recipe_path(@recipe)
+\|
+= link_to 'Revisions', recipe_recipe_revisions_path(@recipe)
 \|
 = link_to 'Back', recipes_path
