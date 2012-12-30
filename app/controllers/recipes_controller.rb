@@ -31,6 +31,7 @@ class RecipesController < ApplicationController
     @recipe          = Recipe.new(params[:recipe])
     @recipe.revision = 1
     @recipe.user     = current_user
+    @recipe.create_recipe_revision!
 
     respond_to do |format|
       if @recipe.save
@@ -45,11 +46,11 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-    @recipe.create_recipe_revision!
     @recipe.increment_revision!
 
     respond_to do |format|
       if @recipe.update_attributes(params[:recipe])
+         @recipe.create_recipe_revision!
         format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
         format.json { head :no_content }
       else

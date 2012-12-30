@@ -1,2 +1,3 @@
 - @revisions.each do |rev|
-  = link_to "#{rev.revision}", "/recipes/#{@recipe_id}/recipe_revisions/#{rev.id}"
+  %p
+    = link_to "#{rev.revision} - #{rev.commit_message}", "/recipes/#{@recipe_id}/recipe_revisions/#{rev.id}"
