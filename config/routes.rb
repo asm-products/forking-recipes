@@ -1,6 +1,4 @@
 RecipeHub::Application.routes.draw do
-  root :to => "home#index"
-
   devise_for :users
 
   devise_scope :user do
@@ -12,4 +10,6 @@ RecipeHub::Application.routes.draw do
     resources :recipe_revisions, :only => [:index, :show]
   end
 
+  root :to => 'recipes#index', :constraints => lambda { |r| r.env['warden'].authenticate? }
+  root :to => "home#index"
 end
