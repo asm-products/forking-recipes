@@ -17,6 +17,7 @@ end
 
 gem 'rails', '3.2.5'
 gem "devise"
+gem 'rdiscount'
 gem "jquery-rails"
 gem "differ"
 gem 'bootstrap-sass'

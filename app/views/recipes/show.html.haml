@@ -2,8 +2,7 @@
   %h3= @recipe.title
 
 %p
-  %pre
-    = @recipe.body
+  = RDiscount.new(@recipe.body).to_html.html_safe
 
 %hr
 
