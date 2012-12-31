@@ -1,3 +1,3 @@
 %ul
   - @recipes.each do |recipe|
-    %li= link_to recipe.title, "/#{@user.username}/#{recipe.slug}"
+    %li= link_to recipe.title, "/#{@user.slug}/#{recipe.slug}"
