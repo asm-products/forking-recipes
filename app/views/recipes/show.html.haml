@@ -17,4 +17,6 @@
 \|
 = link_to 'Revisions', recipe_recipe_revisions_path(@recipe)
 \|
+= link_to 'Delete', recipe_path(@recipe), :confirm => 'Are you sure you want to delete this recipe?', :method => :delete
+\|
 = link_to 'Back', recipes_path
