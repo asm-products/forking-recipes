@@ -1,11 +1,13 @@
 class RecipeRevisionsController < ApplicationController
   def index
-    @revisions = RecipeRevision.where(:recipe_id => Recipe.select(:id).find(params[:recipe_id]))
-    @recipe_permalink = params[:recipe_id]
+    @recipe           = Recipe.find(params[:recipe])
+    @user             = @recipe.user
+    @revisions        = RecipeRevision.where(:recipe_id => @recipe.id)
+    @recipe_permalink = @recipe.slug
   end
 
   def show
-    revision = RecipeRevision.find(params[:id])
+    revision = RecipeRevision.find(params[:revision_id])
 
     if revision.revision > 1
       previous_revision = RecipeRevision.where(:recipe_id => revision.recipe_id,

@@ -6,7 +6,8 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id] || params[:recipe])
+    user_id = User.select(:id).find(params[:username])
+    @recipe = Recipe.find(params[:recipe])
 
     respond_to do |format|
       format.html
