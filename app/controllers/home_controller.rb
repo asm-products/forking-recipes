@@ -4,6 +4,7 @@ class HomeController < ApplicationController
       redirect_to recipes_path
     else
       @recipes = Recipe.last(10)
+      @users   = User.last(10)
     end
   end
 end

@@ -11,6 +11,7 @@ RecipeHub::Application.routes.draw do
   end
 
   match "users/:username"         => "users#show"
+  resources :users, :only => [:show]
 
   root :to => 'recipes#index', :constraints => lambda { |r| r.env['warden'].authenticate? }
   root :to => "home#index"
