@@ -1,9 +1,15 @@
 class Recipe < ActiveRecord::Base
+  include FriendlyId
+
+  friendly_id :title, :use => :slugged
+
   belongs_to :user
   has_many :recipe_revisions
   attr_accessible :body, :commit_message, :revision, :title
 
   validates :commit_message, :presence => {:message => 'Commit Message cannot be blank'}
+  validates :title, :presence => {:message => 'Commit Message cannot be blank'}
+  validates :slug, :presence => {:message => 'Commit Message cannot be blank'}
 
   def increment_revision!
     self.revision = self.revision + 1

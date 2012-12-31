@@ -1,7 +1,7 @@
 class RecipeRevisionsController < ApplicationController
   def index
-    @revisions = RecipeRevision.where(:recipe_id => params[:recipe_id])
-    @recipe_id = params[:recipe_id]
+    @revisions = RecipeRevision.where(:recipe_id => Recipe.select(:id).find(params[:recipe_id]))
+    @recipe_permalink = params[:recipe_id]
   end
 
   def show
