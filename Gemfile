@@ -13,6 +13,7 @@ end
 
 group :development do
   gem 'sqlite3'
+  gem 'meta_request', '0.2.0'
 end
 
 gem 'rails', '3.2.5'
