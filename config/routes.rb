@@ -12,6 +12,7 @@ RecipeHub::Application.routes.draw do
 
   match "/:username"                   => "Users#show"
   match "/:username/:recipe"           => "Recipes#show"
+  match "/:username/:recipe/fork"      => "Recipes#fork"
   match "/:username/:recipe/revisions" => "RecipeRevisions#index"
   match "/:username/:recipe/revisions/:revision_id" => "RecipeRevisions#show"
 

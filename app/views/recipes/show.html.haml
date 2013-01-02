@@ -17,6 +17,8 @@
 \|
 = link_to 'Revisions', "/#{@recipe.user.slug}/#{@recipe.slug}/revisions"
 \|
+= link_to 'Fork', "/#{@recipe.user.slug}/#{@recipe.slug}/fork", :method => :post
+\|
 = link_to 'Delete', recipe_path(@recipe), :confirm => 'Are you sure you want to delete this recipe?', :method => :delete
 \|
 = link_to 'Back', recipes_path

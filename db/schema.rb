@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(:version => 20121231034850) do
     t.string   "commit_message"
     t.integer  "revision"
     t.integer  "user_id"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
-    t.string   "slug",           :default => "recipe", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "slug"
   end
 
-  add_index "recipes", ["slug"], :name => "index_recipes_on_slug", :unique => true
+  add_index "recipes", ["slug"], :name => "index_recipes_on_slug"
   add_index "recipes", ["user_id"], :name => "index_recipes_on_user_id"
 
   create_table "users", :force => true do |t|

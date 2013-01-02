@@ -1,6 +1,19 @@
 class RecipesController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
 
+  def fork
+    user_id = User.select(:id).find(params[:username])
+    recipe = Recipe.find_by_slug_and_user_id(params[:recipe], user_id)
+
+    respond_to do |format|
+      if forked_recipe = recipe.fork_to(current_user)
+        format.html { redirect_to "/#{forked_recipe.user.slug}/#{forked_recipe.slug}", notice: 'Recipe was successfully forked.' }
+      else
+        format.html { render action: "new" }
+      end
+    end
+  end
+
   def index
     @recipes = Recipe.where(:user_id => current_user)
   end
