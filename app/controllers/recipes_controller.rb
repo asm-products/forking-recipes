@@ -7,7 +7,7 @@ class RecipesController < ApplicationController
 
   def show
     user_id = User.select(:id).find(params[:username])
-    @recipe = Recipe.find(params[:recipe])
+    @recipe = Recipe.find_by_slug_and_user_id(params[:recipe], user_id)
 
     respond_to do |format|
       format.html
@@ -32,11 +32,12 @@ class RecipesController < ApplicationController
     @recipe          = Recipe.new(params[:recipe])
     @recipe.revision = 1
     @recipe.user     = current_user
+    @recipe.slug     = @recipe.title.parameterize
     @recipe.create_recipe_revision!
 
     respond_to do |format|
       if @recipe.save
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
+        format.html { redirect_to "/#{@recipe.user.slug}/#{@recipe.slug}", notice: 'Recipe was successfully created.' }
         format.json { render json: @recipe, status: :created, location: @recipe }
       else
         format.html { render action: "new" }
@@ -52,7 +53,7 @@ class RecipesController < ApplicationController
     respond_to do |format|
       if @recipe.update_attributes(params[:recipe])
          @recipe.create_recipe_revision!
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
+        format.html { redirect_to "/#{@recipe.user.slug}/#{@recipe.slug}", notice: 'Recipe was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

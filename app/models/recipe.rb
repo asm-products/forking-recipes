@@ -1,8 +1,4 @@
 class Recipe < ActiveRecord::Base
-  include FriendlyId
-
-  friendly_id :title, :use => :slugged
-
   belongs_to :user
   has_many :recipe_revisions
   attr_accessible :body, :commit_message, :revision, :title
