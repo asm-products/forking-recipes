@@ -2,10 +2,10 @@
   %h2 Recent Recipes
   %ul
     - @recipes.each do |recipe|
-      %li= link_to recipe.title, "/#{recipe.user.slug}/#{recipe.slug}"
+      %li= link_to recipe.title, "/#{recipe.user.username}/#{recipe.slug}"
 
 %div.pull-right
   %h2 Popular Users
   %ul
     - @users.each do |user|
-      %li= link_to user.username, "/#{user.slug}"
+      %li= link_to user.username, "/#{user.username}"

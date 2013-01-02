@@ -24,7 +24,7 @@ class Recipe < ActiveRecord::Base
     recipe = Recipe.new(:title => title,
                         :body => body,
                         :user => user,
-                        :commit_message => "Forked From #{self.user.slug}",
+                        :commit_message => "Forked From #{self.user.username}",
                         :slug => slug,
                         :revision => 1)
 
