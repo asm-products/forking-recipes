@@ -11,12 +11,16 @@
 = link_to 'Back', recipes_path
 
 %p
-  %h3= "#{@recipe.user.username} / #{@recipe.title}"
+  %h4= "#{@recipe.user.username} / #{@recipe.slug}"
   - if @forked_from_recipe
     - recipe_url = "/#{@forked_from_recipe.user.username}/#{@forked_from_recipe.slug}"
     - link_text  = @forked_from_recipe.slug
     - user_url = "/#{@forked_from_recipe.user.username}"
     %h5= "Forked from #{link_to @forked_from_recipe.user.username, user_url} / #{link_to link_text, recipe_url}".html_safe
+
+%hr
+%p
+  %h3= @recipe.title
 
 %p
   = RDiscount.new(@recipe.body).to_html.html_safe
