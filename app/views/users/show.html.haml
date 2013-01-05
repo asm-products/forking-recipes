@@ -1,3 +1,7 @@
 %ul
   - @recipes.each do |recipe|
     %li= link_to recipe.title, "/#{@user.username}/#{recipe.slug}"
+
+%br
+%br
+= link_to "New Recipe", new_recipe_path
