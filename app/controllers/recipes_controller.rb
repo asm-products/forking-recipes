@@ -21,6 +21,7 @@ class RecipesController < ApplicationController
   def show
     user_id = User.select(:id).find_by_username(params[:username])
     @recipe = Recipe.find_by_slug_and_user_id(params[:recipe], user_id)
+    @forked_from_recipe = Recipe.find(@recipe.forked_from_recipe_id) if @recipe.forked_from_recipe_id
 
     respond_to do |format|
       format.html

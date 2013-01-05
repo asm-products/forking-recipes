@@ -1,7 +1,7 @@
 class Recipe < ActiveRecord::Base
   belongs_to :user
   has_many :recipe_revisions
-  attr_accessible :body, :commit_message, :revision, :title, :user, :slug
+  attr_accessible :body, :commit_message, :revision, :title, :user, :slug, :forked_from_recipe_id
 
   validates :commit_message, :presence => {:message => 'Commit Message cannot be blank'}
   validates :title, :presence => {:message => 'Commit Message cannot be blank'}
@@ -26,6 +26,7 @@ class Recipe < ActiveRecord::Base
                         :user => user,
                         :commit_message => "Forked From #{self.user.username}",
                         :slug => slug,
+                        :forked_from_recipe_id => self.id,
                         :revision => 1)
 
     recipe.create_recipe_revision!
