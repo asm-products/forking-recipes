@@ -1,3 +1,8 @@
+%p
+  - if current_user == @recipes.first.user
+    %h3 Your Recipes
+  - else
+    %h3= "#{@recipes.first.user.username}'s Recipes"
 %ul
   - @recipes.each do |recipe|
     %li= link_to recipe.title, "/#{@user.username}/#{recipe.slug}"
