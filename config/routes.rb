@@ -17,6 +17,5 @@ RecipeHub::Application.routes.draw do
   match "/:username/:recipe/revisions" => "RecipeRevisions#index"
   match "/:username/:recipe/revisions/:revision_id" => "RecipeRevisions#show"
 
-  root :to => 'recipes#index', :constraints => lambda { |r| r.env['warden'].authenticate? }
   root :to => "home#index"
 end

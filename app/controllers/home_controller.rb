@@ -1,10 +1,9 @@
 class HomeController < ApplicationController
   def index
-    if current_user
-      redirect_to recipes_path
+    if user_signed_in?
+      redirect_to "/#{current_user.username}" 
     else
-      @recipes = Recipe.last(10)
-      @users   = User.last(10)
+      redirect_to :browse
     end
   end
 
