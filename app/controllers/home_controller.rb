@@ -7,4 +7,11 @@ class HomeController < ApplicationController
       @users   = User.last(10)
     end
   end
+
+  def browse
+    @recipes = Recipe.last(10)
+    @users   = User.last(10)
+
+    render :index
+  end
 end

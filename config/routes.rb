@@ -10,6 +10,7 @@ RecipeHub::Application.routes.draw do
     resources :recipe_revisions, :only => [:index, :show]
   end
 
+  match "/browse"                      => "home#browse"
   match "/:username"                   => "Users#show"
   match "/:username/:recipe"           => "Recipes#show"
   match "/:username/:recipe/fork"      => "Recipes#fork"
