@@ -1,7 +1,9 @@
 = link_to 'Revisions', recipe_revisions_path(@recipe), :class => "btn"
+
 - if current_user == @recipe.user
   = link_to 'Edit', edit_recipe_path(@recipe), :class => "btn"
   = link_to 'Delete', recipe_path(@recipe), :confirm => 'Are you sure you want to delete this recipe?', :method => :delete, :class => "btn btn-danger"
+
 - if user_signed_in? && current_user != @recipe.user
   = link_to 'Fork', fork_recipe_path(@recipe), :method => :post, :class => "btn"
 
