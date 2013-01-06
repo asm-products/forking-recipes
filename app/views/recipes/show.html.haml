@@ -8,7 +8,7 @@
   \|
 = link_to 'Revisions', recipe_revisions_path(@recipe)
 \|
-= link_to 'Back', recipes_path
+= link_to 'Back', recipes_path(@recipe.user)
 
 %p
   %h4= "#{@recipe.user.username} / #{@recipe.slug}"

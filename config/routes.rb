@@ -7,6 +7,8 @@ RecipeHub::Application.routes.draw do
   end
 
   match "/browse"                      => "home#browse"
+  match "/recipes/new"                 => "recipes#new",     :via => :get
+  match "/recipes/new"                 => "recipes#create",  :via => :post
   match "/:username"                   => "Users#show"
   match "/:username/:recipe"           => "Recipes#show",    :via => :get
   match "/:username/:recipe"           => "Recipes#destroy", :via => :delete
