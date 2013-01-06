@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  include RecipesHelper
+
   before_filter :authenticate_user!, :except => [:show]
 
   def fork
@@ -39,11 +41,12 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    @recipe = Recipe.find(params[:id])
+    user_id = User.select(:id).find_by_username(params[:username])
+    @recipe = Recipe.find_by_slug_and_user_id(params[:recipe], user_id)
   end
 
   def create
-    @recipe          = Recipe.new(params[:recipe])
+    @recipe          = Recipe.new(params[:recipe_form])
     @recipe.revision = 1
     @recipe.user     = current_user
     @recipe.slug     = @recipe.title.parameterize
@@ -61,11 +64,12 @@ class RecipesController < ApplicationController
   end
 
   def update
-    @recipe = Recipe.find(params[:id])
+    user_id = User.select(:id).find_by_username(params[:username])
+    @recipe = Recipe.find_by_slug_and_user_id(params[:recipe], user_id)
     @recipe.increment_revision!
 
     respond_to do |format|
-      if @recipe.update_attributes(params[:recipe])
+      if @recipe.update_attributes(params[:recipe_form])
          @recipe.create_recipe_revision!
         format.html { redirect_to "/#{@recipe.user.username}/#{@recipe.slug}", notice: 'Recipe was successfully updated.' }
         format.json { head :no_content }
@@ -77,7 +81,8 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    @recipe = Recipe.find(params[:id])
+    user_id = User.select(:id).find_by_username(params[:username])
+    @recipe = Recipe.find_by_slug_and_user_id(params[:recipe], user_id)
     @recipe.destroy
 
     respond_to do |format|
