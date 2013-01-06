@@ -1,14 +1,12 @@
 - if current_user == @recipe.user
-  = link_to 'Edit', edit_recipe_path(@recipe)
+  = link_to 'Edit', edit_recipe_path(@recipe), :class => "btn"
   \|
-  = link_to 'Delete', recipe_path(@recipe), :confirm => 'Are you sure you want to delete this recipe?', :method => :delete
+  = link_to 'Delete', recipe_path(@recipe), :confirm => 'Are you sure you want to delete this recipe?', :method => :delete, :class => "btn btn-danger"
   \|
 - if user_signed_in? && current_user != @recipe.user
-  = link_to 'Fork', fork_recipe_path(@recipe), :method => :post
+  = link_to 'Fork', fork_recipe_path(@recipe), :method => :post, :class => "btn"
   \|
-= link_to 'Revisions', recipe_revisions_path(@recipe)
-\|
-= link_to 'Back', recipes_path(@recipe.user)
+= link_to 'Revisions', recipe_revisions_path(@recipe), :class => "btn"
 
 %p
   %h4= "#{@recipe.user.username} / #{@recipe.slug}"
