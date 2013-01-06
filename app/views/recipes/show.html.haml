@@ -1,24 +1,18 @@
+= link_to 'Revisions', recipe_revisions_path(@recipe), :class => "btn"
 - if current_user == @recipe.user
   = link_to 'Edit', edit_recipe_path(@recipe), :class => "btn"
-  \|
   = link_to 'Delete', recipe_path(@recipe), :confirm => 'Are you sure you want to delete this recipe?', :method => :delete, :class => "btn btn-danger"
-  \|
 - if user_signed_in? && current_user != @recipe.user
   = link_to 'Fork', fork_recipe_path(@recipe), :method => :post, :class => "btn"
-  \|
-= link_to 'Revisions', recipe_revisions_path(@recipe), :class => "btn"
 
+%hr
 %p
-  %h4= "#{@recipe.user.username} / #{@recipe.slug}"
+  %h3= @recipe.title
   - if @forked_from_recipe
     - recipe_url = "/#{@forked_from_recipe.user.username}/#{@forked_from_recipe.slug}"
     - link_text  = @forked_from_recipe.slug
     - user_url = "/#{@forked_from_recipe.user.username}"
     %h5= "Forked from #{link_to @forked_from_recipe.user.username, user_url} / #{link_to link_text, recipe_url}".html_safe
-
-%hr
-%p
-  %h3= @recipe.title
 
 %p
   = RDiscount.new(@recipe.body).to_html.html_safe
