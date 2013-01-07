@@ -10,6 +10,7 @@ RecipeHub::Application.routes.draw do
   match "/recipes/new"                 => "recipes#new",     :via => :get
   match "/recipes/new"                 => "recipes#create",  :via => :post
   match "/:username"                   => "Users#show"
+  match "/:username/follow"            => "Users#follow",    :via => :post
   match "/:username/:recipe"           => "Recipes#show",    :via => :get
   match "/:username/:recipe"           => "Recipes#destroy", :via => :delete
   match "/:username/:recipe"           => "Recipes#update",  :via => :put

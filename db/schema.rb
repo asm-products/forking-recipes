@@ -11,51 +11,67 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130105182233) do
+ActiveRecord::Schema.define(:version => 20130107000740) do
+
+  create_table "follow", :id => false, :force => true do |t|
+    t.integer "following_id"
+    t.integer "follower_id"
+  end
 
   create_table "recipe_revisions", :force => true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.string   "commit_message"
-    t.integer  "user_id"
-    t.integer  "recipe_id"
-    t.integer  "revision"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.string    "title"
+    t.text      "body"
+    t.string    "commit_message"
+    t.integer   "user_id"
+    t.integer   "recipe_id"
+    t.integer   "revision"
+    t.timestamp "created_at",     :null => false
+    t.timestamp "updated_at",     :null => false
   end
 
   add_index "recipe_revisions", ["user_id"], :name => "index_recipe_revisions_on_user_id"
 
   create_table "recipes", :force => true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.string   "commit_message"
-    t.integer  "revision"
-    t.integer  "user_id"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
-    t.string   "slug"
-    t.integer  "forked_from_recipe_id"
+    t.string    "title"
+    t.text      "body"
+    t.string    "commit_message"
+    t.integer   "revision"
+    t.integer   "user_id"
+    t.timestamp "created_at",            :null => false
+    t.timestamp "updated_at",            :null => false
+    t.string    "slug"
+    t.integer   "forked_from_recipe_id"
   end
 
   add_index "recipes", ["slug"], :name => "index_recipes_on_slug"
   add_index "recipes", ["user_id"], :name => "index_recipes_on_user_id"
 
+  create_table "relationships", :force => true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
+  add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
+  add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.string   "username"
-    t.string   "slug"
+    t.string    "email",                  :default => "", :null => false
+    t.string    "encrypted_password",     :default => "", :null => false
+    t.string    "reset_password_token"
+    t.timestamp "reset_password_sent_at"
+    t.timestamp "remember_created_at"
+    t.integer   "sign_in_count",          :default => 0
+    t.timestamp "current_sign_in_at"
+    t.timestamp "last_sign_in_at"
+    t.string    "current_sign_in_ip"
+    t.string    "last_sign_in_ip"
+    t.timestamp "created_at",                             :null => false
+    t.timestamp "updated_at",                             :null => false
+    t.string    "username"
+    t.string    "slug"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
