@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  #include UsersHelper
+  include UsersHelper
 
   def show
     @user    = User.find_by_username(params[:username])
@@ -7,6 +7,14 @@ class UsersController < ApplicationController
   end
 
   def follow
-    redirect_to '/'
+    current_user.follow!(User.find_by_username(params[:username])) if current_user
+
+    redirect_to :back
+  end
+
+  def unfollow
+    current_user.unfollow!(User.find_by_username(params[:username])) if current_user
+
+    redirect_to :back
   end
 end
