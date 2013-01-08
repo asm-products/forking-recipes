@@ -54,6 +54,7 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       if @recipe.save
+        Event.create(:user_id => @recipe.user.id, :recipe_id => @recipe.id, :action => "created")
         format.html { redirect_to "/#{@recipe.user.username}/#{@recipe.slug}", notice: 'Recipe was successfully created.' }
         format.json { render json: @recipe, status: :created, location: @recipe }
       else
@@ -70,7 +71,8 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       if @recipe.update_attributes(params[:recipe_form])
-         @recipe.create_recipe_revision!
+        Event.create(:user_id => @recipe.user.id, :recipe_id => @recipe.id, :action => "updated")
+        @recipe.create_recipe_revision!
         format.html { redirect_to "/#{@recipe.user.username}/#{@recipe.slug}", notice: 'Recipe was successfully updated.' }
         format.json { head :no_content }
       else

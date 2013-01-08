@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
   def index
     if user_signed_in?
-      redirect_to "/#{current_user.username}" 
+      followed_users = current_user.following
+      @events = followed_users.map { |user| user.events.limit(5) }.flatten.sort_by { |event| event.created_at }
     else
       redirect_to :browse
     end

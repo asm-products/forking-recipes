@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130107000740) do
+ActiveRecord::Schema.define(:version => 20130108025545) do
+
+  create_table "events", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "recipe_id"
+    t.text     "action"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "follow", :id => false, :force => true do |t|
     t.integer "following_id"

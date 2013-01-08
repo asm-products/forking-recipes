@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username
 
+  has_many :events
+
   has_many :followed_users, :through => :relationships, :source => :followed
   has_many :relationships, :foreign_key => "follower_id", :dependent => :destroy
 
@@ -23,7 +25,9 @@ class User < ActiveRecord::Base
   end
 
   def following
-    User.joins(:relationships).where(:id => self.id)
+    ids = Relationship.where(:follower_id => self.id).select(:followed_id).map(&:followed_id)
+
+    User.find_all_by_id(ids)
   end
 
   def follow!(other_user)

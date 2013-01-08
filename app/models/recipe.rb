@@ -3,6 +3,8 @@ class Recipe < ActiveRecord::Base
   has_many :recipe_revisions
   attr_accessible :body, :commit_message, :revision, :title, :user, :slug, :forked_from_recipe_id
 
+  has_many :events
+
   validates :commit_message, :presence => {:message => 'Commit Message cannot be blank'}
   validates :title, :presence => {:message => 'Commit Message cannot be blank'}
   validates :slug, :presence => {:message => 'Commit Message cannot be blank'}
