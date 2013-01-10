@@ -1,5 +1,5 @@
 %div.pull-left
-  %h2 Recent Events
+  %h2 Recent Recipes
   %ul
     - @recipes.each do |recipe|
       %li= link_to recipe.title, "/#{recipe.user.username}/#{recipe.slug}"
