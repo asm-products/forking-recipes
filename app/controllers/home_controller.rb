@@ -14,7 +14,5 @@ class HomeController < ApplicationController
   def browse
     @recipes = Recipe.where(:forked_from_recipe_id => nil).last(10)
     @users   = User.last(10)
-
-    render :index
   end
 end
