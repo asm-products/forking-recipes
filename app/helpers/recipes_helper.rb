@@ -1,6 +1,6 @@
 module RecipesHelper
   def recipe_path(recipe)
-    return "/#{@recipe.user.username}/#{@recipe.slug}" if @recipe.user
+    return "/#{recipe.user.username}/#{recipe.slug}" if recipe.user
 
     "/recipes/new"
   end

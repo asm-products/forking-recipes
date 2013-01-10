@@ -1,4 +1,7 @@
 class HomeController < ApplicationController
+  include RecipesHelper
+  include UsersHelper
+
   def index
     if user_signed_in?
       followed_users = current_user.following

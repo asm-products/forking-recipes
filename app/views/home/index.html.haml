@@ -2,4 +2,4 @@
   %h2 Recent Events
   %ul
     - @events.each do |event|
-      %li= "#{event.user.username} #{event.action} #{event.recipe.title}"
+      %li= "#{link_to(event.user.username, user_path(event.user))} #{event.action} #{link_to(event.recipe.title, recipe_path(event.recipe))}".html_safe
