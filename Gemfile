@@ -16,7 +16,7 @@ group :development do
   gem 'meta_request', '0.2.0'
 end
 
-gem 'rails', '3.2.5'
+gem 'rails', '3.2.11'
 gem "devise"
 gem 'rdiscount'
 gem 'friendly_id'
