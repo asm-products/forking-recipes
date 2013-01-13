@@ -17,6 +17,7 @@ group :development do
 end
 
 gem 'rails', '3.2.11'
+gem 'newrelic_rpm'
 gem "devise"
 gem 'rdiscount'
 gem 'friendly_id'
