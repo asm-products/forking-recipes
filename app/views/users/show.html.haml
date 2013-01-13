@@ -12,6 +12,8 @@
   %ul
     - @recipes.each do |recipe|
       %li= link_to recipe.title, "/#{@user.username}/#{recipe.slug}"
+- else
+  Looks like you're not following anyone yet. Try following some users show their actions will show up in your feed.
 
 %br
 %br
