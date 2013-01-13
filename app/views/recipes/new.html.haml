@@ -1,5 +1,20 @@
-%h1 New recipe
+%div.pull-left
+  %h1 New recipe
 
-= render 'form'
+  = render 'form'
 
-= link_to 'Back', :back
+  = link_to 'Back', :back
+%div.pull-right
+  %h3 Helpful Hints
+  %ul
+    %li Recipes are interpreted as Markdown
+    %li
+      Wikipedia has an excellent Markdown formatting guide available
+      %a{:href => "http://en.wikipedia.org/wiki/Markdown#Syntax_examples"}
+        here
+    %li
+      The suggested way to post images here is to uploaded them to a site like
+      %a{:href => "http://www.imgur.com"}
+        imgur
+    %li
+      They can then be displayed using this syntax ![image_name](image_link)
