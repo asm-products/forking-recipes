@@ -29,7 +29,11 @@
             .span12
               = render 'layouts/messages'
               = yield
-          %footer
+    %footer
+      %br
+      %p.container
+        %a{:href => "mailto:pickdavid+forkingrecipes@gmail.com"}
+          Contact Us
     - if Rails.env == "production"
       :javascript
         var _gaq = _gaq || [];

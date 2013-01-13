@@ -1,9 +1,5 @@
 %div.pull-left
-  - if !@events.empty?
-    %h2
-      Recent Events
-      %ul
-        - @events.each do |event|
-          %li= "#{link_to(event.user.username, user_path(event.user))} #{event.action} #{link_to(event.recipe.title, recipe_path(event.recipe))}".html_safe
-  - else
-    Looks like you don't have any recent events. Try following more users show their actions will show up in your feed.
+  %h2 Recent Events
+  %ul
+    - @events.each do |event|
+      %li= "#{link_to(event.user.username, user_path(event.user))} #{event.action} #{link_to(event.recipe.title, recipe_path(event.recipe))}".html_safe

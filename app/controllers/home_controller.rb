@@ -6,6 +6,7 @@ class HomeController < ApplicationController
     if user_signed_in?
       followed_users = current_user.following
       @events = followed_users.map { |user| user.events.limit(5) }.flatten.sort_by { |event| event.created_at }
+      redirect_to :browse if @events.empty?
     else
       redirect_to :browse
     end
