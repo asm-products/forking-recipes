@@ -16,18 +16,10 @@
         .container
           = render 'layouts/navigation'
     #main{:role => "main"}
-      .container
-        :javascript
-          google_ad_client = "ca-pub-6361484205700965";
-          /* top banner */
-          google_ad_slot = "3056503031";
-          google_ad_width = 728;
-          google_ad_height = 15;
-        %script{:src => "http://pagead2.googlesyndication.com/pagead/show_ads.js", :type => "text/javascript"}
-        .content
-          .row
-            .span12
-              = render 'layouts/messages'
+      .content
+        .row
+          .span12
+            = render 'layouts/messages'
               = yield
     %footer
       %br
