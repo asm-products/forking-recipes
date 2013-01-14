@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   include RecipesHelper
   include UsersHelper
 
-  caches_action :browse
+  caches_action :browse, :layout => false
 
   def index
     if user_signed_in?
