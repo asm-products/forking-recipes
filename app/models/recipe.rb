@@ -5,9 +5,9 @@ class Recipe < ActiveRecord::Base
 
   has_many :events
 
-  validates :commit_message, :presence => {:message => 'Commit Message cannot be blank'}
-  validates :title, :presence => {:message => 'Commit Message cannot be blank'}
-  validates :slug, :presence => {:message => 'Commit Message cannot be blank'}
+  validates :commit_message, :presence => {:message => 'Update Message cannot be blank'}
+  validates :title, :presence => {:message => 'Update Message cannot be blank'}
+  validates :slug, :presence => {:message => 'Update Message cannot be blank'}
 
   def increment_revision!
     self.revision = self.revision + 1
