@@ -16,10 +16,10 @@ class HomeController < ApplicationController
 
   def browse
     @recipes = Recipe.where(:forked_from_recipe_id => nil).last(10)
-    @users   = User.all(:select => "users.*, COUNT(recipes.user_id) as purchased_sum",
+    @users   = User.all(:select => "users.*, COUNT(recipes.user_id) as recipe_count",
                         :joins  => "LEFT JOIN recipes ON recipes.user_id = users.id",
                         :group  => "users.id",
-                        :order  => "users.created_at",
+                        :order  => "recipe_count DESC",
                         :limit  => 10)
   end
 end
