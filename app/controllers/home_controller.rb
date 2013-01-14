@@ -2,6 +2,8 @@ class HomeController < ApplicationController
   include RecipesHelper
   include UsersHelper
 
+  caches_action :browse
+
   def index
     if user_signed_in?
       followed_users = current_user.following
