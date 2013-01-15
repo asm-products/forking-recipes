@@ -14,7 +14,8 @@ class HomeController < ApplicationController
 
   def search
     query = params[:query]
-    @results = PgSearch.multisearch(query)
+    results  = PgSearch.multisearch(query)
+    @recipes = Recipe.find_all_by_id(results.map(&:searchable_id))
   end
 
   def browse
