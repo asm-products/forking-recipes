@@ -9,6 +9,10 @@ class Recipe < ActiveRecord::Base
   validates :title, :presence => {:message => 'Update Message cannot be blank'}
   validates :slug, :presence => {:message => 'Update Message cannot be blank'}
 
+  include PgSearch
+
+  multisearchable :against => [:title, :body]
+
   def increment_revision!
     self.revision = self.revision + 1
   end

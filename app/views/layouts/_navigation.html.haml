@@ -18,3 +18,8 @@
   - if user_signed_in?
     %li
       = link_to('Your Recipes', "/#{current_user.username}")
+  %li
+    %form{:method => "POST", :action => "/search", :class => 'navbar-form'}
+      %input{:type => "text", :placeholder => "Search", :name => 'query'}
+      %button{:type => "submit", :class => 'btn'} Search
+
