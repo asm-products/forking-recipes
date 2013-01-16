@@ -4,14 +4,15 @@
   = link_to 'Unfollow', user_unfollow_path(@user), :class => "btn", :method => :post
 
 - if !@recipes.empty?
-  %p
-    - if current_user == @user
-      %h3 Your Recipes
-    - else
-      %h3= "#{@user.username}'s Recipes"
-  %ul
-    - @recipes.each do |recipe|
-      %li= link_to recipe.title, "/#{@user.username}/#{recipe.slug}"
+  %div{:class => "recipes"}
+    %p
+      - if current_user == @user
+        %h3 Your Recipes
+      - else
+        %h3= "#{@user.username}'s Recipes"
+    %ul
+      - @recipes.each do |recipe|
+        %li= link_to recipe.title, "/#{@user.username}/#{recipe.slug}"
 
 
 %br

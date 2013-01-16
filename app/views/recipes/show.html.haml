@@ -1,5 +1,5 @@
 - if @recipe.revision > 1
-  = link_to 'Revisions', recipe_revisions_path(@recipe), :class => "btn"
+  = link_to 'Revisions', recipe_revisions_path(@recipe), :class => "btn", :id => "revisions_button"
 
 - if current_user == @recipe.user
   = link_to 'Edit', edit_recipe_path(@recipe), :class => "btn"

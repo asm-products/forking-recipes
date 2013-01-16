@@ -13,35 +13,43 @@ SITENAME = {
 
   home: {
     browse: function() {
-      //guiders.createGuider({
-      //  buttons: [{name: "Next"}],
-      //  description: "Forking Recipes is a new kind of social recipe site, with some cool extra features.",
-      //  id: "first",
-      //  next: "second",
-      //  overlay: true,
-      //  title: "Welcome to Forking Recipes!"
-      //}).show();
+      guiders.createGuider({
+        buttons: [{name: "Close"}],
+        description: "Forking Recipes is a new kind of social recipe site, with some cool extra features.",
+        id: "first",
+        onHide:function() { window.location.href='/dpick#guider=user_first' },
+        next: "user_second",
+        overlay: true,
+        title: "Welcome to Forking Recipes!"
+      })
+    }
+  },
 
-      // guiders.createGuider({
-      //  attachTo: "#recent_recipes",
-      //  buttons: [{name: "Next"}, {name: "Close"}],
-      //  description: "Here you can see some of our newest recipes.",
-      //  id: "second",
-      //  next: "third",
-      //  position: 3,
-      //  title: "Welcome to Forking Recipes!"
-      //});
+  users: {
+    show: function() {
+      guiders.createGuider({
+        buttons: [{name: "Close"}],
+        description: "This is a user page, here you can see all of their recipes. Let's take a look at one of them.",
+        onHide: function() { window.location.href="/dpick/blackened-tilapia#guider=recipe_first" },
+        id: "user_first",
+        next: "recipe_first",
+        title: "Welcome to Forking Recipes!"
+      })
+    }
+  },
 
-      // guiders.createGuider({
-      //  attachTo: "#recent_users",
-      //  buttons: [{name: "Next"}, {name: "Close"}],
-      //  description: "And over here some of our most popular users.",
-      //  id: "third",
-      //  next: "fourth",
-      //  position: 9,
-      //  title: "Welcome to Forking Recipes!"
-      //});
-    },
+  recipes: {
+    show: function() {
+      guiders.createGuider({
+        attachTo: "#revisions_button",
+        buttons: [{name: "Close"}],
+        description: "Here's a sample recipe. Unlike most recipe sites, we store every version of this recipe. Click on the revisions button to see how this recipe evolved.",
+        id: "recipe_first",
+        next: "recipe_second",
+        position: 3,
+        title: "Welcome to Forking Recipes!"
+      })
+    }
   }
 };
 
