@@ -14,11 +14,11 @@
 ActiveRecord::Schema.define(:version => 20130115014412) do
 
   create_table "events", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "recipe_id"
-    t.text     "action"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer   "user_id"
+    t.integer   "recipe_id"
+    t.text      "action"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   create_table "follow", :id => false, :force => true do |t|
@@ -63,10 +63,10 @@ ActiveRecord::Schema.define(:version => 20130115014412) do
   add_index "recipes", ["user_id"], :name => "index_recipes_on_user_id"
 
   create_table "relationships", :force => true do |t|
-    t.integer  "follower_id"
-    t.integer  "followed_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer   "follower_id"
+    t.integer   "followed_id"
+    t.timestamp "created_at",  :null => false
+    t.timestamp "updated_at",  :null => false
   end
 
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"

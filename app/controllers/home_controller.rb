@@ -19,6 +19,11 @@ class HomeController < ApplicationController
   end
 
   def browse
+    if cookies["visited"].nil?
+      cookies["visited"] = true
+      redirect_to "/browse#guider=first"
+    end
+
     @recipes = Rails.cache.fetch("popular_recipes", :expires_in => 5.minutes) do
       Recipe.where(:forked_from_recipe_id => nil).last(10)
     end
