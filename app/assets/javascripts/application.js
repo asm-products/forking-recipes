@@ -13,35 +13,34 @@ SITENAME = {
 
   home: {
     browse: function() {
-      console.log('on the browse page');
-      guiders.createGuider({
-        buttons: [{name: "Next"}],
-        description: "Forking Recipes is a new kind of social recipe site, with some cool extra features.",
-        id: "first",
-        next: "second",
-        overlay: true,
-        title: "Welcome to Forking Recipes!"
-      }).show();
+      //guiders.createGuider({
+      //  buttons: [{name: "Next"}],
+      //  description: "Forking Recipes is a new kind of social recipe site, with some cool extra features.",
+      //  id: "first",
+      //  next: "second",
+      //  overlay: true,
+      //  title: "Welcome to Forking Recipes!"
+      //}).show();
 
-       guiders.createGuider({
-        attachTo: "#recent_recipes",
-        buttons: [{name: "Next"}, {name: "Close"}],
-        description: "Here you can see some of our newest recipes.",
-        id: "second",
-        next: "third",
-        position: 3,
-        title: "Welcome to Forking Recipes!"
-      });
+      // guiders.createGuider({
+      //  attachTo: "#recent_recipes",
+      //  buttons: [{name: "Next"}, {name: "Close"}],
+      //  description: "Here you can see some of our newest recipes.",
+      //  id: "second",
+      //  next: "third",
+      //  position: 3,
+      //  title: "Welcome to Forking Recipes!"
+      //});
 
-       guiders.createGuider({
-        attachTo: "#recent_users",
-        buttons: [{name: "Next"}, {name: "Close"}],
-        description: "And over here some of our most popular users.",
-        id: "third",
-        next: "fourth",
-        position: 9,
-        title: "Welcome to Forking Recipes!"
-      });
+      // guiders.createGuider({
+      //  attachTo: "#recent_users",
+      //  buttons: [{name: "Next"}, {name: "Close"}],
+      //  description: "And over here some of our most popular users.",
+      //  id: "third",
+      //  next: "fourth",
+      //  position: 9,
+      //  title: "Welcome to Forking Recipes!"
+      //});
     },
   }
 };
