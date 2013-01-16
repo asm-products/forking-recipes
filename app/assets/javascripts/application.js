@@ -14,10 +14,9 @@ SITENAME = {
   home: {
     browse: function() {
       guiders.createGuider({
-        buttons: [{name: "Close"}],
-        description: "Forking Recipes is a new kind of social recipe site, with some cool extra features.",
+        buttons: [{name: "Close", onclick: guiders.hideAll}],
+        description: '<h5>Forking Recipes is a new kind of social recipe site, with some cool extra features.</h5> <ul><li> Every change to a recipe is tracked so that users can see the evolution of recipes.</li><li>Recipes are formatted using markdown.</li><li>Recipes can be "forked" from one user to another. This will take a recipe and copy it from one persons profile to yours, so you can make your own changes to the recipe.</li><li>You can follow users and get a feed of what people are doing on the site.',
         id: "first",
-        onHide:function() { window.location.href='/dpick#guider=user_first' },
         next: "user_second",
         overlay: true,
         title: "Welcome to Forking Recipes!"
@@ -28,7 +27,7 @@ SITENAME = {
   users: {
     show: function() {
       guiders.createGuider({
-        buttons: [{name: "Close"}],
+        buttons: [{name: "Next", onclick: guiders.hideAll}],
         description: "This is a user page, here you can see all of their recipes. Let's take a look at one of them.",
         onHide: function() { window.location.href="/dpick/blackened-tilapia#guider=recipe_first" },
         id: "user_first",
@@ -47,7 +46,7 @@ SITENAME = {
         id: "recipe_first",
         next: "recipe_second",
         position: 3,
-        title: "Welcome to Forking Recipes!"
+        title: "Revisions"
       })
     }
   }
