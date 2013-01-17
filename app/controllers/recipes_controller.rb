@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   include RecipesHelper
+  include UsersHelper
 
   before_filter :authenticate_user!, :except => [:show]
 
@@ -92,12 +93,12 @@ body
   end
 
   def destroy
-    user_id = User.select(:id).find_by_username(params[:username])
-    @recipe = Recipe.find_by_slug_and_user_id(params[:recipe], user_id)
+    user = User.find_by_username(params[:username])
+    @recipe = Recipe.find_by_slug_and_user_id(params[:recipe], user.id)
     @recipe.destroy
 
     respond_to do |format|
-      format.html { redirect_to recipes_url }
+      format.html { redirect_to user_path(user) }
       format.json { head :no_content }
     end
   end
