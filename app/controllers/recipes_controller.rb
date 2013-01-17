@@ -32,7 +32,14 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.new
+    @recipe = Recipe.new(:body => <<body)
+### Ingredients
+* 1 cup of water
+### Steps
+* put water in cup
+### Pictures
+![my_image](imgur.com/my_image)
+body
 
     respond_to do |format|
       format.html
