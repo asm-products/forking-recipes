@@ -4,17 +4,36 @@
   = render 'form'
 
   = link_to 'Back', :back
-%div.pull-right
-  %h3 Helpful Hints
+%div.pull-right.span6
+  %h3 Formatting Guide
   %ul
-    %li Recipes are interpreted as Markdown
     %li
-      Wikipedia has an excellent Markdown formatting guide available
-      %a{:href => "http://en.wikipedia.org/wiki/Markdown#Syntax_examples"}
-        here
+      <h3>Headings</h3>
+      %ul
+        %li Headings are created by putting pounds signs before the text.
+        %li The fewer the pound signs the larger the text
+        %li= "# Title ->"
+        <h1>Title</h1>
+        %li= "### Title ->"
+        <h3>Title</h3>
     %li
-      The suggested way to post images here is to upload them to a site like
-      %a{:href => "http://www.imgur.com"}
-        imgur
+      <h3>Lists</h3>
+      %ul
+        %li You can create either bulleted or numbered lists
+        %li Bulleted lists are created by putting a * before list item
+        %li Numbered lists are created by putting a number followed by a period before the item
+        %li
+          * 1 cup of water
+          <br>
+          * 1 glass
+        %li
+          1. Put water in glass
+          <br>
+          2. Drink water
     %li
-      They can then be displayed using this syntax ![image_name](image_link)
+      <h3>Images</h3>
+      %ul
+        %li The suggested way to post images here is to upload them to a site like
+        %a{:href => "http://www.imgur.com"}= "Imgur"
+        %li
+          They can then be displayed using this syntax ![image_name](image_link)
