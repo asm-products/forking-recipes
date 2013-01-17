@@ -33,6 +33,8 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new(:body => <<body)
+### Source
+[some_blog](http://www.someblog.com/recipe)
 ### Ingredients
 * 1 cup of water
 ### Steps
