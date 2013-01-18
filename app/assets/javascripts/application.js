@@ -15,7 +15,7 @@ SITENAME = {
     browse: function() {
       guiders.createGuider({
         buttons: [{name: "Close", onclick: guiders.hideAll}],
-        description: '<h5>Forking Recipes is a new kind of social recipe site, with some cool extra features.</h5> <ul><li> Every change to a recipe is tracked so that users can see the evolution of recipes.</li><li>Recipes are formatted using markdown.</li><li>Recipes can be "forked" from one user to another. This will take a recipe and copy it from one person&#39s profile to yours, so you can make your own changes to the recipe.</li><li>You can follow users and get a feed of what people are doing on the site.',
+        description: '<h5>Forking Recipes is a new kind of social recipe site, with some cool extra features.</h5> <ul><li> Every change to a recipe is tracked so that users can see the evolution of recipes.</li><li>Recipes are formatted using a special syntax that allows them to look good but still remain portable.</li><li>Recipes can be "forked" from one user to another. This will take a recipe and copy it from one person&#39s profile to yours, so you can make your own changes to the recipe.</li><li>You can follow users and get a feed of what people are doing on the site.',
         id: "first",
         next: "user_second",
         overlay: true,
