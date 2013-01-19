@@ -19,7 +19,7 @@ SITENAME = {
 
       $container.imagesLoaded( function(){
         $container.masonry({
-          itemSelector : '.item'
+          itemSelector: '.item',
           columnWidth: function(containerWidth) { return containerWidth / 4; },
           isResizable: true
         });
