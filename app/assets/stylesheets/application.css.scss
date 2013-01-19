@@ -20,7 +20,10 @@ body { padding-top: 60px; }
 }
 
 .item {
-  max-height: 250px;
+  max-width: 200px;
+  border:1px solid black;
+  margin-right: 5px;
+  margin-bottom: 5px;
 }
 
 #recent_recipes {
