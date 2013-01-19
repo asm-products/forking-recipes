@@ -5,6 +5,10 @@ module RecipesHelper
     "/recipes/new"
   end
 
+  def forks_path(recipe)
+    recipe_path(recipe) + "/forks"
+  end
+
   def recipes_path(user)
     "/#{user.username}"
   end

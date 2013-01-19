@@ -18,6 +18,7 @@ RecipeHub::Application.routes.draw do
   match "/:username/:recipe"           => "Recipes#update",  :via => :put
   match "/:username/:recipe/edit"      => "Recipes#edit"
   match "/:username/:recipe/fork"      => "Recipes#fork"
+  match "/:username/:recipe/forks"     => "Recipes#forks"
   match "/:username/:recipe/revisions" => "RecipeRevisions#index"
   match "/:username/:recipe/revisions/:revision_id" => "RecipeRevisions#show"
 

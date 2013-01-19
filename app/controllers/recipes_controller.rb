@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   include RecipesHelper
   include UsersHelper
 
-  before_filter :authenticate_user!, :except => [:show]
+  before_filter :authenticate_user!, :except => [:show, :forks]
 
   def fork
     user_id = User.select(:id).find_by_username(params[:username])
@@ -17,6 +17,12 @@ class RecipesController < ApplicationController
     end
   end
 
+  def forks
+    user_id = User.select(:id).find_by_username(params[:username])
+    @recipe = Recipe.find_by_slug_and_user_id(params[:recipe], user_id)
+    @forked_recipes = Recipe.where(:forked_from_recipe_id => @recipe.id)
+  end
+
   def index
     @recipes = Recipe.where(:user_id => current_user)
   end
@@ -24,7 +30,11 @@ class RecipesController < ApplicationController
   def show
     user_id = User.select(:id).find_by_username(params[:username])
     @recipe = Recipe.find_by_slug_and_user_id(params[:recipe], user_id)
+    @revision_count = RecipeRevision.where(:recipe_id => @recipe.id).count
     @forked_from_recipe = Recipe.find(@recipe.forked_from_recipe_id) if @recipe.forked_from_recipe_id
+    @forks  = Rails.cache.fetch("#{@recipe.slug}#{user_id}_forked_count", :expires_in => 5.minutes) do
+      Recipe.where(:forked_from_recipe_id => @recipe.id).count
+    end
 
     respond_to do |format|
       format.html
