@@ -1,12 +1,12 @@
 %div{:id => "recent_recipes"}
   %h2 Recent Recipes
   %ul
-    - @recipes.each do |recipe|
+    - @recent_recipes.each do |recipe|
       %li= link_to recipe.title, "/#{recipe.user.username}/#{recipe.slug}"
 
 %div{:id => "recent_users"}
   %h2 Popular Users
   %ul
-    - @users.each do |user|
+    - @popular_users.each do |user|
       %li= link_to user.username, "/#{user.username}"
 

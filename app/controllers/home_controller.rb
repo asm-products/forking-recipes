@@ -24,11 +24,11 @@ class HomeController < ApplicationController
       redirect_to "/browse#guider=first"
     end
 
-    @recipes = Rails.cache.fetch("popular_recipes", :expires_in => 5.minutes) do
+    @recent_recipes  = Rails.cache.fetch("popular_recipes", :expires_in => 5.minutes) do
       Recipe.where(:forked_from_recipe_id => nil).last(10)
     end
 
-    @users   = Rails.cache.fetch("popular_users", :expires_in => 5.minutes) do
+    @popular_users   = Rails.cache.fetch("popular_users", :expires_in => 5.minutes) do
       User.all(:select => "users.*, COUNT(recipes.user_id) as recipe_count",
                :joins  => "LEFT JOIN recipes ON recipes.user_id = users.id",
                :group  => "users.id",

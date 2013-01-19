@@ -25,9 +25,13 @@
           .span3
             .well.sidebar-nav
               %ul.nav.nav-list
-                %li.nav-header Sidebar
-                %li.active
-                  %a{:href => "#"} Link
+                - if current_user
+                  %li.nav-header Your Recipes
+                - else
+                  %li.nav-header Featured Recipes
+                  - (@recipes || []).each do |recipe|
+                    %a{:href => recipe_path(recipe)}= recipe.title
+
         %footer
           %a{:href => "mailto:forkingrecipes@gmail.com"}
             Contact Us
