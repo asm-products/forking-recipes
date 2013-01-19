@@ -1,4 +1,7 @@
 - @images.each do |recipe, images|
   - images.each do |image|
-    %a{:href => recipe_path(recipe)}
-      %img{:src => image, :class => 'item'}
+    %div.item
+      %a{:href => recipe_path(recipe)}
+        %img{:src => image}
+      .item-text
+        = recipe.title

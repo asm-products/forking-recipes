@@ -25,10 +25,10 @@ class HomeController < ApplicationController
     end
 
     @images = Rails.cache.fetch("popular_images", :expires_in => 5.minutes) do
-      recipes = Recipe.where(:forked_from_recipe_id => nil).last(10)
+      recipes = Recipe.where(:forked_from_recipe_id => nil).last(50)
 
       recipes.inject({}) do |image_map, recipe|
-        image_map.merge(recipe => recipe.body.scan(/!\[.*]\((.*)\)/).flatten)
+        image_map.merge(recipe => recipe.body.scan(/!\[.*]\((.*)\)/).flatten[0..1])
       end
     end
   end
