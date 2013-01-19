@@ -26,6 +26,7 @@
             .well.sidebar-nav
               %ul.nav.nav-list
                 - if current_user
+                  %li= link_to 'Create a new recipe', new_recipe_path
                   %li.nav-header Your Recipes
                 - else
                   %li.nav-header Featured Recipes
