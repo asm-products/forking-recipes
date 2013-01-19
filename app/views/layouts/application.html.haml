@@ -11,22 +11,27 @@
     = csrf_meta_tags
     = yield(:head)
   %body{"data-controller" => controller_name, "data-action" => action_name}
-    %header.navbar.navbar-fixed-top
-      %nav.navbar-inner
-        .container
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container-fluid
           = render 'layouts/navigation'
     #main{:role => "main"}
-      .container
-        .content
-          .row
-            .span12
+      .container-fluid
+        .row-fluid
+          .span9
+            .hero-unit
               = render 'layouts/messages'
               = yield
-    %footer
-      %br
-      %p.span2
-        %a{:href => "mailto:forkingrecipes@gmail.com"}
-          Contact Us
+          .span3
+            .well.sidebar-nav
+              %ul.nav.nav-list
+                %li.nav-header Sidebar
+                %li.active
+                  %a{:href => "#"} Link
+        %footer
+          %a{:href => "mailto:forkingrecipes@gmail.com"}
+            Contact Us
+
     - if Rails.env == "production"
       :javascript
         var _gaq = _gaq || [];

@@ -1,10 +1,10 @@
-%div.pull-left{:id => "recent_recipes"}
+%div{:id => "recent_recipes"}
   %h2 Recent Recipes
   %ul
     - @recipes.each do |recipe|
       %li= link_to recipe.title, "/#{recipe.user.username}/#{recipe.slug}"
 
-%div.pull-right{:id => "recent_users"}
+%div{:id => "recent_users"}
   %h2 Popular Users
   %ul
     - @users.each do |user|
