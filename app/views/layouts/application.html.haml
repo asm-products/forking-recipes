@@ -19,14 +19,14 @@
       .container-fluid
         .row-fluid
           .span9
-            .hero-unit
+            %div{:id => "main-container", :class => "hero-unit"}
               = render 'layouts/messages'
               = yield
           .span3
             .well.sidebar-nav
               %ul.nav.nav-list
+                %li= link_to 'Create a new recipe', new_recipe_path
                 - if current_user
-                  %li= link_to 'Create a new recipe', new_recipe_path
                   %li.nav-header Your Recipes
                 - else
                   %li.nav-header Featured Recipes

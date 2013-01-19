@@ -24,16 +24,12 @@ class HomeController < ApplicationController
       redirect_to "/browse#guider=first"
     end
 
-    @recent_recipes  = Rails.cache.fetch("popular_recipes", :expires_in => 5.minutes) do
-      Recipe.where(:forked_from_recipe_id => nil).last(10)
-    end
+    @images = Rails.cache.fetch("popular_images", :expires_in => 5.minutes) do
+      recipes = Recipe.where(:forked_from_recipe_id => nil).last(10)
 
-    @popular_users   = Rails.cache.fetch("popular_users", :expires_in => 5.minutes) do
-      User.all(:select => "users.*, COUNT(recipes.user_id) as recipe_count",
-               :joins  => "LEFT JOIN recipes ON recipes.user_id = users.id",
-               :group  => "users.id",
-               :order  => "recipe_count DESC",
-               :limit  => 10)
+      recipes.inject({}) do |image_map, recipe|
+        image_map.merge(recipe => recipe.body.scan(/!\[.*]\((.*)\)/).flatten)
+      end
     end
   end
 end

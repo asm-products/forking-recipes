@@ -1,12 +1,4 @@
-%div{:id => "recent_recipes"}
-  %h2 Recent Recipes
-  %ul
-    - @recent_recipes.each do |recipe|
-      %li= link_to recipe.title, "/#{recipe.user.username}/#{recipe.slug}"
-
-%div{:id => "recent_users"}
-  %h2 Popular Users
-  %ul
-    - @popular_users.each do |user|
-      %li= link_to user.username, "/#{user.username}"
-
+- @images.each do |recipe, images|
+  - images.each do |image|
+    %a{:href => recipe_path(recipe)}
+      %img{:src => image, :class => 'item'}
