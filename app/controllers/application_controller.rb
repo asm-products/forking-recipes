@@ -6,7 +6,13 @@ class ApplicationController < ActionController::Base
     if current_user
       @recipes = Recipe.where(:user_id => current_user.id)
     else
-      @recipes = Recipe.where(:forked_from_recipe_id => nil).last(10)
+      @users = Rails.cache.fetch("popular_users", :expires_in => 5.minutes) do
+        User.all(:select => "users.*, COUNT(recipes.user_id) as recipe_count",
+                 :joins  => "LEFT JOIN recipes ON recipes.user_id = users.id",
+                 :group  => "users.id",
+                 :order  => "recipe_count DESC",
+                 :limit  => 10)
+      end
     end
   end
 end

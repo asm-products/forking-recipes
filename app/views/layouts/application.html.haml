@@ -28,11 +28,15 @@
                 %li= link_to 'Create a new recipe', new_recipe_path
                 - if current_user
                   %li.nav-header Your Recipes
+                  - @recipes.each do |recipe|
+                    %li
+                      %a{:href => recipe_path(recipe)}= recipe.title
                 - else
-                  %li.nav-header Featured Recipes
-                - @recipes.each do |recipe|
-                  %li
-                    %a{:href => recipe_path(recipe)}= recipe.title
+                  %li.nav-header Featured Users
+                  - @users.each do |user|
+                    %li
+                      %a{:href => user_path(user)}= user.username
+
 
         %footer
           %a{:href => "mailto:forkingrecipes@gmail.com"}
