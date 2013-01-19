@@ -29,7 +29,8 @@
                   %li.nav-header Your Recipes
                 - else
                   %li.nav-header Featured Recipes
-                  - (@recipes || []).each do |recipe|
+                - @recipes.each do |recipe|
+                  %li
                     %a{:href => recipe_path(recipe)}= recipe.title
 
         %footer
