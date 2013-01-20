@@ -28,7 +28,7 @@ class HomeController < ApplicationController
       recipes = Recipe.where(:forked_from_recipe_id => nil).last(50)
 
       recipes.inject({}) do |image_map, recipe|
-        image_map.merge(recipe => recipe.body.scan(/!\[.*\]\((.*)\)/).flatten[-2..-1])
+        image_map.merge(recipe => recipe.body.scan(/!\[.*\]\((.*)\)/).flatten.last(2))
       end.delete_if do |recipe, images|
         images.nil?
       end
