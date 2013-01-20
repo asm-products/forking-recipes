@@ -29,10 +29,10 @@ class HomeController < ApplicationController
 
       recipes.inject({}) do |image_map, recipe|
         images = recipe.body.scan(/!\[.*\]\((.*)\)/).flatten.last(2)
-        images_to_recipes = images.map { |i| [i, [recipe]] }
+        images_to_recipes = images.map { |i| [i, recipe] }
 
         image_map.merge!(Hash[images_to_recipes]) do |key, oldval, newval|
-          oldval + newval
+          oldval
         end
       end
     end
