@@ -1,5 +1,5 @@
-- @images.each do |recipe, images|
-  - images.each do |image|
+- @images.each do |image, recipes|
+  - recipes.each do |recipe|
     %a{:href => recipe_path(recipe)}
       %div.item
         %img{:src => image}
