@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user    = User.find_by_username(params[:username])
-    return render :inline => "We couldn't find that user in our system :("
+    return render :inline => "We couldn't find that user in our system :(" unless @user
     @recipes = Recipe.where(:user_id => @user.id)
   end
 
