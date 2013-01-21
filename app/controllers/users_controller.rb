@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   include UsersHelper
 
+  before_filter :authenticate_user!, :except => [:show]
+
   def show
     @user    = User.find_by_username(params[:username])
     return render :inline => "We couldn't find that user in our system :(" unless @user
