@@ -4,21 +4,17 @@
   = devise_error_messages!
   %div
     = f.label :email
-    %br/
     = f.email_field :email
   %div
     = f.label :password
     %i (leave blank if you don't want to change it)
-    %br/
     = f.password_field :password, :autocomplete => "off"
   %div
     = f.label :password_confirmation
-    %br/
     = f.password_field :password_confirmation
   %div
     = f.label :current_password
     %i (we need your current password to confirm your changes)
-    %br/
     = f.password_field :current_password
   %div= f.submit "Update"
 %h3 Cancel my account
