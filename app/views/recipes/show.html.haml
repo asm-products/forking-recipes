@@ -1,6 +1,11 @@
 - if current_user != @recipe.user
   = link_to 'Fork', fork_recipe_path(@recipe), :method => :post, :class => "btn"
 
+- if !current_user.try(:following?, @recipe.user) && current_user != @recipe.user
+  = link_to "Follow #{@recipe.user.username}", user_follow_path(@recipe.user), :class => "btn", :method => :post
+- elsif current_user != @recipe.user
+  = link_to "Unfollow #{@recipe.user.username}", user_unfollow_path(@recipe.user), :class => "btn", :method => :post
+
 - if @recipe.revision > 1
   = link_to "Revisions - #{@revision_count}", recipe_revisions_path(@recipe), :class => "btn", :id => "revisions_button"
 
