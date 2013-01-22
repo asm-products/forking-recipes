@@ -4,6 +4,20 @@ class RecipesController < ApplicationController
 
   before_filter :authenticate_user!, :except => [:show, :forks]
 
+  def upvote
+    @recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
+    current_user.up_vote!(@recipe)
+
+    redirect_to recipe_path(@recipe)
+  end
+
+  def downvote
+    @recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
+    current_user.down_vote!(@recipe)
+
+    redirect_to recipe_path(@recipe)
+  end
+
   def fork
     recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
 
@@ -33,6 +47,9 @@ class RecipesController < ApplicationController
     @forks  = Rails.cache.fetch("recipe_#{@recipe.id}_forked_count", :expires_in => 5.minutes) do
       Recipe.where(:forked_from_recipe_id => @recipe.id).count
     end
+
+    @upvotes = @recipe.up_votes
+    @downvotes = @recipe.down_votes
 
     respond_to do |format|
       format.html

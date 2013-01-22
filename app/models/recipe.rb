@@ -1,4 +1,6 @@
 class Recipe < ActiveRecord::Base
+  make_voteable
+
   belongs_to :user
   has_many :recipe_revisions
   attr_accessible :body, :commit_message, :revision, :title, :user, :slug, :forked_from_recipe_id

@@ -16,6 +16,12 @@
 %div.btn
   = link_to "Forks - #{@forks}", forks_path(@recipe)
 
+%div.btn
+  = link_to "↑ - #{@upvotes}", recipe_upvote_path(@recipe)
+
+%div.btn
+  = link_to "↓ - #{@upvotes}", recipe_downvote_path(@recipe)
+
 %hr
 %p
   %h3= "#{link_to(@recipe.user.username, user_path(@recipe.user))} / #{@recipe.title}".html_safe

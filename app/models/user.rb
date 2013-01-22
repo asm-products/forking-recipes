@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  make_voter
   validates :username, :uniqueness => true
   validates_format_of :username, :with => /^[a-zA-Z0-9_]*$/, :on => :create
 

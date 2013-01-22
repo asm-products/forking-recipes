@@ -18,6 +18,7 @@ end
 
 gem 'rails', '3.2.11'
 gem 'pg_search'
+gem 'make_voteable'
 gem "tweet-button"
 gem 'dalli'
 gem 'newrelic_rpm'
