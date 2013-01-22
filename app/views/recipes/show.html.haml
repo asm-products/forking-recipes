@@ -18,7 +18,7 @@
 
 %hr
 %p
-  %h3= @recipe.title
+  %h3= "#{link_to(@recipe.user.username, user_path(@recipe.user))} / #{@recipe.title}".html_safe
   - if @forked_from_recipe
     - recipe_url = "/#{@forked_from_recipe.user.username}/#{@forked_from_recipe.slug}"
     - link_text  = @forked_from_recipe.slug
