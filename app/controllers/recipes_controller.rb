@@ -5,8 +5,7 @@ class RecipesController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :forks]
 
   def fork
-    user_id = User.select(:id).find_by_username(params[:username])
-    recipe = Recipe.find_by_slug_and_user_id(params[:recipe], user_id)
+    recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
 
     respond_to do |format|
       if recipe.user_id != current_user.id && forked_recipe = recipe.fork_to(current_user)
@@ -18,8 +17,7 @@ class RecipesController < ApplicationController
   end
 
   def forks
-    user_id = User.select(:id).find_by_username(params[:username])
-    @recipe = Recipe.find_by_slug_and_user_id(params[:recipe], user_id)
+    @recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
     @forked_recipes = Recipe.where(:forked_from_recipe_id => @recipe.id)
   end
 
@@ -28,11 +26,11 @@ class RecipesController < ApplicationController
   end
 
   def show
-    user_id = User.select(:id).find_by_username(params[:username])
-    @recipe = Recipe.find_by_slug_and_user_id(params[:recipe], user_id)
+    @recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
     @revision_count = RecipeRevision.where(:recipe_id => @recipe.id).count
     @forked_from_recipe = Recipe.find(@recipe.forked_from_recipe_id) if @recipe.forked_from_recipe_id
-    @forks  = Rails.cache.fetch("#{@recipe.slug}#{user_id}_forked_count", :expires_in => 5.minutes) do
+
+    @forks  = Rails.cache.fetch("recipe_#{@recipe.id}_forked_count", :expires_in => 5.minutes) do
       Recipe.where(:forked_from_recipe_id => @recipe.id).count
     end
 
@@ -61,8 +59,7 @@ body
   end
 
   def edit
-    user_id = User.select(:id).find_by_username(params[:username])
-    @recipe = Recipe.find_by_slug_and_user_id(params[:recipe], user_id)
+    @recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
   end
 
   def create
@@ -85,8 +82,7 @@ body
   end
 
   def update
-    user_id = User.select(:id).find_by_username(params[:username])
-    @recipe = Recipe.find_by_slug_and_user_id(params[:recipe], user_id)
+    @recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
     @recipe.increment_revision!
 
     respond_to do |format|
@@ -103,8 +99,7 @@ body
   end
 
   def destroy
-    user = User.find_by_username(params[:username])
-    @recipe = Recipe.find_by_slug_and_user_id(params[:recipe], user.id)
+    @recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
     @recipe.destroy
 
     respond_to do |format|

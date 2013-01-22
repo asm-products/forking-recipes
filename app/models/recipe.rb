@@ -9,6 +9,8 @@ class Recipe < ActiveRecord::Base
   validates :title, :presence => {:message => 'Update Message cannot be blank'}
   validates :slug, :presence => {:message => 'Update Message cannot be blank'}
 
+  validates_uniqueness_of :slug, :scope => :user_id
+
   include PgSearch
 
   multisearchable :against => [:title, :body]

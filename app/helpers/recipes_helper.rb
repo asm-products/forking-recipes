@@ -28,4 +28,10 @@ module RecipesHelper
   def new_recipe_path
     "/recipes/new"
   end
+
+  def find_recipe_by_slug_and_username(slug, username)
+    user_id = User.select(:id).find_by_username(username)
+
+    Recipe.find_by_slug_and_user_id(slug, user_id)
+  end
 end
