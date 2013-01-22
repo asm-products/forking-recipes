@@ -2,7 +2,7 @@ class RecipeRevisionsController < ApplicationController
   include RecipesHelper
 
   def index
-    @recipe = find_by_slug_and_username(params[:recipe], params[:username])
+    @recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
     @user             = @recipe.user
     @revisions        = RecipeRevision.where(:recipe_id => @recipe.id)
     @recipe_permalink = @recipe.slug
