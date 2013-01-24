@@ -120,7 +120,7 @@ body
     @recipe.destroy
 
     respond_to do |format|
-      format.html { redirect_to user_path(user) }
+      format.html { redirect_to user_path(User.find_by_username(params[:username])) }
       format.json { head :no_content }
     end
   end
