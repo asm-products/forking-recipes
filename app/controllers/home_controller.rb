@@ -25,7 +25,7 @@ class HomeController < ApplicationController
     end
 
     @images = Rails.cache.fetch("popular_images", :expires_in => 5.minutes) do
-      recipes = Recipe.last(50)
+      recipes = Recipe.last(50).shuffle
 
       recipes.inject({}) do |image_map, recipe|
         images = recipe.body.scan(/!\[.*\]\((.*)\)/).flatten.last(2)
