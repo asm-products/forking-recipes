@@ -63,10 +63,13 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(:body => <<body)
 ### Source
 [some_blog](http://www.someblog.com/recipe)
+
 ### Ingredients
 * 1 cup of water
+
 ### Steps
 * put water in cup
+
 ### Pictures
 ![my_image](imgur.com/my_image)
 body

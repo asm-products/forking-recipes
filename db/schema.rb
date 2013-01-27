@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(:version => 20130122223617) do
     t.integer "follower_id"
   end
 
+  create_table "pg_search_documents", :force => true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "recipe_revisions", :force => true do |t|
     t.string    "title"
     t.text      "body"
