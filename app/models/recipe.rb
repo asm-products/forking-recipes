@@ -31,6 +31,16 @@ class Recipe < ActiveRecord::Base
                           :revision       => revision)
   end
 
+  def upload_images!
+    images = self.body.scan(/!\[.*\]\((.*)\)/).flatten
+    images_to_recipe_images = images.map { |i| [i, RecipeImage.create!(:recipes_id => self.id, :image => open(i))] }
+    images_to_recipe_images.each do |image_url, recipe_image|
+      self.body.gsub(image_url, recipe_image.image)
+    end
+
+    self.save
+  end
+
   def fork_to(user)
     recipe = Recipe.new(:title => title,
                         :body => body,

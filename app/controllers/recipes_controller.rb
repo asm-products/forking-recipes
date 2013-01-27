@@ -93,6 +93,7 @@ body
     @recipe.user     = current_user
     @recipe.slug     = @recipe.title.parameterize
     @recipe.create_recipe_revision!
+    @recipe.upload_images!
 
     respond_to do |format|
       if @recipe.save
