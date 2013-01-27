@@ -35,7 +35,7 @@ class Recipe < ActiveRecord::Base
     images = self.body.scan(/!\[.*\]\((.*)\)/).flatten
     images_to_recipe_images = images.map { |i| [i, RecipeImage.create!(:recipes_id => self.id, :image => open(i))] }
     images_to_recipe_images.each do |image_url, recipe_image|
-      self.body.gsub(image_url, recipe_image.image)
+      self.body.gsub!(image_url, recipe_image.image)
     end
 
     self.save
