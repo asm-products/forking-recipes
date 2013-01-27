@@ -33,7 +33,7 @@ class Recipe < ActiveRecord::Base
 
   def upload_images!
     images = self.body.scan(/!\[.*\]\((.*)\)/).flatten
-    images_to_recipe_images = images.map { |i| [i, RecipeImage.create!(:recipe_id => self.id, :image => open(i))] }
+    images_to_recipe_images = images.map { |i| [i, RecipeImage.create!(:recipe => self, :image => open(i))] }
 
     current_body = self.body
 
