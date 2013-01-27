@@ -25,16 +25,10 @@ class HomeController < ApplicationController
     end
 
     @images = Rails.cache.fetch("popular_images", :expires_in => 5.minutes) do
-      recipes = Recipe.last(50).shuffle
+      recipe_images = RecipeImage.joins("join recipes on recipes.id = recipe_images.recipes_id").last(50)
+      recipes = Recipe.find_all_by_id(recipe_images.map(&:recipes_id))
 
-      recipes.inject({}) do |image_map, recipe|
-        images = recipe.body.scan(/!\[.*\]\((.*)\)/).flatten.last(2)
-        images_to_recipes = images.map { |i| [i, recipe] }
-
-        image_map.merge!(Hash[images_to_recipes]) do |key, oldval, newval|
-          oldval
-        end
-      end
+      recipe_images.map { |i| i.image_url(:thumb) }.zip(recipes)
     end
   end
 end
