@@ -41,6 +41,9 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
+
+    return render :inline => "We couldn't find that recipe in our system :("
+
     @revision_count = RecipeRevision.where(:recipe_id => @recipe.id).count
     @forked_from_recipe = Recipe.find(@recipe.forked_from_recipe_id) if @recipe.forked_from_recipe_id
 
