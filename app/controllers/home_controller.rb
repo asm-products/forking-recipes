@@ -28,7 +28,7 @@ class HomeController < ApplicationController
       recipe_images = RecipeImage.joins("join recipes on recipes.id = recipe_images.recipes_id").last(50)
       recipes = Recipe.find_all_by_id(recipe_images.map(&:recipes_id))
 
-      recipe_images.map { |i| i.image_url(:thumb) }.zip(recipes)
+      recipe_images.map { |i| i.image_url(:thumb) }.zip(recipes).reject { |i, r| r.nil? }
     end
   end
 end
