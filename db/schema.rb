@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130127153532) do
+ActiveRecord::Schema.define(:version => 20130127205323) do
 
   create_table "events", :force => true do |t|
     t.integer   "user_id"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(:version => 20130127153532) do
   end
 
   create_table "recipe_images", :force => true do |t|
-    t.integer  "recipes_id"
+    t.integer  "recipe_id"
     t.string   "image"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -106,13 +106,13 @@ ActiveRecord::Schema.define(:version => 20130127153532) do
   add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
 
   create_table "votings", :force => true do |t|
-    t.string   "voteable_type"
-    t.integer  "voteable_id"
-    t.string   "voter_type"
-    t.integer  "voter_id"
-    t.boolean  "up_vote",       :null => false
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.string    "voteable_type"
+    t.integer   "voteable_id"
+    t.string    "voter_type"
+    t.integer   "voter_id"
+    t.boolean   "up_vote",       :null => false
+    t.timestamp "created_at",    :null => false
+    t.timestamp "updated_at",    :null => false
   end
 
   add_index "votings", ["voteable_type", "voteable_id", "voter_type", "voter_id"], :name => "unique_voters", :unique => true
