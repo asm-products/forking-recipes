@@ -44,6 +44,8 @@ class RecipesController < ApplicationController
     @revision_count = RecipeRevision.where(:recipe_id => @recipe.id).count
     @forked_from_recipe = Recipe.find(@recipe.forked_from_recipe_id) if @recipe.forked_from_recipe_id
 
+    @page_title = "ForkingRecipes - #{@recipe.user.username} / #{@recipe.title}"
+
     @forks  = Rails.cache.fetch("recipe_#{@recipe.id}_forked_count", :expires_in => 5.minutes) do
       Recipe.where(:forked_from_recipe_id => @recipe.id).count
     end
