@@ -6,6 +6,7 @@ class Recipe < ActiveRecord::Base
   attr_accessible :body, :commit_message, :revision, :title, :user, :slug, :forked_from_recipe_id
 
   has_many :events
+  has_many :recipe_images
 
   validates :commit_message, :presence => {:message => 'Update Message cannot be blank'}
   validates :title, :presence => {:message => 'Update Message cannot be blank'}

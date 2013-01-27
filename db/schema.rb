@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130122223617) do
+ActiveRecord::Schema.define(:version => 20130127153532) do
 
   create_table "events", :force => true do |t|
     t.integer   "user_id"
@@ -32,6 +32,13 @@ ActiveRecord::Schema.define(:version => 20130122223617) do
     t.string   "searchable_type"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "recipe_images", :force => true do |t|
+    t.integer  "recipes_id"
+    t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "recipe_revisions", :force => true do |t|
