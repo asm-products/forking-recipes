@@ -25,9 +25,13 @@ class HomeController < ApplicationController
     end
 
     @images = Rails.cache.fetch("popular_images", :expires_in => 5.minutes) do
-      recipe_images = RecipeImage.joins(:recipe).last(50)
+      recipe_images = RecipeImage.includes(:recipe).last(75)
 
-      recipe_images.map { |i| [i.image_url(:thumb), i.recipe] }.uniq { |i, r| r.slug }
+      recipe_images.map do |image|
+        [image.image_url(:thumb), image.recipe]
+      end.reject do |image, recipe|
+        recipe.nil?
+      end.uniq { |i, r| r.slug }
     end
   end
 end
