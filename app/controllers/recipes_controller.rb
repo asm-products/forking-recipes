@@ -126,6 +126,7 @@ body
 
   def destroy
     @recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
+    Event.where(:recipe_id => @recipe.id).destroy_all
     @recipe.destroy
 
     respond_to do |format|
