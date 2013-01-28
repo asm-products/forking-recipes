@@ -19,6 +19,7 @@ end
 gem 'rails', '3.2.11'
 gem 'pg_search'
 gem 'carrierwave'
+gem 'acts-as-taggable-on', '~> 2.3.1'
 gem "fog", "~> 1.3.1"
 gem "rmagick"
 gem 'make_voteable'
