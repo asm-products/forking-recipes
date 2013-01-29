@@ -36,7 +36,13 @@ class Recipe < ActiveRecord::Base
   def upload_images!
     images = self.body.scan(/!\[.*\]\((.*)\)/).flatten
     images.reject! { |i| i.include?('forkingrecipes') }
-    images_to_recipe_images = images.map { |i| [i, RecipeImage.create!(:recipe => self, :image => open(i))] }
+    images_to_recipe_images = images.map do |i|
+      begin
+        [i, RecipeImage.create!(:recipe => self, :image => open(i))]
+      rescue
+        nil
+      end
+    end.compact!
 
     current_body = self.body
 
