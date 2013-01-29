@@ -10,11 +10,17 @@ require 'open-uri'
 
 doc = Nokogiri::HTML(open(ARGV[0]))
 
-puts doc.search('title').content
-puts doc.css('.featured-image img')
+title = doc.css('title').first.content.scan(/(.*)\|/).first.first.strip
+puts title
+
+image = doc.css('.entry-content .featured-image img').map { |e| e.attributes["src"].value }.first
 
 ingredients = doc.css('#recipe-ingredients li').map { |e| e.content }
 directions = doc.css('#recipe-method p').map { |e| e.content }[0..-2].map { |e| e[2..-1] }
+
+puts "### Source"
+puts "[SimplyRecipes](#{ARGV[0]})"
+puts ""
 
 puts '### Ingredients'
 ingredients.each do |ingredient|
@@ -25,3 +31,6 @@ puts "### Directions"
 directions.each do |direction|
   puts "* #{direction}"
 end
+puts ''
+puts "### Pictures"
+puts "![#{title}](#{image})"

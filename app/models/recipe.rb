@@ -51,6 +51,7 @@ class Recipe < ActiveRecord::Base
     end
 
     self.update_attributes(:body => current_body)
+  rescue
   end
 
   def fork_to(user)
