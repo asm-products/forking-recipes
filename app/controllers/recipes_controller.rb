@@ -110,6 +110,7 @@ body
   def update
     @recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
     @recipe.increment_revision!
+    @recipe.upload_images!
 
     respond_to do |format|
       if @recipe.update_attributes(params[:recipe_form])
