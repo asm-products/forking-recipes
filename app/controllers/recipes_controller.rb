@@ -70,8 +70,8 @@ class RecipesController < ApplicationController
 ### Ingredients
 * 1 cup of water
 
-### Steps
-* put water in cup
+### Directions
+1. put water in cup
 
 ### Pictures
 ![my_image](imgur.com/my_image)
