@@ -110,11 +110,11 @@ body
   def update
     @recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
     @recipe.increment_revision!
-    @recipe.upload_images!
 
     respond_to do |format|
       if @recipe.update_attributes(params[:recipe_form])
         Event.create(:user_id => @recipe.user.id, :recipe_id => @recipe.id, :action => "updated")
+        @recipe.upload_images!
         @recipe.create_recipe_revision!
         format.html { redirect_to "/#{@recipe.user.username}/#{@recipe.slug}", notice: 'Recipe was successfully updated.' }
         format.json { head :no_content }
