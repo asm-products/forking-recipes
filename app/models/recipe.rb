@@ -42,7 +42,7 @@ class Recipe < ActiveRecord::Base
       rescue
         nil
       end
-    end.compact!
+    end.compact
 
     current_body = self.body
 
