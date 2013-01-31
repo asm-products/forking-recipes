@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     @user    = User.find_by_username(params[:username])
     return render :inline => "We couldn't find that user in our system :(" unless @user
     @recipes = Recipe.where(:user_id => @user.id)
+    if @user == current_user
+      recipe_ids = Recipe.connection.select_values("select voteable_id from votings where voter_id = 1")
+      @favorited_recipes = Recipe.find_all_by_id(recipe_ids)
+    end
   end
 
   def follow

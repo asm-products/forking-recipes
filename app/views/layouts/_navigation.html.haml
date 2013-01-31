@@ -15,6 +15,9 @@
 %ul.nav.pull-left
   %li
     = link_to("Browse", "/browse")
+  - if user_signed_in?
+    %li
+      = link_to("Your Recipes", user_path(current_user))
   %li
     %form{:method => "POST", :action => "/search", :class => 'navbar-form'}
       %input{:type => "text", :placeholder => "Search", :name => 'query'}
