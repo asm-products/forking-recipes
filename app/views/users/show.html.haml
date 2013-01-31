@@ -24,7 +24,7 @@
           - if current_user == @user
             %ul
               - @favorited_recipes.each do |recipe|
-                %li= link_to recipe.title, "/#{@user.username}/#{recipe.slug}"
+                %li= link_to recipe.title, "/#{recipe.user.username}/#{recipe.slug}"
 
 
 %br
