@@ -2,30 +2,38 @@ require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
 
-doc = Nokogiri::HTML(open(ARGV[0]))
+urls = ["http://allrecipes.com/recipe/thai-steamed-mussels/detail.aspx"]
 
-title = doc.css('title').first.content.scan(/\r\n\t(.*) -/).first
-puts title
+urls.each do |url|
+  doc = Nokogiri::HTML(open(url))
 
-image = doc.css('.photo-body img').first.attributes['src'].value
+  title = doc.css('title').first.content.scan(/\r\n\t(.*) -/).first
+  puts title
 
-ingredients = doc.css('#liIngredient').map { |e| e.content.strip.gsub(/\r\n +/, ' ') }
-directions = doc.css('.directLeft li').map { |e| e.content }
+  image = doc.css('img#imgPhoto').first.attributes['src'].value
+  image_title = doc.css('img#imgPhoto').first.attributes['title'].value
+
+  ingredients = doc.css('#liIngredient').map { |e| e.content.strip.gsub(/\r\n +/, ' ') }
+  directions = doc.css('.directLeft li').map { |e| e.content }
 
 
-puts "### Source"
-puts "[AllRecipes](#{ARGV[0]})"
-puts ""
+  puts "### Source"
+  puts "[AllRecipes](#{url})"
+  puts ""
 
-puts '### Ingredients'
-ingredients.each do |ingredient|
-  puts  "* #{ingredient}"
+  puts '### Ingredients'
+  ingredients.each do |ingredient|
+    puts  "* #{ingredient}"
+  end
+  puts ""
+  puts "### Directions"
+  directions.each do |direction|
+    puts "* #{direction}"
+  end
+  puts ''
+  puts "### Pictures"
+  puts "![#{image_title}](#{image})"
+
+  gets
+  puts "-" * 200
 end
-puts ""
-puts "### Directions"
-directions.each do |direction|
-  puts "* #{direction}"
-end
-puts ''
-puts "### Pictures"
-puts "![#{title.first}](#{image})"

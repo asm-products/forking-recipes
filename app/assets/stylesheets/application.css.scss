@@ -32,7 +32,7 @@ body { padding-top: 60px; }
   border:1px solid black;
   margin-right: 5px;
   margin-bottom: 5px;
-  background-color: #EEECEC;
+  background-color: white;
 }
 
 .recipe img {
@@ -42,6 +42,9 @@ body { padding-top: 60px; }
 .item-text {
   text-align: center;
   color: black;
+  padding-left: 2px;
+  padding-right: 2px;
+  font-size: medium;
 }
 
 #recent_recipes {
