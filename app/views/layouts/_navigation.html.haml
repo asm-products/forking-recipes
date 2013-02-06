@@ -20,5 +20,5 @@
       = link_to("Your Recipes", user_path(current_user))
   %li
     = form_tag('/search', :method => 'POST', :class => 'navbar-form') do
-      = text_field_tag('query', :placeholder => 'Search')
+      = text_field_tag('query', nil, :placeholder => 'Search')
       = button_tag('Search', :class => 'btn')
