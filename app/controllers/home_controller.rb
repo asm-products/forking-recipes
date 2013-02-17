@@ -25,7 +25,7 @@ class HomeController < ApplicationController
     end
 
     @images = Rails.cache.fetch("popular_images", :expires_in => 5.minutes) do
-      recipe_images = RecipeImage.includes(:recipe).last(150).shuffle
+      recipe_images = RecipeImage.includes(:recipe).last(100)
 
       recipe_images.map do |image|
         [image.image_url(:thumb), image.recipe]
