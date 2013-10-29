@@ -24,14 +24,12 @@ class HomeController < ApplicationController
       redirect_to "/browse#guider=first"
     end
 
-    @images = Rails.cache.fetch("popular_images", :expires_in => 5.minutes) do
-      recipe_images = RecipeImage.includes(:recipe).last(100).reverse
+    recipe_images = RecipeImage.includes(:recipe).last(100).reverse
 
-      recipe_images.map do |image|
-        [image.image_url(:thumb), image.recipe]
-      end.reject do |image, recipe|
-        recipe.nil?
-      end.uniq { |i, r| r.slug }
-    end
+    @images = recipe_images.map do |image|
+      [image.image_url(:thumb), image.recipe]
+    end.reject do |image, recipe|
+      recipe.nil?
+    end.uniq { |i, r| r.slug }
   end
 end

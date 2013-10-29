@@ -25,7 +25,6 @@ gem "rmagick"
 gem 'make_voteable'
 gem "tweet-button"
 gem 'dalli'
-gem 'memcachier'
 gem 'newrelic_rpm'
 gem "devise"
 gem 'rdiscount'
