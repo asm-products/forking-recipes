@@ -21,7 +21,7 @@ gem 'pg_search'
 gem 'carrierwave'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem "fog", "~> 1.3.1"
-gem "rmagick"
+gem "rmagick", '2.13.2'
 gem 'make_voteable'
 gem "tweet-button"
 gem 'dalli'
