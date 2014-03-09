@@ -11,13 +11,6 @@ class RecipesController < ApplicationController
     redirect_to recipe_path(@recipe)
   end
 
-  def downvote
-    @recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
-    current_user.down_vote!(@recipe)
-
-    redirect_to recipe_path(@recipe)
-  end
-
   def fork
     recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
 
@@ -52,7 +45,6 @@ class RecipesController < ApplicationController
     @forks  = Recipe.where(:forked_from_recipe_id => @recipe.id).count
 
     @upvotes = @recipe.up_votes
-    @downvotes = @recipe.down_votes
 
     respond_to do |format|
       format.html

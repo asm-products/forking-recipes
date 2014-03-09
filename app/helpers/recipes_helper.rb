@@ -29,10 +29,6 @@ module RecipesHelper
     recipe_path(recipe) + "/upvote"
   end
 
-  def recipe_downvote_path(recipe)
-    recipe_path(recipe) + "/downvote"
-  end
-
   def new_recipe_path
     "/recipes/new"
   end
