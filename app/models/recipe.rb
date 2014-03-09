@@ -33,6 +33,12 @@ class Recipe < ActiveRecord::Base
                           :revision       => revision)
   end
 
+  def valid_body?
+    return true if RDiscount.new(body).to_html
+  rescue
+    false
+  end
+
   def upload_images!
     images = self.body.scan(/!\[.*\]\((.*)\)/).flatten
     images.reject! { |i| i.include?('forkingrecipes') }

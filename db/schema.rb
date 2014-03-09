@@ -14,11 +14,11 @@
 ActiveRecord::Schema.define(:version => 20130128021828) do
 
   create_table "events", :force => true do |t|
-    t.integer   "user_id"
-    t.integer   "recipe_id"
-    t.text      "action"
-    t.timestamp "created_at", :null => false
-    t.timestamp "updated_at", :null => false
+    t.integer  "user_id"
+    t.integer  "recipe_id"
+    t.text     "action"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "follow", :id => false, :force => true do |t|
@@ -35,47 +35,46 @@ ActiveRecord::Schema.define(:version => 20130128021828) do
   end
 
   create_table "recipe_images", :force => true do |t|
-    t.integer   "recipe_id"
-    t.string    "image"
-    t.timestamp "created_at", :null => false
-    t.timestamp "updated_at", :null => false
+    t.integer  "recipe_id"
+    t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "recipe_revisions", :force => true do |t|
-    t.string    "title"
-    t.text      "body"
-    t.string    "commit_message"
-    t.integer   "user_id"
-    t.integer   "recipe_id"
-    t.integer   "revision"
-    t.timestamp "created_at",     :null => false
-    t.timestamp "updated_at",     :null => false
+    t.string   "title"
+    t.text     "body"
+    t.string   "commit_message"
+    t.integer  "user_id"
+    t.integer  "recipe_id"
+    t.integer  "revision"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   add_index "recipe_revisions", ["user_id"], :name => "index_recipe_revisions_on_user_id"
 
   create_table "recipes", :force => true do |t|
-    t.string    "title"
-    t.text      "body"
-    t.string    "commit_message"
-    t.integer   "revision"
-    t.integer   "user_id"
-    t.timestamp "created_at",                           :null => false
-    t.timestamp "updated_at",                           :null => false
-    t.string    "slug"
-    t.integer   "forked_from_recipe_id"
-    t.integer   "up_votes",              :default => 0, :null => false
-    t.integer   "down_votes",            :default => 0, :null => false
+    t.string   "title"
+    t.text     "body"
+    t.string   "commit_message"
+    t.integer  "revision"
+    t.integer  "user_id"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.string   "slug"
+    t.integer  "forked_from_recipe_id"
+    t.integer  "up_votes",              :default => 0, :null => false
+    t.integer  "down_votes",            :default => 0, :null => false
   end
 
-  add_index "recipes", ["slug"], :name => "index_recipes_on_slug"
   add_index "recipes", ["user_id"], :name => "index_recipes_on_user_id"
 
   create_table "relationships", :force => true do |t|
-    t.integer   "follower_id"
-    t.integer   "followed_id"
-    t.timestamp "created_at",  :null => false
-    t.timestamp "updated_at",  :null => false
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
@@ -100,22 +99,22 @@ ActiveRecord::Schema.define(:version => 20130128021828) do
   end
 
   create_table "users", :force => true do |t|
-    t.string    "email",                  :default => "", :null => false
-    t.string    "encrypted_password",     :default => "", :null => false
-    t.string    "reset_password_token"
-    t.timestamp "reset_password_sent_at"
-    t.timestamp "remember_created_at"
-    t.integer   "sign_in_count",          :default => 0
-    t.timestamp "current_sign_in_at"
-    t.timestamp "last_sign_in_at"
-    t.string    "current_sign_in_ip"
-    t.string    "last_sign_in_ip"
-    t.timestamp "created_at",                             :null => false
-    t.timestamp "updated_at",                             :null => false
-    t.string    "username"
-    t.string    "slug"
-    t.integer   "up_votes",               :default => 0,  :null => false
-    t.integer   "down_votes",             :default => 0,  :null => false
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "username"
+    t.string   "slug"
+    t.integer  "up_votes",               :default => 0,  :null => false
+    t.integer  "down_votes",             :default => 0,  :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
@@ -123,13 +122,13 @@ ActiveRecord::Schema.define(:version => 20130128021828) do
   add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
 
   create_table "votings", :force => true do |t|
-    t.string    "voteable_type"
-    t.integer   "voteable_id"
-    t.string    "voter_type"
-    t.integer   "voter_id"
-    t.boolean   "up_vote",       :null => false
-    t.timestamp "created_at",    :null => false
-    t.timestamp "updated_at",    :null => false
+    t.string   "voteable_type"
+    t.integer  "voteable_id"
+    t.string   "voter_type"
+    t.integer  "voter_id"
+    t.boolean  "up_vote",       :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   add_index "votings", ["voteable_type", "voteable_id", "voter_type", "voter_id"], :name => "unique_voters", :unique => true

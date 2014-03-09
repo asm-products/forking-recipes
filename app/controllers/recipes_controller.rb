@@ -86,7 +86,7 @@ body
     @recipe.upload_images!
 
     respond_to do |format|
-      if @recipe.save
+      if @recipe.valid_body? && @recipe.save
         Event.create(:user_id => @recipe.user.id, :recipe_id => @recipe.id, :action => "created")
         format.html { redirect_to "/#{@recipe.user.username}/#{@recipe.slug}", notice: 'Recipe was successfully created.' }
         format.json { render json: @recipe, status: :created, location: @recipe }
@@ -102,7 +102,7 @@ body
     @recipe.increment_revision!
 
     respond_to do |format|
-      if @recipe.update_attributes(params[:recipe_form])
+      if @recipe.valid_body? && @recipe.update_attributes(params[:recipe_form])
         Event.create(:user_id => @recipe.user.id, :recipe_id => @recipe.id, :action => "updated")
         @recipe.upload_images!
         @recipe.create_recipe_revision!
