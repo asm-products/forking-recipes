@@ -1,9 +1,5 @@
 source 'https://rubygems.org'
 
-group :production do
-  gem "pg"
-end
-
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -12,10 +8,10 @@ group :assets do
 end
 
 group :development do
-  gem 'sqlite3'
   gem 'meta_request', '0.2.0'
 end
 
+gem 'pg'
 gem 'rails', '3.2.17'
 gem 'pg_search'
 gem 'carrierwave'
