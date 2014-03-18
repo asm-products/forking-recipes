@@ -6,8 +6,8 @@
 development:
   adapter: postgresql
   database: forkingrecipes_dev
-  username:
-  password:
+  username: forkingrecipes
+  password: forkingrecipes
   pool: 5
   timeout: 5000
 
@@ -17,8 +17,8 @@ development:
 test:
   adapter: postgresql
   database: forkingrecipes_test
-  username:
-  password:
+  username: forkingrecipes
+  password: forkingrecipes
   pool: 5
   timeout: 5000
 
