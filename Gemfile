@@ -16,7 +16,7 @@ group :development do
   gem 'meta_request', '0.2.0'
 end
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.17'
 gem 'pg_search'
 gem 'carrierwave'
 gem 'acts-as-taggable-on', '~> 2.3.1'
