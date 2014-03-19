@@ -13,12 +13,14 @@
     %li
       = link_to('Login', new_user_session_path)
 %ul.nav.pull-left
-  %li
+  %li.browse-item
     = link_to("Browse", "/browse")
   - if user_signed_in?
-    %li
+    %li.your-item
       = link_to("Your Recipes", user_path(current_user))
-  %li
+    %li.new-item
+      = link_to 'Create a new recipe', new_recipe_path
+  %li.search-item
     = form_tag('/search', :method => 'POST', :class => 'navbar-form') do
       = text_field_tag('query', nil, :placeholder => 'Search')
       = button_tag('Search', :class => 'btn')

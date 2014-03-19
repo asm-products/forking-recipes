@@ -7,6 +7,8 @@
     %meta{:content => "", :name => "description"}
     %meta{:content => "", :name => "author"}
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Arvo:400,400italic' rel='stylesheet' type='text/css'>
     -# = stylesheet_link_tag "application", :media => "all"
     = stylesheet_link_tag "custom", :media => "all"
     = javascript_include_tag "application"
@@ -26,7 +28,6 @@
           .span3
             .well.sidebar-nav
               %ul.nav.nav-list
-                %li= link_to 'Create a new recipe', new_recipe_path
                 - if current_user
                   %li.nav-header Your Recipes
                   - @recipes.each do |recipe|

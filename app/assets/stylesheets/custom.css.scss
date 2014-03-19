@@ -28,14 +28,88 @@ $baseline-px: 16px;
     #{$property}: $rem-values; }
   }
 
+  // Old styles
+
+  .recipe-list {
+  vertical-align: top;
+}
+
+.recipe-header {
+  text-align: left;
+}
+
+.item {
+  max-width: 200px;
+  border:1px solid black;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  background-color: white;
+}
+
+.recipe img {
+  max-width: 610px;
+}
+
+.item-text {
+  text-align: center;
+  color: black;
+  padding-left: 2px;
+  padding-right: 2px;
+  font-size: medium;
+}
+
+#recent_recipes {
+  width: 50%;
+  display: inline-block;
+}
+
+#recent_users {
+  display: inline-block;
+  width: 30%;
+  float:right;
+}
+
+#new-recipe {
+  display: inline;
+}
+
+footer {
+  padding-left: 5px;
+}
+
+
+// New styles
+
 html {
   font-size: 100%;
 }
 
 body {
   font-family: 'Open Sans', sans-serif;
-  line-height: 20px;
-  padding-top: 60px;
+  @include rem('line-height', 20px);
+  padding-top: 70px;
+}
+
+h1, h2, h3 {
+  font-family: 'Arvo', serif;
+}
+
+a {
+  color: $orange;
+  text-decoration: none;
+
+  &:hover {
+    color: $yellow;
+  }
+}
+
+.recipe-title {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.recipe ul {
+  @include columns(3);
+  list-style: inside disc;
 }
 
 .navbar-inner, .container-fluid {
@@ -59,11 +133,16 @@ body {
   border-style: solid;
   box-shadow: rgba(0, 0, 0, 0.0980392) 0px 1px 10px 0px;
 
+    * {
+      @include rem('line-height', 30px);
+    }
+
     .brand {
+      font-family: 'Cookie', cursive;
       display: block;
-      @include rem('margin', 0 20px);
+      @include rem('margin', 0 40px 0 20px);
       float: left;
-      @include rem('font-size', 24px);
+      @include rem('font-size', 32px);
     }
 
     ul {
@@ -76,6 +155,14 @@ body {
         display: list-item;
         float: left;
         @include rem('margin-right', 20px);
+
+        &.search-item {
+          @include rem('padding-top', 5px);
+
+          input {
+            @include rem('line-height', 20px);
+          }
+        }
       }
     }
 
