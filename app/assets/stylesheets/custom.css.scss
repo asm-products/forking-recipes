@@ -3,7 +3,11 @@
 
 $orange: #F78F27;
 $yellow: #F9AB20;
-$green: #69BD45;
+$green-light: #60C93B;
+$green: #32BE00;
+$green-dark: #258B00;
+$green-darker: #103E00;
+$purple: #96419E;
 
 $pixelBase : 16;
 @mixin font-size($sizeValue: 1.6){
@@ -30,20 +34,12 @@ $baseline-px: 16px;
 
   // Old styles
 
-  .recipe-list {
+.recipe-list {
   vertical-align: top;
 }
 
 .recipe-header {
   text-align: left;
-}
-
-.item {
-  max-width: 200px;
-  border:1px solid black;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  background-color: white;
 }
 
 .recipe img {
@@ -81,13 +77,19 @@ footer {
 // New styles
 
 html {
-  font-size: 100%;
+  font-size: 16px;
 }
 
 body {
   font-family: 'Open Sans', sans-serif;
   @include rem('line-height', 20px);
   padding-top: 70px;
+  background-color: #fafafa;
+  margin: 0;
+}
+
+#main {
+  padding: 0 20px;
 }
 
 h1, h2, h3 {
@@ -112,12 +114,30 @@ a {
   list-style: inside disc;
 }
 
-.navbar-inner, .container-fluid {
-  @include clearfix;
+
+
+.featured {
+  @include columns(226px);
 }
 
-.container-fluid {
-  @include outer-container;
+.rec-item {
+  display: inline-block;
+  max-width: 226px;
+  border: 3px solid #eee;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 3px;
+  @include transition (all 0.3s ease-in-out);
+
+  &:hover {
+    border-color: $green;
+  }
+
+  a {
+    display: block;
+    padding: 10px;
+  }
 }
 
 .navbar-fixed-top {
@@ -126,12 +146,23 @@ a {
   left: 0;
   width: 100%;
   z-index: 2000;
-  @include linear-gradient($orange, $yellow);
-  color:  #fff;
+  background-color: #fff;
+  color:  #ccc;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px 0px;
+  border-style:  solid;
   border-color: $green;
-  border-width: 0 0 3px;
-  border-style: solid;
-  box-shadow: rgba(0, 0, 0, 0.0980392) 0px 1px 10px 0px;
+  border-width: 0 0 3px 0;
+
+    a {
+      display: block;
+      color: #666;
+      text-decoration: none;
+      @include rem('padding', 10px 0);
+
+      &:hover {
+        color: $purple;
+      }
+    }
 
     * {
       @include rem('line-height', 30px);
@@ -143,6 +174,7 @@ a {
       @include rem('margin', 0 40px 0 20px);
       float: left;
       @include rem('font-size', 32px);
+      color: $green;
     }
 
     ul {
@@ -174,13 +206,6 @@ a {
     .pull-left {
       float: left;
       margin-right: 0;
-    }
-
-    a {
-      display: block;
-      color: #fff;
-      text-decoration: none;
-      @include rem('padding', 10px 0);
     }
 }
 
