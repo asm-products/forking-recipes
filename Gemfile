@@ -30,3 +30,4 @@ gem "differ"
 gem 'bootstrap-sass'
 gem "haml", ">= 3.0.0"
 gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
+gem 'neat'

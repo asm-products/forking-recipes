@@ -34,6 +34,9 @@ GEM
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.2.2.0)
       sass (~> 3.2)
+    bourbon (3.1.8)
+      sass (>= 3.2.0)
+      thor
     builder (3.0.4)
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
@@ -92,6 +95,9 @@ GEM
       rails
     mime-types (1.25.1)
     multi_json (1.9.0)
+    neat (1.5.0)
+      bourbon (>= 2.1)
+      sass (>= 3.2)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.6.3)
@@ -185,6 +191,7 @@ DEPENDENCIES
   jquery-rails
   make_voteable
   meta_request (= 0.2.0)
+  neat
   newrelic_rpm
   pg
   pg_search
