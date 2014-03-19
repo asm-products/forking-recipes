@@ -4,3 +4,11 @@
 body {
   font-family: 'Open Sans', sans-serif;
 }
+
+.container-fluid {
+  @include outer-container;
+}
+
+.recipe img {
+  max-width: 100%;
+}

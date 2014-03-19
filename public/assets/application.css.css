@@ -1,19 +1,23 @@
 /*
-Syntax error: File to import not found or unreadable: bourbon.
+Syntax error: File to import not found or unreadable: bootstrap.
               Load paths:
                 /Users/andy/RecipeHub (DEPRECATED)
                 /Users/andy/RecipeHub/app/assets/stylesheets
-        on line 1 of /Users/andy/RecipeHub/app/assets/stylesheets/custom.css.scss
+        on line 5 of /Users/andy/RecipeHub/app/assets/stylesheets/application.css.scss
 
-1: @import "bourbon";
-2: @import "neat";
-3: 
-4: body {
-5:   font-family: 'Open Sans', sans-serif;
-6: }
+1: //= require_self
+2: //= require guiders
+3: //= require_tree .
+4: 
+5: @import "bootstrap";
+6: body { padding-top: 60px; }
+7: @import "bootstrap-responsive";
+8: 
+9: .hero-unit {
+10:   padding-top: 20px;
 
 Backtrace:
-/Users/andy/RecipeHub/app/assets/stylesheets/custom.css.scss:1
+/Users/andy/RecipeHub/app/assets/stylesheets/application.css.scss:5
 /Users/andy/.rvm/gems/ruby-1.9.3-p392@forkingrecipes/gems/sass-3.3.3/lib/sass/tree/import_node.rb:66:in `rescue in import'
 /Users/andy/.rvm/gems/ruby-1.9.3-p392@forkingrecipes/gems/sass-3.3.3/lib/sass/tree/import_node.rb:45:in `import'
 /Users/andy/.rvm/gems/ruby-1.9.3-p392@forkingrecipes/gems/sass-3.3.3/lib/sass/tree/import_node.rb:28:in `imported_file'
@@ -54,4 +58,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: File to import not found or unreadable: bourbon.\A               Load paths:\A                 /Users/andy/RecipeHub (DEPRECATED)\A                 /Users/andy/RecipeHub/app/assets/stylesheets\A         on line 1 of /Users/andy/RecipeHub/app/assets/stylesheets/custom.css.scss\A \A 1: @import \"bourbon\";\A 2: @import \"neat\";\A 3: \A 4: body {\A 5:   font-family: 'Open Sans', sans-serif;\A 6: }"; }
+  content: "Syntax error: File to import not found or unreadable: bootstrap.\A               Load paths:\A                 /Users/andy/RecipeHub (DEPRECATED)\A                 /Users/andy/RecipeHub/app/assets/stylesheets\A         on line 5 of /Users/andy/RecipeHub/app/assets/stylesheets/application.css.scss\A \A 1: //= require_self\A 2: //= require guiders\A 3: //= require_tree .\A 4: \A 5: @import \"bootstrap\";\A 6: body { padding-top: 60px; }\A 7: @import \"bootstrap-responsive\";\A 8: \A 9: .hero-unit {\A 10:   padding-top: 20px;"; }
