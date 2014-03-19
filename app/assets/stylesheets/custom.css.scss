@@ -3,9 +3,9 @@
 
 $orange: #F78F27;
 $yellow: #F9AB20;
-$green-light: #60C93B;
-$green: #32BE00;
-$green-dark: #258B00;
+$green-light: #B5D276;
+$green: #A4B75E;
+$green-dark: #939D47;
 $green-darker: #103E00;
 $purple: #96419E;
 
@@ -93,7 +93,7 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: 'Arvo', serif;
+  font-weight: 400;
 }
 
 a {
@@ -158,6 +158,7 @@ a {
       color: #666;
       text-decoration: none;
       @include rem('padding', 10px 0);
+      @include transition (all 0.3s ease-in-out);
 
       &:hover {
         color: $purple;
