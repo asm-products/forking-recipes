@@ -121,17 +121,40 @@ a {
 }
 
 .rec-item {
+  position: relative;
   display: inline-block;
   max-width: 226px;
-  border: 3px solid #eee;
+  border: 3px solid rgba(#eee, 1);
   margin-right: 20px;
   margin-bottom: 20px;
   background-color: #fff;
-  border-radius: 3px;
+  border-radius: 4px;
   @include transition (all 0.3s ease-in-out);
 
+  img {
+    max-width: 100%;
+    border-radius: 2px;
+  }
+
+  .item-text {
+    position: absolute;
+    width: 100%;
+    bottom: 30px;
+    left: 0;
+    padding: 10px 0;
+    background-color: rgba(#fff, 0.9); 
+    color: #666;
+    z-index: 500;
+    @include transition (all 0.3s ease-in-out);
+  }
+
   &:hover {
-    border-color: $green;
+    border-color: rgba($green, 0.8);
+
+    .item-text {
+      color: #333;
+      background-color: rgba(#fff, 1); 
+    }
   }
 
   a {
@@ -151,7 +174,7 @@ a {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px 0px;
   border-style:  solid;
   border-color: $green;
-  border-width: 0 0 3px 0;
+  border-width: 0 0 4px 0;
 
     a {
       display: block;
@@ -235,8 +258,4 @@ input {
   text-indent: 0px;
   vertical-align: middle;
   width: 206px;
-}
-
-.recipe img {
-  max-width: 100%;
 }
