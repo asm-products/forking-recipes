@@ -5,7 +5,7 @@ CarrierWave.configure do |config|
     :aws_secret_access_key  => ENV['S3_SECRET_ACCESS_KEY'],  # required
   }
 
-  config.fog_directory  = ENV['S3_BUCKET'] || 'forkingrecipes'    # required
-  config.fog_public     = true                                    # optional, defaults to true
-  config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
+  config.fog_directory  = ENV['S3_BUCKET'] || 'forkingrecipes-dev' # required
+  config.fog_public     = true                                     # optional, defaults to true
+  config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}   # optional, defaults to {}
 end
