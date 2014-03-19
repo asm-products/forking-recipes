@@ -233,16 +233,9 @@ a {
     }
 }
 
-input {
+input[type=text] {
   -webkit-appearance: none;
   -webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
-  -webkit-rtl-ordering: logical;
-  -webkit-transition-delay: 0s, 0s;
-  -webkit-transition-duration: 0.2s, 0.2s;
-  -webkit-transition-property: border, box-shadow;
-  -webkit-transition-timing-function: linear, linear;
-  -webkit-user-select: text;
-  -webkit-writing-mode: horizontal-tb;
   background-color: rgb(255, 255, 255);
   border: 1px solid rgb(204, 204, 204);
   border-radius: 4px;
