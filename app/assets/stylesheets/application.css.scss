@@ -143,9 +143,9 @@ a {
 
 .featured {
   @include columns(226px);
-  -moz-column-gap: 1em;
-  -webkit-column-gap: 1em;
-  column-gap: 1em;
+  @include rem('-moz-column-gap', 20px);
+  @include rem('-webkit-column-gap', 20px);
+  @include rem('column-gap', 20px);
 }
 
 .rec-item {
