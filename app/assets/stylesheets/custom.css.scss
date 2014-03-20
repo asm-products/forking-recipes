@@ -83,7 +83,7 @@ html {
 body {
   font-family: 'Open Sans', sans-serif;
   @include rem('line-height', 20px);
-  padding-top: 70px;
+  padding: 70px 0 40px;
   background-color: #fafafa;
   margin: 0;
 }
@@ -149,7 +149,7 @@ a {
   }
 
   &:hover {
-    border-color: rgba($green, 0.8);
+    border-color: rgba($green-dark, 0.8);
 
     .item-text {
       color: #333;
@@ -173,7 +173,7 @@ a {
   color:  #ccc;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px 0px;
   border-style:  solid;
-  border-color: $green;
+  border-color: $green-dark;
   border-width: 0 0 4px 0;
 
     a {
@@ -198,7 +198,7 @@ a {
       @include rem('margin', 0 40px 0 20px);
       float: left;
       @include rem('font-size', 32px);
-      color: $green;
+      color: $green-dark;
     }
 
     ul {
