@@ -12,34 +12,32 @@
     = csrf_meta_tags
     = yield(:head)
   %body{"data-controller" => controller_name, "data-action" => action_name}
-    .navbar.navbar-inverse.navbar-fixed-top
+    .navbar.navbar-fixed-top
       .navbar-inner
         = render 'layouts/navigation'
     #main{:role => "main"}
-      .container-fluid
-        .row-fluid
-          .span9
-            %div{:id => "main-container"}
-              = render 'layouts/messages'
-              = yield
-          .span3
-            .well.sidebar-nav
-              %ul.nav.nav-list
-                - if current_user
-                  %li.nav-header Your Recipes
-                  - @recipes.each do |recipe|
-                    %li
-                      %a{:href => recipe_path(recipe)}= recipe.title
-                - else
-                  %li.nav-header Featured Users
-                  - @users.each do |user|
-                    %li
-                      %a{:href => user_path(user)}= user.username
+      %div{:id => "main-container"}
+        .main-content
+          = render 'layouts/messages'
+          = yield
+        %aside.sidebar
+          %ul.nav.nav-list
+            - if current_user
+              %li.nav-header Your Recipes
+              - @recipes.each do |recipe|
+                %li
+                  %a{:href => recipe_path(recipe)}= recipe.title
+            - else
+              %li.nav-header Featured Users
+              - @users.each do |user|
+                %li
+                  %a{:href => user_path(user)}= user.username
+    %footer
+      %aside.footer-info
+        %a{:href => "mailto:forkingrecipes@gmail.com"}
+          Contact Us
 
 
-        %footer
-          %a{:href => "mailto:forkingrecipes@gmail.com"}
-            Contact Us
 
     - if Rails.env == "production"
       :javascript

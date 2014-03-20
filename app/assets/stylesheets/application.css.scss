@@ -4,6 +4,9 @@
 @import "bourbon";
 @import "neat";
 
+$mobile: max-width 1110px 4;
+
+
 $orange: #F78F27;
 $yellow: #F9AB20;
 $green-light: #B5D276;
@@ -11,6 +14,8 @@ $green: #A4B75E;
 $green-dark: #939D47;
 $green-darker: #103E00;
 $purple: #96419E;
+
+$footer-height: 100px;
 
 $pixelBase : 16;
 @mixin font-size($sizeValue: 1.6){
@@ -34,8 +39,6 @@ $baseline-px: 16px;
         $rem-values: append($rem-values, $value / $baseline-rem); } }
     #{$property}: $rem-values; }
   }
-
-  // Old styles
 
 .recipe-list {
   vertical-align: top;
@@ -72,28 +75,23 @@ $baseline-px: 16px;
   display: inline;
 }
 
-footer {
-  padding-left: 5px;
-}
-
-
-// New styles
-
 html {
   font-size: 16px;
+  position: relative;
+  min-height: 100%;
 }
 
 body {
   font-family: 'Open Sans', sans-serif;
   @include rem('line-height', 20px);
-  padding: 70px 0 40px;
+  padding: 70px 0 0;
   background-color: #fafafa;
   background-image: url("/assets/light_toast.png");
-  margin: 0;
+  margin: 0 0 $footer-height;
 }
 
 #main {
-  padding: 0 20px;
+  padding: 0;
 }
 
 h1, h2, h3 {
@@ -109,6 +107,23 @@ a {
   }
 }
 
+#main-container {
+  @include outer-container;
+  padding: 0 20px;
+  max-width: 1280px;
+}
+
+.main-content {
+  @include span-columns(8);
+}
+}
+
+.sidebar {
+  @include span-columns(4);
+  @include omega();
+}
+}
+
 .recipe-title {
   font-family: 'Open Sans', sans-serif;
 }
@@ -117,8 +132,6 @@ a {
   @include columns(3);
   list-style: inside disc;
 }
-
-
 
 .featured {
   @include columns(226px);
@@ -181,9 +194,12 @@ a {
   background-color: #fff;
   color:  #ccc;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px 0px;
-  border-style:  solid;
-  border-color: $green-dark;
-  border-width: 0 0 4px 0;
+  border-bottom: 4px solid $green-dark;
+
+    .navbar-inner {
+      @include outer-container;
+      max-width: 1280px;
+    }
 
     a {
       display: block;
@@ -262,6 +278,28 @@ input[type=text] {
   width: 206px;
 }
 
-.test {
-  color: green;
+
+
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: table;
+  height: $footer-height;
+  width: 100%;
+  clear: both;
+  padding: 20px;
+  background-color: #fff;
+  border-top: 4px solid $green-dark;
+
+  .footer-info {
+    @include outer-container;
+    max-width: 1280px;display: table-cell;
+    vertical-align: middle;
+  }
 }
+
+
+
+
+// end
