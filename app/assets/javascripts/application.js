@@ -1,8 +1,6 @@
 #= require jquery
 #= require jquery_ujs
 #= require bootstrap
-#= require guiders
-#= require jquery.imagesloaded.min
 #= require_tree .
 
 SITENAME = {
