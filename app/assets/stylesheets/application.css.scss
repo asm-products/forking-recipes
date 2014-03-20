@@ -16,6 +16,7 @@ $purple: #96419E;
 $footer-height: 100px;
 
 $pixelBase : 16;
+
 @mixin font-size($sizeValue: 1.6) {
   font-size: ($sizeValue * 10) + px;
   font-size: (($sizeValue * 10) / $pixelBase)  + rem;
@@ -74,7 +75,7 @@ $baseline-px: 16px;
 }
 
 html {
-  font-size: 16px;
+  font-size: 100%;
   position: relative;
   min-height: 100%;
 }
@@ -118,15 +119,34 @@ a {
 .sidebar {
   @include span-columns(4);
   @include omega();
+
+  ul.nav-list {
+    display: block;
+    list-style: none;
+    margin-top: 0;
+    padding: 0;
+
+    li {
+      @include rem('margin-left', 20px);
+      @include rem('margin-bottom', 5px);
+
+      &.nav-header {
+        margin-left: 0;
+
+      }
+    }
+  }
 }
 
 .recipe-title {
   font-family: 'Open Sans', sans-serif;
 }
 
-.recipe ul {
-  @include columns(3);
-  list-style: inside disc;
+.recipe {
+  padding: 10px;
+  background-color: #fff;
+  border: 3px solid rgba(#eee, 1);
+  border-radius: 4px;
 }
 
 .featured {

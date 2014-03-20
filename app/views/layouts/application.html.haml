@@ -21,7 +21,7 @@
           = render 'layouts/messages'
           = yield
         %aside.sidebar
-          %ul.nav.nav-list
+          %ul.nav-list
             - if current_user
               %li.nav-header Your Recipes
               - @recipes.each do |recipe|
