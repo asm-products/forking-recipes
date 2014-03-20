@@ -122,12 +122,15 @@ a {
 
 .featured {
   @include columns(226px);
+  -moz-column-gap: 1em;
+  -webkit-column-gap: 1em;
+  column-gap: 1em;
 }
 
 .rec-item {
   position: relative;
   display: inline-block;
-  max-width: 226px;
+  width: 100%;
   border: 3px solid rgba(#eee, 1);
   margin-right: 20px;
   margin-bottom: 20px;
@@ -136,7 +139,9 @@ a {
   @include transition (all 0.3s ease-in-out);
 
   img {
-    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
     border-radius: 2px;
   }
 
