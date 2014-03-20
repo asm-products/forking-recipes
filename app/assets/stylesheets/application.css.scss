@@ -51,14 +51,6 @@ $baseline-px: 16px;
   max-width: 610px;
 }
 
-.item-text {
-  text-align: center;
-  color: black;
-  padding-left: 2px;
-  padding-right: 2px;
-  font-size: medium;
-}
-
 #recent_recipes {
   width: 50%;
   display: inline-block;
@@ -132,7 +124,7 @@ a {
 
       &.nav-header {
         margin-left: 0;
-
+        font-size: 1.17rem;
       }
     }
   }
@@ -246,8 +238,9 @@ a {
       display: block;
       @include rem('margin', 0 40px 0 20px);
       float: left;
-      @include rem('font-size', 32px);
+      @include rem('font-size', 24px);
       color: $green-dark;
+      font-weight: lighter;
     }
 
     ul {
