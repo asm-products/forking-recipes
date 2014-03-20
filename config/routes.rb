@@ -7,6 +7,7 @@ RecipeHub::Application.routes.draw do
   end
 
   match "/browse"                      => "home#browse"
+  match "/help"                     => 'home#help'
   match "/search"                      => "home#search"
   match "/recipes/new"                 => "recipes#new",     :via => :get
   match "/recipes/new"                 => "recipes#create",  :via => :post
