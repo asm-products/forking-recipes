@@ -4,8 +4,6 @@
 @import "bourbon";
 @import "neat";
 
-$mobile: max-width 1110px 4;
-
 
 $orange: #F78F27;
 $yellow: #F9AB20;
@@ -116,12 +114,10 @@ a {
 .main-content {
   @include span-columns(8);
 }
-}
 
 .sidebar {
   @include span-columns(4);
   @include omega();
-}
 }
 
 .recipe-title {
