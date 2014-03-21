@@ -75,10 +75,12 @@ html {
 body {
   font-family: 'Open Sans', sans-serif;
   @include rem('line-height', 20px);
+  text-shadow: 0px 2px 2px rgba(255, 255, 255, 1);
   padding: 70px 0 0;
   background-color: #fafafa;
   background-image: url("/assets/light_toast.png");
   margin: 0 0 $footer-height;
+  color: #444;
 }
 
 #main {
@@ -207,6 +209,10 @@ a {
       box-shadow: 1px 1px 2px 0px rgba(50, 50, 50, 0.5);
       background-color: rgba(#fff, 1); 
     }
+
+    .recipe-stats li {
+      color: #444;
+    }
   }
 
   .recipe-stats {
@@ -216,9 +222,11 @@ a {
     @include clearfix;
 
     li {
+      @include rem("font-size", 14px);
+      color: #666;
       display: block;
       width: 50%;
-      padding: 5px;
+      padding: 0 5px;
       float: left;
       text-align: center;
     }
@@ -285,7 +293,7 @@ a {
           input[type=text] {
           -webkit-appearance: none;
           -webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
-          background-color: rgb(255, 255, 255);
+          background-color: #fafafa;
           border: 1px solid rgb(204, 204, 204);
           border-right: 0;
           border-top-left-radius: 4px;
@@ -307,6 +315,11 @@ a {
           &:focus {
             border-color: $green-light;
             outline: none;
+            background-color: #fff;
+          }
+
+          &:hover {
+            background-color: #fff;
           }
         }
 
