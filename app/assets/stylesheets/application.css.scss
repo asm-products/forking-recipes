@@ -149,15 +149,20 @@ a {
 }
 
 .rec-item {
-  position: relative;
   display: inline-block;
   width: 100%;
-  border: 3px solid rgba(#eee, 1);
-  margin-right: 20px;
+  min-height: 50px;
   margin-bottom: 20px;
-  background-color: #fff;
-  border-radius: 4px;
-  @include transition (all 0.3s ease-in-out);
+
+  a.recipe-link {
+    position: relative;
+    display: block;
+    padding: 10px;
+    border: 3px solid rgba(#eee, 1);
+    background-color: #fff;
+    border-radius: 4px;
+    @include transition (all 0.3s ease-in-out);
+  }
 
   img {
     display: block;
@@ -174,7 +179,7 @@ a {
     width: calc(100% - 40px);
     bottom: 15%;
     left: 10px;
-    padding: 5px 5px 5px 15px;
+    padding: 5px;
     background-color: rgba(#fff, 0.9); 
     color: #666;
     border-top-right-radius: 4px;
@@ -184,7 +189,10 @@ a {
   }
 
   &:hover {
-    border-color: rgba($green-dark, 1);
+
+    a.recipe-link {
+      border-color: rgba($green-dark, 1);
+    }
 
     img {
       -webkit-filter: brightness(1.1) contrast(110%);
@@ -201,9 +209,19 @@ a {
     }
   }
 
-  a {
-    display: block;
-    padding: 10px;
+  .recipe-stats {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    @include clearfix;
+
+    li {
+      display: block;
+      width: 50%;
+      padding: 5px;
+      float: left;
+      text-align: center;
+    }
   }
 }
 
