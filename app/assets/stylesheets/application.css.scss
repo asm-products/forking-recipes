@@ -39,33 +39,6 @@ $baseline-px: 16px;
     #{$property}: $rem-values; }
   }
 
-.recipe-list {
-  vertical-align: top;
-}
-
-.recipe-header {
-  text-align: left;
-}
-
-.recipe img {
-  max-width: 610px;
-}
-
-#recent_recipes {
-  width: 50%;
-  display: inline-block;
-}
-
-#recent_users {
-  display: inline-block;
-  width: 30%;
-  float:right;
-}
-
-#new-recipe {
-  display: inline;
-}
-
 html {
   font-size: 100%;
   position: relative;
@@ -75,7 +48,7 @@ html {
 body {
   font-family: 'Open Sans', sans-serif;
   @include rem('line-height', 20px);
-  text-shadow: 0px 2px 2px rgba(255, 255, 255, 1);
+  text-shadow: 0px 1px 1px rgba(255, 255, 255, 1);
   padding: 70px 0 0;
   background-color: #fafafa;
   background-image: url("/assets/light_toast.png");
@@ -88,7 +61,15 @@ body {
 }
 
 h1, h2, h3 {
-  font-weight: 400;
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul {
+  margin-top: 0;
+}
+
+h3 {
+  font-size: 1.4rem;
 }
 
 a {
@@ -125,8 +106,11 @@ a {
       @include rem('margin-bottom', 5px);
 
       &.nav-header {
+        display: block;
         margin-left: 0;
-        font-size: 1.17rem;
+        font-size: 1.4rem;
+        font-weight: 300;
+        margin-bottom: 22.4px;
       }
     }
   }
@@ -238,6 +222,7 @@ a {
   top: 0;
   left: 0;
   width: 100%;
+  max-height: 50px;
   z-index: 2000;
   background-color: #fff;
   color:  #ccc;
@@ -258,7 +243,7 @@ a {
       @include transition (all 0.3s ease-in-out);
 
       &:hover {
-        color: $purple;
+        color: $orange;
       }
     }
 
@@ -272,7 +257,8 @@ a {
       float: left;
       @include rem('font-size', 24px);
       color: $green-dark;
-      font-weight: lighter;
+      font-family: 'Merriweather', serif;
+      font-weight: 300;
     }
 
     ul {
@@ -292,23 +278,20 @@ a {
 
           input[type=text] {
           -webkit-appearance: none;
-          -webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
           background-color: #fafafa;
           border: 1px solid rgb(204, 204, 204);
           border-right: 0;
           border-top-left-radius: 4px;
           border-bottom-left-radius: 4px;
+          -webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
           box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
           color: rgb(85, 85, 85);
-          cursor: auto;
           display: block;
           float: left;
           @include rem('font-size', 13px);
           @include rem('line-height', 20px);
           height: 30px;
           padding: 4px 6px;
-          text-align: start;
-          text-indent: 0px;
           vertical-align: middle;
           width: 206px;
 
@@ -368,7 +351,7 @@ footer {
   width: 100%;
   clear: both;
   padding: 20px;
-  background-color: #fff;
+  background-color: $green-light;
   border-top: 4px solid $green-dark;
 
   .footer-info {
@@ -379,6 +362,189 @@ footer {
   }
 }
 
+.welcome {
+  margin: -70px 0 20px;
+  padding: 70px 20px 20px;
+}
+
+.welcome.logged-out {
+  position: relative;
+  display: table;
+  vertical-align: middle;
+  width: 100%;
+  min-height: 600px;
+  margin: -70px 0 20px;
+  padding: 70px 0 40px;
+  background-image: url("/assets/flickr_auxesis.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  border-bottom: 2px solid $green-dark;
+  color: #fff;
+  text-shadow: none;
+
+  .welcome-inner {
+    display: table;
+    height: 100%;
+    width: 100%;
+
+    .message {
+      display: table-cell;
+      width: 50%;
+      height: 100%;
+      padding-right: 10px;
+      vertical-align: middle;
+
+      h1, h2 {
+        font-family: 'Merriweather', serif;
+        font-weight: 300;
+        margin: 0;
+        line-height: 1.4em;
+        text-shadow: rgba(0, 0, 0, 0.8) 0px 0px 1px, rgba(0, 0, 0, 0.7) 0px 0px 35px;
+      }
+
+      h1 {
+        margin-left: 20%;
+        font-size: 3rem;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        text-shadow: rgba(0, 0, 0, 0.8) 0px 0px 1px, rgba(0, 0, 0, 0.7) 0px 0px 35px;
+      }
+
+      h2 {
+        margin-left: 20%;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-width: 1px 1px 0 1px;
+        padding-bottom: 20px;
+      }
+
+      .description {
+        padding: 10px 20px 10px 20%;
+        line-height: 1.4em;
+        margin-top: 0;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-top: 5px solid #000;
+        background-color: rgba(#fff, 0.9);
+        color: #222;
+        font-weight: 300;
+
+        h3 {
+          //border-top: 2px solid $green-dark;
+          //text-shadow: rgba(0, 0, 0, 0.8) 0px 0px 1px, rgba(0, 0, 0, 0.7) 0px 0px 35px;
+          //padding: 10px 20px 10px 20%;
+          font-weight: 300;
+          //color: #fff;
+        }
+
+        ul {
+          //padding: 10px 20px 10px 20%;
+
+          li {
+            margin-bottom: 0.5em;
+          }
+
+        }
+      }
+    }
+
+    .login {
+      display: table-cell;
+      height: 100%;
+      vertical-align: middle;
+      padding-left: 10px;
+      padding-right: 20px;
+      text-align: center;
+
+      .form-wrapper {
+        display: inline-block;
+        margin: 0 auto;
+        text-align: left;
+        width: 100%;
+        max-width: 400px;
+
+        h2 {
+          margin-bottom: 40px;
+
+          .little {
+            position: relative;
+            top: -2px;
+            @include rem('font-size', 14px);
+            font-style: italic;
+            margin: 0 10px;
+          }
+
+          .signin-tab, .signup-tab {
+            cursor: pointer;
+          }
+
+          .signup-tab {
+            border: 2px solid #fff;
+            padding: 1px 3px 3px;
+            border-radius: 3px;
+            background-color: rgba($green-light, 0.8);
+            @include transition (all 0.3s ease-in-out);
+
+            &:hover {
+              background-color: rgba($green-light, 1);
+            }
+          }
+        }
+      }
+
+      label {
+        display: block;
+
+        input[type="text"], input[type="email"], input[type="password"] {
+          -webkit-appearance: none;
+          background-color: rgba(#fff, 0.5);
+          border: 3px solid rgba(#fff, 0.85);
+          border-radius: 4px;
+          color: #444;
+          display: block;
+          @include rem('font-size', 16px);
+          height: 45px;
+          padding: 4px 6px;
+          vertical-align: middle;
+          width: 100%;
+          margin-bottom: 10px;
+          @include transition (all 0.3s ease-in-out);
+
+          &:hover {
+            background-color: rgba(#fff, 0.8);
+          }
+
+          &:focus {
+            background-color: rgba(#fff, 1);
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+
+  .welcome-footer {
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    text-align: right;
+
+    a {
+      @include rem("font-size", 11px);
+      color: #fff;
+
+      &:hover {
+        color: $green-dark;
+      }
+    }
+  }
+}
+
+
+.welcome input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
 
 
 

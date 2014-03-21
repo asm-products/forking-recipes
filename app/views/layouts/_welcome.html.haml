@@ -1,0 +1,54 @@
+- if user_signed_in?
+  %section.welcome.logged-in
+    Welcome back,
+    =current_user.username
+- else
+  %section.welcome.logged-out
+    .welcome-inner
+      .message
+        %h1
+          Forking Recipes
+        %h2
+          Like GitHub for Foodies.
+        .description
+          %h3
+            Forking Recipes is a new kind of social recipe site, with some cool extra features.
+          %ul
+            %li
+              Every change to a recipe is tracked so that users can see the evolution of recipes.
+            %li
+              Recipes are formatted using a special syntax that allows them to look good but still remain portable.
+            %li
+              Recipes can be "forked" from one user to another. This will take a recipe and copy it from one person's profile to yours, so you can make your own changes to the recipe.
+            %li
+              You can follow users and get a feed of what people are doing on the site.
+      .login
+        .form-wrapper
+          %h2
+            %span.signin-tab
+              Sign in
+            %span.little
+              \~OR~
+            %span.signup-tab
+              Sign up
+          %form{:action => "/users/sign_in", :class => "new_user", :id => "new_user", :method => "post"}
+            %div{:style => "margin:0;padding:0;"}
+              %label{:for => "user_email"}
+                Email
+                %input{:id => "user_email", :name => "user[email]", :size  => "30", :type=>"email"}
+              %label{ :for=>"user_password"}
+                Password
+                %input{ :id=>"user_password", :name=>"user[password]", :size=>"30", :type=>"password"}
+              %label{ :for=>"user_remember_me"}
+                Remember me
+                %input{ :id=>"user_remember_me", :name=>"user[remember_me]", :type=>"checkbox", :value=>"1"}
+              %div
+                %input{:name=>"commit", :type=>"submit", :value=>"Sign in"}
+    .welcome-footer
+      %a{:href => "http://www.flickr.com/photos/auxesis/", :target=> "blank"}
+        Image by Lindsay Holmwood (flickr user, auxesis)
+      %a{:href => "http://creativecommons.org/licenses/by-sa/2.0/", :target=> "blank"} - (CC BY-SA 2.0)
+
+
+
+/end
