@@ -9,8 +9,7 @@ class Recipe < ActiveRecord::Base
   has_many :recipe_images
 
   validates :commit_message, :presence => {:message => 'Update Message cannot be blank'}
-  validates :title, :presence => {:message => 'Update Message cannot be blank'}
-  validates :slug, :presence => {:message => 'Update Message cannot be blank'}
+  validates :title, :presence => {:message => 'Title cannot be blank'}
 
   validates_uniqueness_of :slug, :scope => :user_id
 
@@ -22,6 +21,14 @@ class Recipe < ActiveRecord::Base
 
   def increment_revision!
     self.revision = self.revision + 1
+  end
+
+  def number_of_forks
+    Recipe.where(:forked_from_recipe_id => self.id).count
+  end
+
+  def number_of_stars
+    up_votes
   end
 
   def create_recipe_revision!

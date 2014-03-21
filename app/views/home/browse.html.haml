@@ -7,13 +7,9 @@
           = recipe.title
       %ul.recipe-stats
         %li.forks
-          %span.nmbr
-            XX
           %span.label
-            forks
+            = pluralize(recipe.number_of_forks, 'fork')
         %li.saves
-          %span.nmbr
-            XX
           %span.label
-            saves
-          
+            = pluralize(recipe.number_of_stars, 'save')
+
