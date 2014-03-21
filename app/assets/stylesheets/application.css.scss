@@ -381,7 +381,7 @@ footer {
   background-attachment: fixed;
   border-bottom: 2px solid $green-dark;
   color: #fff;
-  text-shadow: none;
+  text-shadow: rgba(#000, 1) 0px 0px 1px, rgba(#000, 0.9) 0px 0px 25px;
 
   .welcome-inner {
     display: table;
@@ -400,7 +400,6 @@ footer {
         font-weight: 300;
         margin: 0;
         line-height: 1.4em;
-        text-shadow: rgba(0, 0, 0, 0.8) 0px 0px 1px, rgba(0, 0, 0, 0.7) 0px 0px 35px;
       }
 
       h1 {
@@ -408,7 +407,6 @@ footer {
         font-size: 3rem;
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
-        text-shadow: rgba(0, 0, 0, 0.8) 0px 0px 1px, rgba(0, 0, 0, 0.7) 0px 0px 35px;
       }
 
       h2 {
@@ -425,10 +423,7 @@ footer {
         margin-top: 0;
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
-        border-top: 5px solid #000;
-        background-color: rgba(#fff, 0.9);
-        color: #222;
-        font-weight: 300;
+        color: #fff;
 
         h3 {
           //border-top: 2px solid $green-dark;
@@ -439,10 +434,14 @@ footer {
         }
 
         ul {
-          //padding: 10px 20px 10px 20%;
+          padding: 0;
+          list-style: none;
 
           li {
             margin-bottom: 0.5em;
+            background-color: rgba(#000, 0.8);
+            padding: 10px;
+            border-radius: 4px;
           }
 
         }
@@ -476,15 +475,17 @@ footer {
           }
 
           .signin-tab, .signup-tab {
-            cursor: pointer;
+            
           }
 
           .signup-tab {
             border: 2px solid #fff;
-            padding: 1px 3px 3px;
+            padding: 1px 5px 5px;
             border-radius: 3px;
-            background-color: rgba($green-light, 0.8);
+            background-color: rgba($green, 1);
+            cursor: pointer;
             @include transition (all 0.3s ease-in-out);
+            text-shadow: none;
 
             &:hover {
               background-color: rgba($green-light, 1);
@@ -499,7 +500,7 @@ footer {
         input[type="text"], input[type="email"], input[type="password"] {
           -webkit-appearance: none;
           background-color: rgba(#fff, 0.5);
-          border: 3px solid rgba(#fff, 0.85);
+          border: 3px solid rgba(#fff, 1);
           border-radius: 4px;
           color: #444;
           display: block;
@@ -508,7 +509,7 @@ footer {
           padding: 4px 6px;
           vertical-align: middle;
           width: 100%;
-          margin-bottom: 10px;
+          margin: 5px 0 20px;
           @include transition (all 0.3s ease-in-out);
 
           &:hover {
@@ -517,7 +518,7 @@ footer {
 
           &:focus {
             background-color: rgba(#fff, 1);
-            outline: none;
+            outline: 1px dotted rgba(#ccc, 1);
           }
         }
       }
