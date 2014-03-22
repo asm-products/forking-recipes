@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username
 
   has_many :events
+  has_many :recipes
 
   has_many :followed_users, :through => :relationships, :source => :followed
   has_many :relationships, :foreign_key => "follower_id", :dependent => :destroy

@@ -15,8 +15,8 @@ class RecipesController < ApplicationController
     recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
 
     respond_to do |format|
-      if recipe.user_id != current_user.id && forked_recipe = recipe.fork_to(current_user)
-        format.html { redirect_to "/#{forked_recipe.user.username}/#{forked_recipe.slug}", notice: 'Recipe was successfully forked.' }
+      if recipe.user != current_user && forked_recipe = recipe.fork_to(current_user)
+        format.html { redirect_to recipe_path(forked_recipe), notice: 'Recipe was successfully forked.' }
       else
         format.html { render action: "new" }
       end

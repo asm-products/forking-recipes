@@ -1,6 +1,7 @@
 class Recipe < ActiveRecord::Base
   belongs_to :user
   has_many :recipe_revisions
+
   attr_accessible :body, :commit_message, :revision, :title, :user, :slug, :forked_from_recipe_id, :tag_list
 
   has_many :events
