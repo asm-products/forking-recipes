@@ -14,7 +14,7 @@ RecipeHub::Application.routes.draw do
   match "/:username"                   => "Users#show"
   match "/:username/follow"            => "Users#follow",    :via => :post
   match "/:username/unfollow"          => "Users#unfollow",  :via => :post
-  match "/:username/:recipe"           => "recipes#show",    :via => :get, :as => :recipe_path
+  match "/:username/:recipe"           => "recipes#show",    :via => :get
   match "/:username/:recipe"           => "recipes#destroy", :via => :delete
   match "/:username/:recipe"           => "recipes#update",  :via => :put
   match "/:username/:recipe/edit"      => "recipes#edit"

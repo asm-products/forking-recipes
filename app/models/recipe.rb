@@ -18,6 +18,10 @@ class Recipe < ActiveRecord::Base
 
   acts_as_taggable
 
+  def to_param
+    slug
+  end
+
   def increment_revision!
     self.revision = self.revision + 1
   end
