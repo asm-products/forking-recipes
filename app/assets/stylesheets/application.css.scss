@@ -275,6 +275,7 @@ a {
         &.search-item {
           @include rem('padding-top', 10px);
           @include clearfix;
+          position: relative;
 
           input[type=text] {
           -webkit-appearance: none;
@@ -294,16 +295,23 @@ a {
           padding: 4px 6px;
           vertical-align: middle;
           width: 206px;
+          @include transition (all 0.3s ease-in-out);
 
           &:focus {
             border-color: $green-light;
             outline: none;
             background-color: #fff;
+            width: 300px;
           }
 
           &:hover {
             background-color: #fff;
           }
+        }
+
+        i.fa {
+          position: absolute;
+          right: 3.85rem;
         }
 
         .btn {

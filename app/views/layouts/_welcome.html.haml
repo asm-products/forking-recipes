@@ -34,9 +34,11 @@
           %form{:action => "/users/sign_in", :class => "new_user", :id => "new_user", :method => "post"}
             %div{:style => "margin:0;padding:0;"}
               %label{:for => "user_email"}
+                %i.fa.fa-envelope
                 Email
                 %input{:id => "user_email", :name => "user[email]", :size  => "30", :type=>"email"}
               %label{ :for=>"user_password"}
+                %i.fa.fa-lock
                 Password
                 %input{ :id=>"user_password", :name=>"user[password]", :size=>"30", :type=>"password"}
               %label{ :for=>"user_remember_me"}

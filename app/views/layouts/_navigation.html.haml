@@ -23,4 +23,5 @@
   %li.search-item
     = form_tag('/search', :method => 'POST', :class => 'navbar-form') do
       = text_field_tag('query', nil, :placeholder => 'Search')
+      %i.fa.fa-search
       = button_tag('Search', :class => 'btn')

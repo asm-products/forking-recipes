@@ -10,8 +10,10 @@
       %ul.recipe-stats
         %li.forks
           %span.label
+            %i.fa.fa-code-fork
             = pluralize(recipe.number_of_forks, 'fork')
         %li.saves
           %span.label
+            %i.fa.fa-star
             = pluralize(recipe.number_of_stars, 'save')
 
