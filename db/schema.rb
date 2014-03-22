@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(:version => 20140322024559) do
     t.integer  "forked_from_recipe_id"
   end
 
-  add_index "recipes", ["slug"], :name => "index_recipes_on_slug"
   add_index "recipes", ["user_id"], :name => "index_recipes_on_user_id"
 
   create_table "relationships", :force => true do |t|
