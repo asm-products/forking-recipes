@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  make_voter
   validates :username, :uniqueness => true
   validates_format_of :username, :with => /^[a-zA-Z0-9_]*$/, :on => :create
 
@@ -20,6 +19,20 @@ class User < ActiveRecord::Base
   has_many :reverse_relationships, foreign_key: "followed_id",
                                    class_name:  "Relationship",
                                    dependent:   :destroy
+
+  def starred_recipes
+    ids = Star.where(:user_id => self.id).pluck(:recipe_id)
+
+    Recipe.find_all_by_id(ids)
+  end
+
+  def star(recipe)
+    Star.create(:user_id => self.id, :recipe_id => recipe.id)
+  end
+
+  def remove_star(recipe)
+    Star.where(:user_id => self.id, :recipe_id => recipe.id).first.destroy
+  end
 
   def following?(other_user)
     relationships.find_by_followed_id(other_user.id)

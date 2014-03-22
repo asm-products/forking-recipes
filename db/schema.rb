@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130128021828) do
+ActiveRecord::Schema.define(:version => 20140322012436) do
 
   create_table "events", :force => true do |t|
     t.integer  "user_id"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20130128021828) do
     t.integer  "down_votes",            :default => 0, :null => false
   end
 
+  add_index "recipes", ["slug"], :name => "index_recipes_on_slug"
   add_index "recipes", ["user_id"], :name => "index_recipes_on_user_id"
 
   create_table "relationships", :force => true do |t|
@@ -80,6 +81,18 @@ ActiveRecord::Schema.define(:version => 20130128021828) do
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+
+  create_table "stars", :id => false, :force => true do |t|
+    t.integer "recipe_id"
+    t.integer "user_id"
+  end
+
+  create_table "stars_data", :force => true do |t|
+    t.integer  "recipe_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
@@ -120,19 +133,5 @@ ActiveRecord::Schema.define(:version => 20130128021828) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
-
-  create_table "votings", :force => true do |t|
-    t.string   "voteable_type"
-    t.integer  "voteable_id"
-    t.string   "voter_type"
-    t.integer  "voter_id"
-    t.boolean  "up_vote",       :null => false
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  add_index "votings", ["voteable_type", "voteable_id", "voter_type", "voter_id"], :name => "unique_voters", :unique => true
-  add_index "votings", ["voteable_type", "voteable_id"], :name => "index_votings_on_voteable_type_and_voteable_id"
-  add_index "votings", ["voter_type", "voter_id"], :name => "index_votings_on_voter_type_and_voter_id"
 
 end

@@ -85,8 +85,6 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    make_voteable (0.1.1)
-      activerecord (~> 3.0)
     meta_request (0.2.0)
       rack-contrib
       rails
@@ -183,7 +181,6 @@ DEPENDENCIES
   haml (>= 3.0.0)
   haml-rails
   jquery-rails
-  make_voteable
   meta_request (= 0.2.0)
   newrelic_rpm
   pg
