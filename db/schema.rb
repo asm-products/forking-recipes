@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140322012436) do
+ActiveRecord::Schema.define(:version => 20140322024559) do
 
   create_table "events", :force => true do |t|
     t.integer  "user_id"
@@ -60,12 +60,10 @@ ActiveRecord::Schema.define(:version => 20140322012436) do
     t.string   "commit_message"
     t.integer  "revision"
     t.integer  "user_id"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
     t.string   "slug"
     t.integer  "forked_from_recipe_id"
-    t.integer  "up_votes",              :default => 0, :null => false
-    t.integer  "down_votes",            :default => 0, :null => false
   end
 
   add_index "recipes", ["slug"], :name => "index_recipes_on_slug"
@@ -83,11 +81,6 @@ ActiveRecord::Schema.define(:version => 20140322012436) do
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
 
   create_table "stars", :id => false, :force => true do |t|
-    t.integer "recipe_id"
-    t.integer "user_id"
-  end
-
-  create_table "stars_data", :force => true do |t|
     t.integer  "recipe_id"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
@@ -126,8 +119,6 @@ ActiveRecord::Schema.define(:version => 20140322012436) do
     t.datetime "updated_at",                             :null => false
     t.string   "username"
     t.string   "slug"
-    t.integer  "up_votes",               :default => 0,  :null => false
-    t.integer  "down_votes",             :default => 0,  :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

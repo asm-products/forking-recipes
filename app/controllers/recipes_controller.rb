@@ -4,9 +4,9 @@ class RecipesController < ApplicationController
 
   before_filter :authenticate_user!, :except => [:show, :forks]
 
-  def upvote
+  def star
     @recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
-    current_user.up_vote!(@recipe)
+    current_user.star(@recipe)
 
     redirect_to recipe_path(@recipe)
   end
@@ -44,7 +44,7 @@ class RecipesController < ApplicationController
 
     @forks  = Recipe.where(:forked_from_recipe_id => @recipe.id).count
 
-    @upvotes = @recipe.up_votes
+    @star_count = @recipe.number_of_stars
 
     respond_to do |format|
       format.html

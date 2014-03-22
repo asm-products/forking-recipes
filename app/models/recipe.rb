@@ -26,7 +26,7 @@ class Recipe < ActiveRecord::Base
   end
 
   def number_of_stars
-    up_votes
+    Star.where(:recipe_id => self.id).count
   end
 
   def create_recipe_revision!
