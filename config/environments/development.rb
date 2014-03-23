@@ -34,4 +34,7 @@ RecipeHub::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Add Rack::LiveReload to the bottom of the middleware stack with the default options.
+  config.middleware.use Rack::LiveReload
 end

@@ -9,6 +9,9 @@ end
 
 group :development do
   gem 'meta_request', '0.2.0'
+  gem 'guard'
+  gem 'guard-livereload', require: false
+  gem "rack-livereload"
 end
 
 gem 'pg'
