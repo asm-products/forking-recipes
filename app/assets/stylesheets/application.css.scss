@@ -510,12 +510,33 @@ footer {
   padding: 20px;
   background-color: $green-light;
   border-top: 4px solid $green-dark;
+  @include rem(font-size, 14px);
 
   .footer-info {
     @include outer-container;
     max-width: 1280px;
     display: table-cell;
     vertical-align: middle;
+    color: #fff;
+    text-shadow: none;
+
+    a {
+      color: #fff;
+      text-shadow: none;
+
+      &:hover {
+        color: $green-dark;
+      }
+    }
+
+    .contact-link {
+      display: block;
+      float: left
+    }
+
+    .copyright {
+      float: right;
+    }
   }
 }
 

@@ -35,8 +35,14 @@
                   %a{:href => user_path(user)}= user.username
     %footer
       %aside.footer-info
-        %a{:href => "mailto:forkingrecipes@gmail.com"}
+        %a{:href => "mailto:forkingrecipes@gmail.com", :class=>"contact-link"}
           Contact Us
+          %i.fa.fa-envelope
+        .copyright
+          Copyright &copy; 2014, 
+          %a{:href => "https://twitter.com/davidpick", :class=>"david-link"} 
+            David Pick
+            %i.fa.fa-twitter
 
 
 
