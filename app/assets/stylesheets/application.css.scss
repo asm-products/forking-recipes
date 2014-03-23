@@ -209,21 +209,20 @@ body[data-action="browse"][data-controller="home"] #main-container {
 #new_recipe_form, #edit_recipe_form {
   clear: both;
   width: 100%;
+  }
 
-  .actions {
-    @include clearfix;
-    margin-bottom: 20px;
+.actions {
+  @include clearfix;
+  margin-bottom: 20px;
 
-    .back {
-      float: left;
-    }
+  .back {
+    float: left;
+  }
 
-    .save {
-      float: right;
-    }
+  .save {
+    float: right;
   }
 }
-
 .guide-btn {
   z-index: 10;
 }
