@@ -61,6 +61,44 @@ a {
   }
 }
 
+a.action-btn {
+  @include linear-gradient(rgba(#fafafa, 1), rgba(#eee, 1));
+  border: 1px solid rgba(#ccc, 1);
+  border-radius: 4px;
+  display: inline-block;
+  @include rem(font-size, 14px);
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  color: rgba(#666, 1);
+  height: 34px;
+  padding-bottom: 6px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 6px;
+  text-align: center;
+  @include transition(color 0.3s ease-in-out, border-color 0.3s ease-in-out);
+
+  &:hover {
+    @include linear-gradient(rgba(#fcfcfc, 1), rgba(#e9e9e9,1));
+    color: #444;
+    border: 1px solid rgba(#bbb, 1);
+  }
+
+  &.btn-danger {
+
+    i {
+      color: rgba(#A94442, 1);
+    }
+
+    &:hover {
+      @include linear-gradient(rgba(#fcfcfc, 1), rgba(#F2DEDE, 0.95));
+      color: rgba(#A94442, 1);
+      border: 1px solid rgba(#A94442, 1);
+    }
+  }
+}
+
 #main-container {
   @include outer-container;
   padding: 0 20px;
@@ -560,31 +598,6 @@ ul.actions {
     display: block;
     float: left;
     margin-right: 10px;
-  }
-}
-
-a.action-btn {
-  @include linear-gradient(rgba(#fafafa, 1), rgba(#eee, 1));
-  border: 1px solid rgba(#ccc, 1);
-  border-radius: 4px;
-  display: inline-block;
-  @include rem(font-size, 14px);
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
-  color: rgba(#666, 1);
-  height: 34px;
-  padding-bottom: 6px;
-  padding-left: 12px;
-  padding-right: 12px;
-  padding-top: 6px;
-  text-align: center;
-  @include transition(color 0.3s ease-in-out, border-color 0.3s ease-in-out);
-
-  &:hover {
-    @include linear-gradient(rgba(#fcfcfc, 1), rgba(#eaeaea,1));
-    color: #444;
-    border: 1px solid rgba(#bbb, 1);
   }
 }
 
