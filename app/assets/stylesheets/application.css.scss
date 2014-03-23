@@ -134,16 +134,20 @@ label {
       border-color: rgba(#aaa, 1);
       box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
     }
-
-    input[type="text"], input[type="email"], input[type="password"] {
-      height: 45px;}
   }
+
+  input[type="text"], input[type="email"], input[type="password"] {
+    height: 45px;
+  }
+}
+
+body[data-action="browse"][data-controller="home"] #main-container {
+  @include rem('max-width', 1280px);
 }
 
 #main-container {
   @include outer-container;
   padding: 0 20px;
-  max-width: 1280px;
 }
 
 .main-content {
@@ -196,9 +200,15 @@ label {
   clear: both;
 }
 
+.edit-wrapper {
+  background-color: rgba(#fff, 0.5);
+  margin-top: -70px;
+  padding: 70px 20px 20px;
+}
+
 #new_recipe_form, #edit_recipe_form {
   clear: both;
-  max-width: 530px;
+  width: 100%;
 
   .actions {
     @include clearfix;
@@ -248,7 +258,6 @@ label .guide-btn {
 #format-guide {
   display: block;
   width: 100%;
-  max-width: 530px;
   border: 1px solid rgba(#ddd, 1);
   border-collapse: separate;
   border-spacing: 0px;
@@ -271,6 +280,7 @@ label .guide-btn {
 
     img {
       width: 100%;
+      display: block;
     }
 
     ul, ol {
