@@ -57,16 +57,63 @@
 %div.recipe
   = RDiscount.new(@recipe.body).to_html.html_safe
 
-%hr
-%p
-  %i.fa.fa-quote-left
-  %b Update Message:
-  = @recipe.commit_message
-%p
-  %i.fa.fa-tags
-  %b Tags:
-  = @recipe.tag_list
-%p
-  %i.fa.fa-clock-o
-  %b Revision:
-  = @recipe.revision
+
+%ul.actions
+
+  - if current_user != @recipe.user
+    %li
+      = link_to fork_recipe_path(@recipe), :method => :post, :class => "btn" do
+        %i.fa.fa-code-fork
+        Fork
+
+  - if !current_user.try(:following?, @recipe.user) && current_user != @recipe.user
+    %li
+      = link_to user_follow_path(@recipe.user), :class => "btn", :method => :post do
+        %i.fa.fa-retweet
+        Follow #{@recipe.user.username}
+
+  - elsif current_user != @recipe.user
+    %li
+      = link_to user_unfollow_path(@recipe.user), :class => "btn", :method => :post do
+        %i.fa.fa-retweet
+        Unfollow #{@recipe.user.username}
+
+  - if @recipe.revision > 1
+    %li
+      = link_to recipe_revisions_path(@recipe), :class => "btn", :id => "revisions_button" do
+        %i.fa.fa-clock-o
+        Revisions - #{@revision_count}
+
+  - if current_user == @recipe.user
+    %li
+      = link_to edit_recipe_path(@recipe), :class => "btn" do
+        %i.fa.fa-pencil
+        Edit
+    %li
+      = link_to recipe_path(@recipe), :confirm => 'Are you sure you want to delete this recipe?', :method => :delete, :class => "btn btn-danger" do
+        %i.fa.fa-trash-o
+        Delete
+
+  %li
+    = link_to forks_path(@recipe), :class => 'btn' do
+      %i.fa.fa-code-fork
+      Forks - #{@forks}
+  %li
+    = link_to recipe_star_path(@recipe), :class => 'btn' do
+      %i.fa.fa-paperclip
+      Save to your recipes
+
+
+.recipe-meta
+  %p
+    %i.fa.fa-quote-left
+    %b Update Message:
+    = @recipe.commit_message
+  %p
+    %i.fa.fa-tags
+    %b Tags:
+    = @recipe.tag_list
+  %p
+    %i.fa.fa-clock-o
+    %b Revision:
+    = @recipe.revision

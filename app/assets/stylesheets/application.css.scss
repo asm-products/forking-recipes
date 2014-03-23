@@ -101,6 +101,7 @@ a {
 }
 
 .recipe {
+  margin-bottom: 20px;
   padding: 10px;
   background-color: #fff;
   border: 3px solid rgba(#eee, 1);
@@ -110,6 +111,10 @@ a {
   img {
     max-width: 100%;
   }
+}
+
+.recipe-meta {
+  clear: both;
 }
 
 .featured {
