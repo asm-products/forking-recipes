@@ -1,46 +1,23 @@
 %div
   %h1{:id => "new-recipe"}
     New recipe
-  %a.btn{"data-toggle" => "modal", :href => "#myModal", :role => "button", :id => 'formatting-guide-btn'} Formatting Guide
+
 
   = render 'form'
 
   = link_to 'Back', :back
 
-%div{:id => "myModal", :class => "modal hide fade"}
-  .modal-header
-    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-    %h3 Formatting Guide
-  .modal-body
-    %h3 Formatting Guide
-    %ul
-      %li
-        <h3>Headings</h3>
-        %ul
-          %li Headings are created by putting pounds signs before the text.
-          %li The fewer the pound signs the larger the text
-          %li= "# Title ->"
-          <h1>Title</h1>
-          %li= "### Title ->"
-          <h3>Title</h3>
-      %li
-        <h3>Lists</h3>
-        %ul
-          %li You can create either bulleted or numbered lists
-          %li Bulleted lists are created by putting a * before list item
-          %li Numbered lists are created by putting a number followed by a period before the item
-          %li
-            * 1 cup of water
-            <br>
-            * 1 glass
-          %li
-            1. Put water in glass
-            <br>
-            2. Drink water
-      %li
-        <h3>Images</h3>
-        %ul
-          %li The suggested way to post images here is to upload them to a site like
-          %a{:href => "http://www.imgur.com"}= "Imgur"
-          %li
-            They can then be displayed using this syntax ![image_name](image_link)
+
+:javascript
+
+  $('table#format-guide').css('display', 'none');
+
+  $('a.action-btn.guide-btn').click( function() {
+    $('table#format-guide').slideToggle( "slow", function() {
+      // Animation complete.
+    });
+    event.preventDefault();
+  });
+
+
+

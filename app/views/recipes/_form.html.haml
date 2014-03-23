@@ -7,16 +7,61 @@
           %li= msg
 
   .field
-    = f.label :title
-    = f.text_field :title, :class => "input-xxlarge"
+    = f.label :title do
+      Title
+      = f.text_field :title, :class => "input-xxlarge"
   .field
-    = f.label :body
-    = f.text_area :body, :class => "input-xxlarge"
+    = f.label :body do
+      Body
+      = f.text_area :body, :class => "input-xxlarge"
+      %a.action-btn.guide-btn.open{:href => "#myModal"}
+        Formatting Guide 
+        %i.fa.fa-question-circle
+
+    %table#format-guide.zebra
+      %thead
+        %tr
+          %th You type:
+          %th You see:
+      %tbody
+        %tr
+          %td *italics*
+          %td <em>italics</em>
+        
+        %tr
+          %td **bold**
+          %td <b>bold</b>
+        
+        %tr
+          %td * item 1<br>* item 2<br>* item 3
+          %td <ul><li>item 1</li><li>item 2</li><li>item 3</li></ul>
+
+        %tr
+          %td 1. First item<br>2. Second item<br>3. Third item
+          %td <ol><li>First item</li><li>Second item</li><li>Third item</li></ol>
+        
+        %tr
+          %td [Yum!](http://imgur.com/dKwtnw7.jpg)
+          %td <img src="http://imgur.com/dKwtnw7.jpg" alt="Eggs Over Easy">
+      
+        %tr
+          %td{:colspan=>"2", :class=>"normal-wrap"}
+            The suggested way to post images here is to upload them to a site like
+            %a{:href => "http://www.imgur.com", :target=>"_blank"}= "Imgur"
+            They can then be displayed using this syntax ![image_name](image_link)
+      %tfoot
+        %tr
+          %td{:colspan=>"2", :class=>"normal-wrap"}
+            %a.action-btn.guide-btn.close{:href => "#myModal"}
+              Close Guide 
+              %i.fa.fa-times-circle
   .field
-    = f.label :commit_message, "Update Message"
-    = f.text_field :commit_message, :value => "", :class => "input-xxlarge"
+    = f.label :commit_message, "Update Message" do
+      Update Message
+      = f.text_field :commit_message, :value => "", :class => "input-xxlarge"
   .field
-    = f.label :tag_list, "Tags (seperated by commas)"
-    = f.text_field :tag_list, :class => "input-xxlarge"
+    = f.label :tag_list do
+      Tags (seperated by commas)
+      = f.text_field :tag_list, :class => "input-xxlarge"
   .actions
-    = f.submit 'Save', :class => "btn"
+    = f.submit 'Save', :class => "action-btn"

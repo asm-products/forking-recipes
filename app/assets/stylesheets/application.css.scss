@@ -17,8 +17,6 @@ $footer-height: 100px;
 
 $baseline-px: 16px;
 
-
-
 html {
   font-size: 100%;
   position: relative;
@@ -61,7 +59,8 @@ a {
   }
 }
 
-a.action-btn {
+.action-btn {
+  -webkit-appearance: none;
   @include linear-gradient(rgba(#fafafa, 1), rgba(#eee, 1));
   border: 1px solid rgba(#ccc, 1);
   border-radius: 4px;
@@ -72,11 +71,12 @@ a.action-btn {
   font-weight: normal;
   color: rgba(#666, 1);
   height: 34px;
-  padding-bottom: 6px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-bottom: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
   padding-top: 6px;
   text-align: center;
+  cursor: pointer;
   @include transition(color 0.3s ease-in-out, border-color 0.3s ease-in-out);
 
   &:hover {
@@ -96,6 +96,39 @@ a.action-btn {
       color: rgba(#a94442, 1);
       border: 1px solid rgba(#a94442, 1);
     }
+  }
+}
+
+label {
+  position: relative;
+  display: block;
+
+  input[type="text"], input[type="email"], input[type="password"], textarea {
+    -webkit-appearance: none;
+    background-color: rgba(#fff, 1);
+    border: 1px solid rgba(#ddd, 1);
+    border-radius: 4px;
+    color: #444;
+    display: block;
+    @include rem('font-size', 16px);
+    padding: 4px 6px;
+    vertical-align: middle;
+    width: 100%;
+    margin: 5px 0 20px;
+    @include transition (all 0.3s ease-in-out);
+
+    &:hover {
+      border-color: rgba(#bbb, 1);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: rgba(#aaa, 1);
+      box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+    }
+
+    input[type="text"], input[type="email"], input[type="password"] {
+      height: 45px;}
   }
 }
 
@@ -153,6 +186,90 @@ a.action-btn {
 
 .recipe-meta {
   clear: both;
+}
+
+.new_recipe_form {
+  clear: both;
+  max-width: 530px;
+}
+
+.new_recipe_form input, .new_recipe_form textarea {
+  
+}
+
+.guide-btn.open {
+  position: absolute;
+  bottom: 0;
+}
+
+.guide-btn.close {
+  float: right;
+}
+
+.zebra tr:nth-child(even) {
+   background-color: #fafafa;
+}
+
+.zebra tr:nth-child(odd) {
+   background-color: #fff;
+}
+
+#format-guide ul, #format-guide ol, #format-guide img {
+  margin: 0;
+  padding: 0;
+}
+
+#format-guide {
+  display: block;
+  width: 100%;
+  max-width: 530px;
+  border: 1px solid rgba(#ddd, 1);
+  border-collapse: separate;
+  border-spacing: 0px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  @include rem(font-size, 14px);
+  overflow: hidden;
+
+  thead, tbody, tfoot {
+    display: table;
+    width: 100%;
+  }
+
+  td, th {
+    display: table-cell;
+    width: 50%;
+    border-top: 1px solid rgba(#ddd, 1);
+    border-right: 1px solid rgba(#ddd, 1);
+    padding: 5px;
+
+    img {
+      width: 100%;
+    }
+
+    ul, ol {
+      list-style-position: inside;
+    }
+  }
+
+  th {
+    border: 0;
+    background-color: #eee;
+  }
+
+  tr td:first-child {
+    font-family: 'Source Code Pro', monospace;
+    white-space: nowrap;
+  }
+
+  tr td:first-child.normal-wrap {
+    white-space: normal;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  tr td:last-child {
+    border-right: 0;
+  }
 }
 
 .featured {
@@ -533,35 +650,6 @@ footer {
           }
         }
       }
-
-      label {
-        display: block;
-
-        input[type="text"], input[type="email"], input[type="password"] {
-          -webkit-appearance: none;
-          background-color: rgba(#fff, 0.5);
-          border: 3px solid rgba(#fff, 1);
-          border-radius: 4px;
-          color: #444;
-          display: block;
-          @include rem('font-size', 16px);
-          height: 45px;
-          padding: 4px 6px;
-          vertical-align: middle;
-          width: 100%;
-          margin: 5px 0 20px;
-          @include transition (all 0.3s ease-in-out);
-
-          &:hover {
-            background-color: rgba(#fff, 0.8);
-          }
-
-          &:focus {
-            background-color: rgba(#fff, 1);
-            outline: 1px dotted rgba(#ccc, 1);
-          }
-        }
-      }
     }
   }
 
@@ -675,6 +763,11 @@ h5.fork-note {
     }
   }
 }
+
+
+
+
+
 
 
 
