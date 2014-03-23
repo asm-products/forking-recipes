@@ -563,9 +563,8 @@ ul.actions {
   }
 }
 
-a.btn {
-  background-color: rgba(#fafafa, 1);
-  background-image: none;
+a.action-btn {
+  @include linear-gradient(rgba(#fafafa, 1), rgba(#eee, 1));
   border: 1px solid rgba(#ccc, 1);
   border-radius: 4px;
   display: inline-block;
@@ -580,6 +579,13 @@ a.btn {
   padding-right: 12px;
   padding-top: 6px;
   text-align: center;
+  @include transition(color 0.3s ease-in-out, border-color 0.3s ease-in-out);
+
+  &:hover {
+    @include linear-gradient(rgba(#fcfcfc, 1), rgba(#eaeaea,1));
+    color: #444;
+    border: 1px solid rgba(#bbb, 1);
+  }
 }
 
 h5.fork-note {
