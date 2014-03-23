@@ -191,6 +191,19 @@ label {
 #new_recipe_form, #edit_recipe_form {
   clear: both;
   max-width: 530px;
+
+  .actions {
+    @include clearfix;
+    margin-bottom: 20px;
+
+    .back {
+      float: left;
+    }
+
+    .save {
+      float: right;
+    }
+  }
 }
 
 .guide-btn {
@@ -204,6 +217,11 @@ label {
 
 .guide-btn.close {
   float: right;
+}
+
+label .guide-btn {
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .zebra tr:nth-child(even) {
@@ -271,6 +289,8 @@ label {
     border-right: 0;
   }
 }
+
+
 
 .featured {
   @include columns(226px);
