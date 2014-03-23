@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
                                    class_name:  "Relationship",
                                    dependent:   :destroy
 
+  def to_param
+    username
+  end
+
   def starred_recipes
     ids = Star.where(:user_id => self.id).pluck(:recipe_id)
 

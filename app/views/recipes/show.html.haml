@@ -48,7 +48,7 @@
       %i.fa.fa-code-fork
       Forks - #{@forks}
   %li
-    = link_to recipe_star_path(@recipe), :class => 'btn' do
+    = link_to recipe_star_path(@recipe.user, @recipe), :method => 'post', :class => 'btn' do
       %i.fa.fa-paperclip
       Save to your recipes
 
@@ -99,7 +99,7 @@
       %i.fa.fa-code-fork
       Forks - #{@forks}
   %li
-    = link_to recipe_star_path(@recipe), :class => 'btn' do
+    = link_to recipe_star_path(@recipe.user, @recipe), :method => 'post', :class => 'btn' do
       %i.fa.fa-paperclip
       Save to your recipes
 
