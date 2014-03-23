@@ -19,11 +19,6 @@ class HomeController < ApplicationController
   end
 
   def browse
-    if cookies["visited"].nil?
-      cookies["visited"] = true
-      redirect_to "/browse#guider=first"
-    end
-
     recipe_images = RecipeImage.includes(:recipe).last(100).reverse
 
     @images = recipe_images.map do |image|

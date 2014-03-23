@@ -9,6 +9,9 @@ end
 
 group :development do
   gem 'meta_request', '0.2.0'
+  gem 'guard'
+  gem 'guard-livereload', require: false
+  gem "rack-livereload"
 end
 
 gem 'pg'
@@ -18,7 +21,6 @@ gem 'carrierwave'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem "fog", "~> 1.3.1"
 gem "rmagick", '2.13.2'
-gem 'make_voteable'
 gem "tweet-button"
 gem 'dalli'
 gem 'newrelic_rpm'
@@ -30,3 +32,4 @@ gem "differ"
 gem 'bootstrap-sass'
 gem "haml", ">= 3.0.0"
 gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
+gem 'neat'

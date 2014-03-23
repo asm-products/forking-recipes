@@ -1,16 +1,14 @@
 class Recipe < ActiveRecord::Base
-  make_voteable
-
   belongs_to :user
   has_many :recipe_revisions
+
   attr_accessible :body, :commit_message, :revision, :title, :user, :slug, :forked_from_recipe_id, :tag_list
 
   has_many :events
   has_many :recipe_images
 
   validates :commit_message, :presence => {:message => 'Update Message cannot be blank'}
-  validates :title, :presence => {:message => 'Update Message cannot be blank'}
-  validates :slug, :presence => {:message => 'Update Message cannot be blank'}
+  validates :title, :presence => {:message => 'Title cannot be blank'}
 
   validates_uniqueness_of :slug, :scope => :user_id
 
@@ -20,8 +18,20 @@ class Recipe < ActiveRecord::Base
 
   acts_as_taggable
 
+  def to_param
+    slug
+  end
+
   def increment_revision!
     self.revision = self.revision + 1
+  end
+
+  def number_of_forks
+    Recipe.where(:forked_from_recipe_id => self.id).count
+  end
+
+  def number_of_stars
+    Star.where(:recipe_id => self.id).count
   end
 
   def create_recipe_revision!

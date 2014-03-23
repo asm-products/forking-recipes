@@ -1,46 +1,50 @@
-!!!
+!!! 5
 %html
   %head
     %meta{:charset => "utf-8"}
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
     %title= @page_title || "ForkingRecipes"
     %meta{:content => "", :name => "description"}
-    %meta{:content => "", :name => "author"}
+    %meta{:content => "David Pick and Andy Standfield", :name => "author"}
+    %link{:href => "//fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,300,400,700|Merriweather:400,400italic,300italic,300,700,700italic|Source+Code+Pro", :rel => "stylesheet", :type => "text/css"}
+    %link{:href=>"//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", :rel=>"stylesheet"}
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
     = yield(:head)
   %body{"data-controller" => controller_name, "data-action" => action_name}
-    .navbar.navbar-inverse.navbar-fixed-top
+    .navbar.navbar-fixed-top
       .navbar-inner
-        .container-fluid
-          = render 'layouts/navigation'
+        = render 'layouts/navigation'
     #main{:role => "main"}
-      .container-fluid
-        .row-fluid
-          .span9
-            %div{:id => "main-container", :class => "hero-unit"}
-              = render 'layouts/messages'
-              = yield
-          .span3
-            .well.sidebar-nav
-              %ul.nav.nav-list
-                %li= link_to 'Create a new recipe', new_recipe_path
-                - if current_user
-                  %li.nav-header Your Recipes
-                  - @recipes.each do |recipe|
-                    %li
-                      %a{:href => recipe_path(recipe)}= recipe.title
-                - else
-                  %li.nav-header Featured Users
-                  - @users.each do |user|
-                    %li
-                      %a{:href => user_path(user)}= user.username
+      %div{:id => "main-container"}
+        .main-content
+          = render 'layouts/messages'
+          = yield
+        %aside.sidebar
+          %ul.nav-list
+            - if current_user
+              %li.nav-header Your Recipes
+              - @recipes.each do |recipe|
+                %li
+                  %a{:href => recipe_path(recipe)}= recipe.title
+            - else
+              %li.nav-header Featured Users
+              - @users.each do |user|
+                %li
+                  %a{:href => user_path(user)}= user.username
+    %footer
+      %aside.footer-info
+        %a{:href => "mailto:forkingrecipes@gmail.com", :class=>"contact-link"}
+          Contact Us
+          %i.fa.fa-envelope
+        .copyright
+          Copyright &copy; 2014, 
+          %a{:href => "https://twitter.com/davidpick", :class=>"david-link"} 
+            David Pick
+            %i.fa.fa-twitter
 
 
-        %footer
-          %a{:href => "mailto:forkingrecipes@gmail.com"}
-            Contact Us
 
     - if Rails.env == "production"
       :javascript

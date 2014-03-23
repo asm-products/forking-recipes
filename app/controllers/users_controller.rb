@@ -9,8 +9,7 @@ class UsersController < ApplicationController
     @recipes = Recipe.where(:user_id => @user.id)
 
     if @user == current_user
-      recipe_ids = Recipe.connection.select_values("select voteable_id from votings where voter_id = #{@user.id}")
-      @favorited_recipes = Recipe.find_all_by_id(recipe_ids)
+      @favorited_recipes = current_user.starred_recipes
     end
   end
 
