@@ -188,13 +188,13 @@ label {
   clear: both;
 }
 
-.new_recipe_form {
+#new_recipe_form, #edit_recipe_form {
   clear: both;
   max-width: 530px;
 }
 
-.new_recipe_form input, .new_recipe_form textarea {
-  
+.guide-btn {
+  z-index: 10;
 }
 
 .guide-btn.open {
