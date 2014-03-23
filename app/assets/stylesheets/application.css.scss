@@ -88,13 +88,13 @@ a.action-btn {
   &.btn-danger {
 
     i {
-      color: rgba(#A94442, 1);
+      color: rgba(#a94442, 1);
     }
 
     &:hover {
-      @include linear-gradient(rgba(#fcfcfc, 1), rgba(#F2DEDE, 0.95));
-      color: rgba(#A94442, 1);
-      border: 1px solid rgba(#A94442, 1);
+      @include linear-gradient(rgba(#f9f1f1, 1), rgba(#f2dede, 0.95));
+      color: rgba(#a94442, 1);
+      border: 1px solid rgba(#a94442, 1);
     }
   }
 }
@@ -661,7 +661,7 @@ h5.fork-note {
     }
   }
 
-  &.alert-danger {
+  &.alert-danger, &.alert-error {
     color: rgba(#A94442, 1);
     border-color: rgba(#EBCCD1, 1);
     background-color: rgba(#F2DEDE, 0.95);
