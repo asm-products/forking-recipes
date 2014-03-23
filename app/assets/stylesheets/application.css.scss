@@ -25,6 +25,8 @@ html {
 
 body {
   font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   @include rem('line-height', 20px);
   text-shadow: 0px 1px 1px rgba(255, 255, 255, 1);
   padding: 70px 0 0;
@@ -78,6 +80,7 @@ a {
   text-align: center;
   cursor: pointer;
   @include transition(color 0.3s ease-in-out, border-color 0.3s ease-in-out);
+  -webkit-font-smoothing: antialiased;
 
   &:hover {
     @include linear-gradient(rgba(#fcfcfc, 1), rgba(#e9e9e9,1));
@@ -97,6 +100,11 @@ a {
       border: 1px solid rgba(#a94442, 1);
     }
   }
+}
+
+button.action-btn, input.action-btn {
+  padding-top: 3px;
+  font-size: 14px;
 }
 
 label {
