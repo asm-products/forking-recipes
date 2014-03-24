@@ -822,7 +822,26 @@ h5.fork-note {
   }
 }
 
+pre.diffs {
+  white-space: normal;
+  margin-bottom: 40px;
 
+  .differ {
+    display: block;
+    @include rem(margin, 10px 0);
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  del.differ {
+    background-color: rgba(#F2DEDE, 0.95);
+  }
+  
+  ins.differ {
+    background-color: rgba(#D9EDF7, 0.95);
+  }
+
+}
 
 
 
