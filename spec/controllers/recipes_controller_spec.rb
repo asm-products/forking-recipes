@@ -25,4 +25,15 @@ describe RecipesController do
       user2.recipes.last.forked_from_recipe_id.should == recipe.id
     end
   end
+
+  describe "#random" do
+    it "redirects to a random recipe" do
+      user   = User.create(:username => 'foo', :email => 'a@b.com', :password => 'password')
+      recipe = Recipe.create(:title => 'foo', :body => 'bar', :commit_message => 'foo', :slug => 'foo', :user => user)
+
+      get "random"
+
+      response.should redirect_to "/foo/foo"
+    end
+  end
 end

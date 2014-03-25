@@ -2,13 +2,19 @@ class RecipesController < ApplicationController
   include RecipesHelper
   include UsersHelper
 
-  before_filter :authenticate_user!, :except => [:show, :forks]
+  before_filter :authenticate_user!, :except => [:show, :forks, :random]
 
   def star
     @recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
     current_user.star(@recipe)
 
     redirect_to recipe_path(@recipe)
+  end
+
+  def random
+    recipe = Recipe.where("forked_from_recipe_id IS NULL").order("RANDOM()").limit(1).first
+
+    redirect_to recipe_path(recipe)
   end
 
   def fork
