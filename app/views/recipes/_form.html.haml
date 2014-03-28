@@ -12,8 +12,9 @@
       = f.text_field :title, :class => "input-xxlarge"
   .field
     %div{:class => 'wmd-panel'}
-      %div{:id => 'wmd-button-bar'}
-      %textarea{:class => 'wmd-input', :id => 'wmd-input'}
+      = f.label :body do
+        %div{:id => 'wmd-button-bar'}
+        = f.text_area :body, :class => "input-xxlarge wmd-input"
     %div{:id => 'wmd-preview', :class => 'wmd-panel wmd-preview'}
   .field
     = f.label :commit_message, "Update Message" do
