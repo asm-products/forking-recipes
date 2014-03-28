@@ -1,4 +1,5 @@
 //= require_self
+//= require markdown
 //= require_tree .
 
 @import "bourbon";
@@ -252,6 +253,12 @@ label .guide-btn {
 #format-guide ul, #format-guide ol, #format-guide img {
   margin: 0;
   padding: 0;
+}
+
+#wmd-preview {
+  border-style: dotted;
+  border-width: 2px;
+  padding: 5px;
 }
 
 #format-guide {

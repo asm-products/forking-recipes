@@ -132,6 +132,8 @@ GEM
     nio4r (1.0.0)
     nokogiri (1.5.6)
     orm_adapter (0.4.0)
+    pagedown-rails (1.1.3)
+      railties (> 3.1)
     pg (0.14.1)
     pg_search (0.5.7)
       activerecord (>= 3)
@@ -233,6 +235,7 @@ DEPENDENCIES
   meta_request (= 0.2.0)
   neat
   newrelic_rpm
+  pagedown-rails (~> 1.1.3)
   pg
   pg_search
   rack-livereload

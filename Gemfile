@@ -16,6 +16,7 @@ end
 
 gem 'pg'
 gem 'rails', '3.2.17'
+gem 'pagedown-rails', '~> 1.1.3'
 gem 'pg_search'
 gem 'carrierwave'
 gem 'acts-as-taggable-on', '~> 2.3.1'
