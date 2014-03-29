@@ -21,18 +21,6 @@
         .main-content
           = render 'layouts/messages'
           = yield
-        %aside.sidebar
-          %ul.nav-list
-            - if current_user
-              %li.nav-header Your Recipes
-              - @layout_recipes.each do |recipe|
-                %li
-                  %a{:href => recipe_path(recipe)}= recipe.title
-            - else
-              %li.nav-header Featured Users
-              - @layout_users.each do |user|
-                %li
-                  %a{:href => user_path(user)}= user.username
     %footer
       %aside.footer-info
         %a{:href => "mailto:forkingrecipes@gmail.com", :class=>"contact-link"}

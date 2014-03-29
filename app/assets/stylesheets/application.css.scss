@@ -152,7 +152,19 @@ body[data-action="browse"][data-controller="home"] #main-container {
 }
 
 .main-content {
-  @include span-columns(8);
+  @include span-columns(12);
+}
+
+#wmd-preview {
+  @include span-columns(6);
+
+  img {
+    max-width: 100%;
+  }
+}
+
+#recipe-form {
+  @include span-columns(6);
 }
 
 .sidebar {
