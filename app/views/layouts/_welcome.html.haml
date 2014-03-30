@@ -1,8 +1,4 @@
-- if user_signed_in?
-  %section.welcome.logged-in
-    Welcome back,
-    = current_user.username
-- else
+- if !user_signed_in?
   %section.welcome.logged-out
     .welcome-inner
       .message
