@@ -42,9 +42,10 @@
       %i.fa.fa-paperclip
       Save to your recipes
 
-%ul.social-actions
-  %li
-    %a{:href => "//www.pinterest.com/pin/create/button/?url=#{request.original_url}&media=#{@recipe.recipe_images.last.image_url}&description=#{@recipe.title}", :'data-pin-do' => 'buttonPin', :'data-pin-config' => 'above'}
-      <img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />
-    <!-- Please call pinit.js only once per page -->
-    <script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
+- if @recipe.recipe_images.size > 0
+  %ul.social-actions
+    %li
+      %a{:href => "//www.pinterest.com/pin/create/button/?url=#{request.original_url}&media=#{@recipe.recipe_images.last.image_url}&description=#{@recipe.title}", :'data-pin-do' => 'buttonPin', :'data-pin-config' => 'above'}
+        <img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />
+      <!-- Please call pinit.js only once per page -->
+      <script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
