@@ -18,6 +18,8 @@ class HomeController < ApplicationController
     @images = recipe_images.map do |image|
       [image.image_url(:thumb), image.recipe]
     end
+  rescue
+    @images = []
   end
 
   def search
