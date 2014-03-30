@@ -16,7 +16,7 @@
     .navbar.navbar-fixed-top
       .navbar-inner
         = render 'layouts/navigation'
-    - if controller_name == 'home' && action_name == 'browse'
+    - if controller_name == 'home' && action_name == 'landing'
       = render 'layouts/welcome'
     #main{:role => "main"}
       %div{:id => "main-container"}
