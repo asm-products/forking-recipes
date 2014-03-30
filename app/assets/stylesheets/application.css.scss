@@ -236,6 +236,12 @@ body[data-action="browse"][data-controller="home"] #main-container {
     float: right;
   }
 }
+
+.social-actions {
+  float: right;
+  list-style: none;
+}
+
 .guide-btn {
   z-index: 10;
 }
