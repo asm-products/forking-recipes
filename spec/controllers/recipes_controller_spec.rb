@@ -36,4 +36,21 @@ describe RecipesController do
       response.should redirect_to "/foo/foo"
     end
   end
+
+  describe "#show" do
+    it "doesn't blow up if the original recipe no longer exists" do
+      user   = User.create(:username => 'foo', :email => 'a@b.com', :password => 'password')
+      user2  = User.create(:username => 'baz', :email => 'a@c.com', :password => 'password')
+      recipe = Recipe.create(:title => 'foo', :body => 'bar', :commit_message => 'foo', :slug => 'foo', :user => user)
+
+      sign_in(user2)
+
+      recipe.fork_to(user2)
+      recipe.destroy
+
+      get "show", :username => user2.username, :recipe => recipe.slug
+
+      response.should be_success
+    end
+  end
 end
