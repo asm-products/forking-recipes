@@ -44,7 +44,7 @@ class RecipesController < ApplicationController
     return render :inline => "We couldn't find that recipe in our system :(" unless @recipe
 
     @revision_count = RecipeRevision.where(:recipe_id => @recipe.id).count
-    @forked_from_recipe = Recipe.find(@recipe.forked_from_recipe_id) if @recipe.forked_from_recipe_id
+    @forked_from_recipe = Recipe.find_by_id(@recipe.forked_from_recipe_id) if @recipe.forked_from_recipe_id
 
     @page_title = "ForkingRecipes - #{@recipe.user.username} / #{@recipe.title}"
 
