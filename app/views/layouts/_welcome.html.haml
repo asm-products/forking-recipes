@@ -22,11 +22,11 @@
         .form-wrapper
           %h2
             %span.signin-tab
-              Sign in
+              = link_to('Sign In', new_user_session_path)
             %span.little
               \~OR~
             %span.signup-tab
-              Sign up
+              = link_to('Sign up', new_user_registration_path)
           %form{:action => "/users/sign_in", :class => "new_user", :id => "new_user", :method => "post"}
             %div{:style => "margin:0;padding:0;"}
               %label{:for => "user_email"}
