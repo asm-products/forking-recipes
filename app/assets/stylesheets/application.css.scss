@@ -626,13 +626,15 @@ footer {
   .welcome-inner {
     display: table;
     height: 100%;
-    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
 
     .message {
       display: table-cell;
       width: 50%;
       height: 100%;
-      padding-right: 10px;
       vertical-align: middle;
       background-color: rgba(#000, 0.5);
       border-radius: 4px;
@@ -666,7 +668,7 @@ footer {
       }
 
       .description {
-        padding: 10px 20px 10px 20%;
+        padding: 10px 20px 10px 20px;
         line-height: 1.4em;
         margin-top: 0;
         border-top-right-radius: 5px;
@@ -696,9 +698,9 @@ footer {
       display: table-cell;
       height: 100%;
       vertical-align: middle;
-      padding-left: 10px;
-      padding-right: 20px;
       text-align: center;
+      float: right;
+      width: 75%;
 
       .form-wrapper {
         display: inline-block;
@@ -719,7 +721,7 @@ footer {
           }
 
           .signin-tab, .signup-tab {
-            
+
           }
 
           .signup-tab {
