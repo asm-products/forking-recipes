@@ -15,6 +15,7 @@ group :development do
 end
 
 gem 'pg'
+gem 'exception_notification'
 gem 'rails', '3.2.17'
 gem 'pagedown-rails', '~> 1.1.3'
 gem 'pg_search'

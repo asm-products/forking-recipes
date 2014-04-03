@@ -1,3 +1,10 @@
+RecipeHub::Application.config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "[ForkingRecipes Error - Production] ",
+    :sender_address => %{"notifier" <notifier@forkingrecipes.com>},
+    :exception_recipients => %w{pickdavid@gmail.com}
+  }
+
 RecipeHub::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
