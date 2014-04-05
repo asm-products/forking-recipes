@@ -31,6 +31,9 @@ class RecipesController < ApplicationController
 
   def forks
     @recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
+
+    return render :inline => "We couldn't find that recipe in our system :(" unless @recipe
+
     @forked_recipes = Recipe.where(:forked_from_recipe_id => @recipe.id)
   end
 
