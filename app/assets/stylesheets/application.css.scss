@@ -721,7 +721,6 @@ footer {
           }
 
           .signin-tab, .signup-tab {
-
           }
 
           .signup-tab {
@@ -735,6 +734,10 @@ footer {
 
             &:hover {
               background-color: rgba($green-light, 1);
+            }
+
+            a {
+              color: white;
             }
           }
         }
