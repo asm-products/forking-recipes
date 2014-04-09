@@ -16,3 +16,6 @@
           %span.label
             %i.fa.fa-star
             = pluralize(recipe.number_of_stars, 'save')
+
+%div.browse-more.action-btn
+  = link_to('See More Recipes', browse_path)
