@@ -1,7 +1,14 @@
-- if current_user && !current_user.following?(@user) && current_user != @user
-  = link_to "Follow #{@user.username}", user_follow_path(@user), :class => "btn", :method => :post
-- elsif current_user && current_user != @user
-  = link_to "Unfollow #{@user.username}", user_unfollow_path(@user), :class => "btn", :method => :post
+%ul.actions
+  - if current_user && !current_user.following?(@user) && current_user != @user
+    %li
+      = link_to user_follow_path(@user), :class => "action-btn", :method => :post do
+        %i.fa
+        = "Follow #{@user.username}"
+  - elsif current_user && current_user != @user
+    %li
+      = link_to user_unfollow_path(@user), :class => "action-btn", :method => :post do
+        %i.fa
+        = "Unfollow #{@user.username}"
 
 - if !@recipes.empty?
   %div{:class => "recipes"}

@@ -227,6 +227,7 @@ body[data-action="browse"][data-controller="home"] #main-container {
 .actions {
   @include clearfix;
   margin-bottom: 20px;
+  width: 100%;
 
   .back {
     float: left;
