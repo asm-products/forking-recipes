@@ -648,6 +648,11 @@ footer {
       background-color: rgba(#000, 0.5);
       border-radius: 4px;
 
+      .center-title {
+        text-align: center;
+        margin-left: 0;
+      }
+
       h1, h2 {
         font-family: 'Merriweather', serif;
         font-weight: 300;
