@@ -488,10 +488,20 @@ label .guide-btn {
         float: left;
         @include rem('margin-right', 20px);
 
+        &.browse-item {
+          @media screen and (max-width: 480px) {
+            display: none;
+          }
+        }
+
         &.search-item {
           @include rem('padding-top', 10px);
           @include clearfix;
           position: relative;
+
+          @media screen and (max-width: 480px) {
+            display: none;
+          }
 
           input[type=text] {
             -webkit-appearance: none;
@@ -890,10 +900,3 @@ pre.diffs {
   }
 
 }
-
-
-
-
-
-
-// end
