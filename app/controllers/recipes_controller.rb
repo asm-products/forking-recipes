@@ -75,11 +75,6 @@ class RecipesController < ApplicationController
 ### Pictures
 ![my_image](imgur.com/my_image)
 body
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @recipe }
-    end
   end
 
   def edit
@@ -98,10 +93,9 @@ body
       if @recipe.valid_body? && @recipe.save
         Event.create(:user_id => @recipe.user.id, :recipe_id => @recipe.id, :action => "created")
         format.html { redirect_to "/#{@recipe.user.username}/#{@recipe.slug}", notice: 'Recipe was successfully created.' }
-        format.json { render json: @recipe, status: :created, location: @recipe }
       else
+        @recipe = Recipe.new(params[:recipe_form])
         format.html { render action: "new" }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -116,10 +110,8 @@ body
         @recipe.upload_images!
         @recipe.create_recipe_revision!
         format.html { redirect_to "/#{@recipe.user.username}/#{@recipe.slug}", notice: 'Recipe was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -131,7 +123,6 @@ body
 
     respond_to do |format|
       format.html { redirect_to user_path(User.find_by_username(params[:username])) }
-      format.json { head :no_content }
     end
   end
 end
