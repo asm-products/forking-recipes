@@ -29,12 +29,6 @@ class HomeController < ApplicationController
   end
 
   def browse
-    recipe_images = RecipeImage.includes(:recipe).last(100).reverse
-
-    @images = recipe_images.map do |image|
-      [image.image_url(:thumb), image.recipe]
-    end.reject do |image, recipe|
-      recipe.nil?
-    end.uniq { |i, r| r.slug }
+    @recipes = Recipe.includes(:recipe_images).uniq_by(&:slug).last(100).reverse
   end
 end
