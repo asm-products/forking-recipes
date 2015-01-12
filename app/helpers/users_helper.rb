@@ -1,13 +1,9 @@
 module UsersHelper
   def user_follow_path(user)
-    "/#{user.username}/follow"
+    follow_user_path(user)
   end
 
   def user_unfollow_path(user)
-    "/#{user.username}/unfollow"
-  end
-
-  def user_path(user)
-    "/#{user.username}"
+    unfollow_user_path(user)
   end
 end
