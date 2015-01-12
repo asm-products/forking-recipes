@@ -86,15 +86,15 @@ body
     @recipe.revision = 1
     @recipe.user     = current_user
     @recipe.slug     = @recipe.title.parameterize
-    @recipe.create_recipe_revision!
-    @recipe.upload_images!
 
     respond_to do |format|
       if @recipe.valid_body? && @recipe.save
+        @recipe.create_recipe_revision!
+        @recipe.upload_images!
         Event.create(:user_id => @recipe.user.id, :recipe_id => @recipe.id, :action => "created")
         format.html { redirect_to "/#{@recipe.user.username}/#{@recipe.slug}", notice: 'Recipe was successfully created.' }
       else
-        @recipe = Recipe.new(params[:recipe_form])
+        @recipe.user = nil
         format.html { render action: "new" }
       end
     end
