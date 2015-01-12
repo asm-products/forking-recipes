@@ -25,11 +25,11 @@
 
   - if current_user == @recipe.user
     %li
-      = link_to edit_recipe_path(@recipe), :class => "action-btn" do
+      = link_to edit_user_recipe_path(current_user, @recipe), :class => "action-btn" do
         %i.fa.fa-pencil
         Edit
     %li
-      = link_to recipe_path(@recipe), :confirm => 'Are you sure you want to delete this recipe?', :method => :delete, :class => "action-btn btn-danger" do
+      = link_to user_recipe_path(current_user, @recipe), :confirm => 'Are you sure you want to delete this recipe?', :method => :delete, :class => "action-btn btn-danger" do
         %i.fa.fa-trash-o
         Delete
 
@@ -38,7 +38,7 @@
       %i.fa.fa-code-fork
       Forks - #{@forks}
   %li
-    = link_to recipe_star_path(@recipe.user, @recipe), :method => 'post', :class => 'action-btn' do
+    = link_to star_user_recipe_path(@recipe.user, @recipe), :method => 'post', :class => 'action-btn' do
       %i.fa.fa-paperclip
       Save to your recipes
 

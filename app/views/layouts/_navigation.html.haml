@@ -19,7 +19,7 @@
     %li.your-item
       = link_to("Your Recipes", user_path(current_user))
     %li.new-item
-      = link_to 'Create a new recipe', new_recipe_path
+      = link_to 'Create a new recipe', new_user_recipe_path(current_user)
   %li.search-item.large-screen
     = form_tag('/search', :method => 'POST', :class => 'navbar-form') do
       = text_field_tag('query', nil, :placeholder => 'Search')

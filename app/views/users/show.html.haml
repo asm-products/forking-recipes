@@ -26,14 +26,13 @@
         %td.span5.recipe-list
           %ul
             - @recipes.each do |recipe|
-              %li= link_to recipe.title, "/#{@user.username}/#{recipe.slug}"
+              %li= link_to recipe.title, [@user, recipe]
         %td.span5.recipe-list
           - if current_user == @user
             %ul
               - @favorited_recipes.each do |recipe|
-                %li= link_to recipe.title, "/#{recipe.user.username}/#{recipe.slug}"
-
+                %li= link_to recipe.title, [recipe.user, recipe]
 
 %br
 %br
-= link_to "New Recipe", new_recipe_path
+= link_to "New Recipe", new_user_recipe_path(current_user)

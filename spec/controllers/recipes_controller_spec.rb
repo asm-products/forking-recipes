@@ -7,7 +7,7 @@ describe RecipesController do
 
     sign_in(user)
 
-    post "star", :username => user.username, :recipe => recipe.slug
+    post "star", :user_id => user.username, :id => recipe.slug
 
     user.starred_recipes.should == [recipe]
   end
@@ -20,7 +20,7 @@ describe RecipesController do
 
       sign_in(user2)
 
-      get :fork, :username => user1.username, :recipe => recipe.slug
+      get :fork, :user_id => user1.username, :id => recipe.slug
 
       user2.recipes.last.forked_from_recipe_id.should == recipe.id
     end
@@ -33,7 +33,7 @@ describe RecipesController do
 
       get "random"
 
-      response.should redirect_to "/foo/foo"
+      response.should redirect_to "/foo/recipes/foo"
     end
   end
 
@@ -48,7 +48,7 @@ describe RecipesController do
       recipe.fork_to(user2)
       recipe.destroy
 
-      get "show", :username => user2.username, :recipe => recipe.slug
+      get "show", :user_id => user2.username, :id => recipe.slug
 
       response.should be_success
     end

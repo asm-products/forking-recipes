@@ -1,17 +1,14 @@
 %p
-  %h3.recipe-title= "#{link_to(@recipe.user.username, user_path(@recipe.user))} / #{@recipe.title}".html_safe
+  %h3.recipe-title= "#{link_to(@recipe.user.username, user_recipes_path(@recipe.user))} / #{@recipe.title}".html_safe
   - if @forked_from_recipe
-    - recipe_url = "/#{@forked_from_recipe.user.username}/#{@forked_from_recipe.slug}"
-    - link_text  = @forked_from_recipe.slug
-    - user_url = "/#{@forked_from_recipe.user.username}"
-    %h5.fork-note= "Forked from #{link_to @forked_from_recipe.user.username, user_url} / #{link_to link_text, recipe_url}".html_safe
+    %h5.fork-note= "Forked from #{link_to @forked_from_recipe.user.username, @forked_from_recipe.user} / #{link_to @forked_from_recipe.slug, [@forked_from_recipe.user, @forked_from_recipe]}".html_safe
 
-= render "actions-menu" 
+= render "actions-menu"
 
 %div.recipe
   = RDiscount.new(@recipe.body).to_html.html_safe
 
-= render "actions-menu" 
+= render "actions-menu"
 
 .recipe-meta
   %p

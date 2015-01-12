@@ -3,25 +3,21 @@ class RecipesController < ApplicationController
   include UsersHelper
 
   before_filter :authenticate_user!, :except => [:show, :forks, :random]
+  before_filter :get_recipe, :except => [:index, :new, :create, :random]
 
   def star
-    @recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
     current_user.star(@recipe)
-
     redirect_to recipe_path(@recipe)
   end
 
   def random
     recipe = Recipe.where("forked_from_recipe_id IS NULL").order("RANDOM()").limit(1).first
-
     redirect_to recipe_path(recipe)
   end
 
   def fork
-    recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
-
     respond_to do |format|
-      if recipe.user != current_user && forked_recipe = recipe.fork_to(current_user)
+      if @recipe.user != current_user && forked_recipe = @recipe.fork_to(current_user)
         format.html { redirect_to recipe_path(forked_recipe), notice: 'Recipe was successfully forked.' }
       else
         format.html { render action: "new" }
@@ -30,10 +26,6 @@ class RecipesController < ApplicationController
   end
 
   def forks
-    @recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
-
-    return render :inline => "We couldn't find that recipe in our system :(" unless @recipe
-
     @forked_recipes = Recipe.where(:forked_from_recipe_id => @recipe.id)
   end
 
@@ -42,10 +34,6 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
-
-    return render :inline => "We couldn't find that recipe in our system :(" unless @recipe
-
     @revision_count = RecipeRevision.where(:recipe_id => @recipe.id).count
     @forked_from_recipe = Recipe.find_by_id(@recipe.forked_from_recipe_id) if @recipe.forked_from_recipe_id
 
@@ -78,11 +66,10 @@ body
   end
 
   def edit
-    @recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
   end
 
   def create
-    @recipe          = Recipe.new(params[:recipe_form])
+    @recipe          = Recipe.new(params[:recipe])
     @recipe.revision = 1
     @recipe.user     = current_user
     @recipe.slug     = @recipe.title.parameterize
@@ -92,7 +79,7 @@ body
         @recipe.create_recipe_revision!
         @recipe.upload_images!
         Event.create(:user_id => @recipe.user.id, :recipe_id => @recipe.id, :action => "created")
-        format.html { redirect_to "/#{@recipe.user.username}/#{@recipe.slug}", notice: 'Recipe was successfully created.' }
+        format.html { redirect_to [current_user, @recipe], notice: 'Recipe was successfully created.' }
       else
         @recipe.user = nil
         format.html { render action: "new" }
@@ -101,7 +88,6 @@ body
   end
 
   def update
-    @recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
     @recipe.increment_revision!
 
     respond_to do |format|
@@ -109,7 +95,7 @@ body
         Event.create(:user_id => @recipe.user.id, :recipe_id => @recipe.id, :action => "updated")
         @recipe.upload_images!
         @recipe.create_recipe_revision!
-        format.html { redirect_to "/#{@recipe.user.username}/#{@recipe.slug}", notice: 'Recipe was successfully updated.' }
+        format.html { redirect_to [@recipe.user, @recipe], notice: 'Recipe was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -117,12 +103,18 @@ body
   end
 
   def destroy
-    @recipe = find_recipe_by_slug_and_username(params[:recipe], params[:username])
     Event.where(:recipe_id => @recipe.id).destroy_all
     @recipe.destroy
 
     respond_to do |format|
-      format.html { redirect_to user_path(User.find_by_username(params[:username])) }
+      format.html { redirect_to user_path(User.find_by_username(params[:user_id])) }
     end
+  end
+
+  private
+  def get_recipe
+    @user = User.find_by_username(params[:user_id])
+    @recipe = @user.recipes.find_by_slug(params[:id])
+    return render :inline => "We couldn't find that recipe in our system :(" unless @recipe
   end
 end
