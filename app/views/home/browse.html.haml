@@ -1,10 +1,10 @@
 %h3
   Featured Recipes
 %section.featured
-  - @images.each do |image, recipe|
+  - @recipes.each do |recipe|
     %div.rec-item
       %a.recipe-link{:href => recipe_path(recipe)}
-        %img{:src => image}
+        %img{:src => recipe_thumbnail_path(recipe)}
         .item-text
           = recipe.title
       %ul.recipe-stats
