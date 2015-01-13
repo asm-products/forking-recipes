@@ -1,5 +1,5 @@
 %div{:id => 'recipe-form'}
-  = form_for @recipe, :as => :recipe_form, :url => recipe_path(@recipe) do |f|
+  = form_for [current_user, @recipe] do |f|
     - if @recipe.errors.any?
       #error_explanation
         %h2= "#{pluralize(@recipe.errors.count, "error")} prohibited this recipe from being saved:"

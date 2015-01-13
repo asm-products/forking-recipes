@@ -2,10 +2,9 @@ class UsersController < ApplicationController
   include UsersHelper
 
   before_filter :authenticate_user!, :except => [:show]
+  before_filter :get_user
 
   def show
-    @user    = User.find_by_username(params[:username])
-    return render :inline => "We couldn't find that user in our system :(" unless @user
     @recipes = Recipe.where(:user_id => @user.id)
 
     if @user == current_user
@@ -14,14 +13,20 @@ class UsersController < ApplicationController
   end
 
   def follow
-    current_user.follow!(User.find_by_username(params[:username])) if current_user
+    current_user.follow!(@user) if current_user
 
     redirect_to :back
   end
 
   def unfollow
-    current_user.unfollow!(User.find_by_username(params[:username])) if current_user
+    current_user.unfollow!(@user) if current_user
 
     redirect_to :back
+  end
+
+  private
+  def get_user
+    @user = User.find_by_username(params[:id])
+    return render :inline => "We couldn't find that user in our system :(" unless @user
   end
 end
