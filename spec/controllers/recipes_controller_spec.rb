@@ -98,4 +98,20 @@ describe RecipesController do
       response.should be_success
     end
   end
+
+  describe "#update" do
+    it "updates recipe and redirects to #show" do
+      user = User.create(:email => "test@example.com", :username => "test", :password => "secret")
+      recipe = Recipe.create(:title => "foo", :body => "blah", :commit_message => "first", :slug => "foo", :revision => 1, :user => user)
+
+      sign_in(user)
+
+      put "update", :user_id => user.username, :id => recipe.slug,
+        :recipe => {:title => "foo", :body => "new blah", :commit_message => "second"}
+
+      recipe.reload
+      recipe.body.should == "new blah"
+      response.should redirect_to([user, recipe])
+    end
+  end
 end
