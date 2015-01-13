@@ -4,7 +4,7 @@ db:
     - 5432:5432
 web:
   build: .
-  command: rails s
+  command: rails s -b0.0.0.0
   volumes:
     - .:/forking-recipes
   ports:

@@ -1,4 +1,4 @@
-RecipeHub::Application.routes.draw do
+Rails.application.routes.draw do
   devise_for :users
 
   devise_scope :user do
@@ -6,14 +6,14 @@ RecipeHub::Application.routes.draw do
     get "login",  :to => "devise/sessions#create"
   end
 
-  match "/browse"                      => "home#browse"
-  match "/landing"                     => "home#landing"
-  match "/help"                        => 'home#help'
-  match "/search"                      => "home#search"
+  match "/browse" => "home#browse", via: :get
+  match "/landing" => "home#landing", via: :get
+  match "/help" => 'home#help', via: :get
+  match "/search" => "home#search", via: :get
 
   root :to => "home#index"
 
-  match "/recipes/random"              => "recipes#random",  :via => :get, :as => :random_recipe
+  match "/recipes/random" => "recipes#random",  :via => :get, :as => :random_recipe
 
   resources :users, path: '' do
     member do
