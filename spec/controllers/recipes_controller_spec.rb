@@ -1,6 +1,51 @@
 require 'spec_helper'
 
 describe RecipesController do
+  describe "#create" do
+    it "creates a new recipe" do
+      user = User.create(:username => 'foo', :email => 'a@b.com', :password => 'password')
+      sign_in(user)
+
+      post "create", :recipe => {:title => 'test title', :body => 'foo', :commit_message => 'first'}, :user_id => user.username
+
+      r = user.recipes.first
+
+      r.title.should == 'test title'
+      r.body.should  == 'foo'
+    end
+
+    it "rejects the create if title is blank" do
+      user = User.create(:username => 'foo', :email => 'a@b.com', :password => 'password')
+      sign_in(user)
+
+      put "create", :recipe => {:title => '', :body => 'foo', :commit_message => 'first'}, :user_id => user.username
+
+      render_template(:new).should be_true
+    end
+
+    it "rejects the create if commit message is blank" do
+      user = User.create(:username => 'foo', :email => 'a@b.com', :password => 'password')
+      sign_in(user)
+
+      put "create", :recipe => {:title => 'title', :body => 'foo', :commit_message => ''}, :user_id => user.username
+
+      render_template(:new).should be_true
+    end
+  end
+
+  describe "#update" do
+    it "allows users to update the body of a recipe" do
+      user = User.create(:username => 'foo', :email => 'a@b.com', :password => 'password')
+      recipe = Recipe.create(:title => 'foo', :body => 'bar', :commit_message => 'foo', :slug => 'foo', :user => user, :revision => 1)
+
+      sign_in(user)
+
+      post "update", :recipe_form => {:title => 'foo', :body => 'bat', :commit_message => 'next'}, :user_id => user.username, :id => recipe.slug
+
+      recipe.reload.body.should == 'bat'
+    end
+  end
+
   it "allows users to star recipes" do
     user   = User.create(:username => 'foo', :email => 'a@b.com', :password => 'password')
     recipe = Recipe.create(:title => 'foo', :body => 'bar', :commit_message => 'foo', :slug => 'foo', :user => user)
