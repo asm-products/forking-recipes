@@ -9,6 +9,7 @@ gem "haml-rails"
 
 
 group :development do
+  gem 'thin'
   gem 'meta_request', '0.2.0'
   gem 'guard'
   gem 'guard-livereload', require: false
