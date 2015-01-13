@@ -91,7 +91,7 @@ body
     @recipe.increment_revision!
 
     respond_to do |format|
-      if @recipe.valid_body? && @recipe.update_attributes(params[:recipe_form])
+      if @recipe.valid_body? && @recipe.update_attributes(params[:recipe])
         Event.create(:user_id => @recipe.user.id, :recipe_id => @recipe.id, :action => "updated")
         @recipe.upload_images!
         @recipe.create_recipe_revision!
