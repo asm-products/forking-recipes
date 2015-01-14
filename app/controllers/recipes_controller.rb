@@ -2,8 +2,8 @@ class RecipesController < ApplicationController
   include RecipesHelper
   include UsersHelper
 
-  before_filter :authenticate_user!, :except => [:show, :forks, :random]
-  before_filter :get_recipe, :except => [:index, :new, :create, :random]
+  before_filter :authenticate_user!, except: [:show, :forks, :random]
+  before_filter :get_recipe, except: [:index, :new, :create, :random]
 
   def star
     current_user.star(@recipe)
@@ -26,20 +26,20 @@ class RecipesController < ApplicationController
   end
 
   def forks
-    @forked_recipes = Recipe.where(:forked_from_recipe_id => @recipe.id)
+    @forked_recipes = Recipe.where(forked_from_recipe_id: @recipe.id)
   end
 
   def index
-    @recipes = Recipe.where(:user_id => current_user)
+    @recipes = Recipe.where(user_id: current_user)
   end
 
   def show
-    @revision_count = RecipeRevision.where(:recipe_id => @recipe.id).count
+    @revision_count = RecipeRevision.where(recipe_id: @recipe.id).count
     @forked_from_recipe = Recipe.find_by_id(@recipe.forked_from_recipe_id) if @recipe.forked_from_recipe_id
 
     @page_title = "ForkingRecipes - #{@recipe.user.username} / #{@recipe.title}"
 
-    @forks  = Recipe.where(:forked_from_recipe_id => @recipe.id).count
+    @forks  = Recipe.where(forked_from_recipe_id: @recipe.id).count
 
     @star_count = @recipe.number_of_stars
 
@@ -50,7 +50,7 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.new(:body => <<body)
+    @recipe = Recipe.new(body: <<body)
 ### Source
 [some_blog](http://www.someblog.com/recipe)
 
@@ -69,16 +69,16 @@ body
   end
 
   def create
-    @recipe          = Recipe.new(params[:recipe])
+    @recipe = Recipe.new(recipe_params)
     @recipe.revision = 1
-    @recipe.user     = current_user
-    @recipe.slug     = @recipe.title.parameterize
+    @recipe.user = current_user
+    @recipe.slug = @recipe.title.parameterize
 
     respond_to do |format|
       if @recipe.valid_body? && @recipe.save
         @recipe.create_recipe_revision!
         @recipe.upload_images!
-        Event.create(:user_id => @recipe.user.id, :recipe_id => @recipe.id, :action => "created")
+        Event.create(user_id: @recipe.user.id, recipe_id: @recipe.id, action: "created")
         format.html { redirect_to [current_user, @recipe], notice: 'Recipe was successfully created.' }
       else
         @recipe.user = nil
@@ -91,8 +91,8 @@ body
     @recipe.increment_revision!
 
     respond_to do |format|
-      if @recipe.valid_body? && @recipe.update_attributes(params[:recipe])
-        Event.create(:user_id => @recipe.user.id, :recipe_id => @recipe.id, :action => "updated")
+      if @recipe.valid_body? && @recipe.update_attributes(recipe_params)
+        Event.create(user_id: @recipe.user.id, recipe_id: @recipe.id, action: "updated")
         @recipe.upload_images!
         @recipe.create_recipe_revision!
         format.html { redirect_to [@recipe.user, @recipe], notice: 'Recipe was successfully updated.' }
@@ -103,7 +103,7 @@ body
   end
 
   def destroy
-    Event.where(:recipe_id => @recipe.id).destroy_all
+    Event.where(recipe_id: @recipe.id).destroy_all
     @recipe.destroy
 
     respond_to do |format|
@@ -112,9 +112,13 @@ body
   end
 
   private
+  def recipe_params
+    params.require(:recipe).permit(:body, :commit_message, :revision, :title, :user, :slug, :forked_from_recipe_id, :tag_list)
+  end
+
   def get_recipe
     @user = User.find_by_username(params[:user_id])
     @recipe = @user.recipes.find_by_slug(params[:id])
-    return render :inline => "We couldn't find that recipe in our system :(" unless @recipe
+    return render inline: "We couldn't find that recipe in our system :(" unless @recipe
   end
 end

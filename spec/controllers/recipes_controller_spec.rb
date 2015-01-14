@@ -20,7 +20,7 @@ describe RecipesController do
 
       put "create", :recipe => {:title => '', :body => 'foo', :commit_message => 'first'}, :user_id => user.username
 
-      render_template(:new).should be_true
+      expect(response).to render_template(:new)
     end
 
     it "rejects the create if commit message is blank" do
@@ -29,7 +29,7 @@ describe RecipesController do
 
       put "create", :recipe => {:title => 'title', :body => 'foo', :commit_message => ''}, :user_id => user.username
 
-      render_template(:new).should be_true
+      expect(response).to render_template(:new)
     end
   end
 
@@ -40,7 +40,7 @@ describe RecipesController do
 
       sign_in(user)
 
-      post "update", :recipe_form => {:title => 'foo', :body => 'bat', :commit_message => 'next'}, :user_id => user.username, :id => recipe.slug
+      post "update", :recipe => {:title => 'foo', :body => 'bat', :commit_message => 'next'}, :user_id => user.username, :id => recipe.slug
 
       recipe.reload.body.should == 'bat'
     end

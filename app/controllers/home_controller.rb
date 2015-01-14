@@ -25,10 +25,10 @@ class HomeController < ApplicationController
   def search
     query = params[:query]
     results  = PgSearch.multisearch(query)
-    @recipes = Recipe.find_all_by_id(results.map(&:searchable_id))
+    @recipes = Recipe.where("id IN (?)", results.map(&:searchable_id))
   end
 
   def browse
-    @recipes = Recipe.includes(:recipe_images).uniq_by(&:slug).last(100).reverse
+    @recipes = Recipe.includes(:recipe_images).uniq(:slug).last(100).reverse
   end
 end

@@ -25,6 +25,10 @@ class UsersController < ApplicationController
   end
 
   private
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation, :remember_me, :username)
+  end
+
   def get_user
     @user = User.find_by_username(params[:id])
     return render :inline => "We couldn't find that user in our system :(" unless @user

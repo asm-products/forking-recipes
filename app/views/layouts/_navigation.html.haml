@@ -17,7 +17,7 @@
     = link_to("Browse", "/browse")
   - if user_signed_in?
     %li.your-item
-      = link_to("Your Recipes", user_path(current_user))
+      = link_to("Your Recipes", current_user)
     %li.new-item
       = link_to 'Create a new recipe', new_user_recipe_path(current_user)
   %li.search-item.large-screen

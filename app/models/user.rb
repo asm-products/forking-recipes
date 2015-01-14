@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   validates :username, :uniqueness => true
-  validates_format_of :username, :with => /^[a-zA-Z0-9_]*$/, :on => :create
+  validates_format_of :username, :with => /^[a-zA-Z0-9_]*$/, :multiline => true, :on => :create
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username
+  # attr_accessible :email, :password, :password_confirmation, :remember_me, :username
 
   has_many :events
   has_many :recipes
@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   def starred_recipes
     ids = Star.where(:user_id => self.id).pluck(:recipe_id)
 
-    Recipe.find_all_by_id(ids)
+    Recipe.where("id IN (?)", ids)
   end
 
   def star(recipe)
@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
   def following
     ids = Relationship.where(:follower_id => self.id).select(:followed_id).map(&:followed_id)
 
-    User.find_all_by_id(ids)
+    User.where("id IN (?)", ids).all
   end
 
   def follow!(other_user)
