@@ -3,36 +3,31 @@ require 'spec_helper'
 describe Recipe do
   describe "#number_of_stars" do
     it "returns 0 if the recipe hasn't been starred" do
-      recipe = Recipe.create(:title => 'foo', :body => 'blah', :commit_message => 'first')
+      recipe = FactoryGirl.create(:recipe)
 
-      recipe.number_of_stars.should == 0
+      expect(recipe.number_of_stars).to eq(0)
     end
 
     it "returns the number of times the recipe has been starred" do
-      user   = User.create(:username => 'foo', :password => 'password', :email => 'a@b.com')
-      recipe = Recipe.create(:title => 'foo', :body => 'blah', :commit_message => 'first', :user => user)
+      recipe = FactoryGirl.create(:recipe)
+      recipe.user.star(recipe)
 
-      user.star(recipe)
-
-      recipe.number_of_stars.should == 1
+      expect(recipe.number_of_stars).to eq(1)
     end
   end
 
   describe "#number of forks" do
     it "returns 0 if there are no forks" do
-      recipe = Recipe.create(:title => 'foo', :body => 'blah', :commit_message => 'first')
+      recipe = FactoryGirl.create(:recipe)
 
-      recipe.number_of_forks.should == 0
+      expect(recipe.number_of_forks).to eq(0)
     end
 
     it "returns the number of forks this recipe has" do
-      id = Recipe.create(:title => 'foo', :body => 'blah', :commit_message => 'first').id
-      recipe = Recipe.create(:title => 'foo',
-                             :body => 'blah',
-                             :commit_message => 'first',
-                             :forked_from_recipe_id => id)
+      recipe = FactoryGirl.create(:recipe)
+      FactoryGirl.create(:recipe, :forked_from_recipe_id => recipe.id)
 
-      recipe.number_of_forks.should == 1
+      expect(recipe.number_of_forks).to eq(1)
     end
   end
 end

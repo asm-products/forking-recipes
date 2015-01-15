@@ -40,3 +40,4 @@ gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
 gem 'neat'
 gem 'execjs'
 gem 'therubyracer'
+gem "factory_girl_rails", "~> 4.5.0"
