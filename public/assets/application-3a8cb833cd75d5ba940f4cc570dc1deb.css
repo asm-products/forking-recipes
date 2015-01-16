@@ -1,0 +1,1144 @@
+/* line 4, /usr/local/bundle/gems/neat-1.7.1/app/assets/stylesheets/grid/_box-sizing.scss */
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 9, /usr/local/bundle/gems/neat-1.7.1/app/assets/stylesheets/grid/_box-sizing.scss */
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+/* line 21, /forking-recipes/app/assets/stylesheets/application.css.scss */
+html {
+  font-size: 100%;
+  position: relative;
+  min-height: 100%;
+}
+
+/* line 27, /forking-recipes/app/assets/stylesheets/application.css.scss */
+body {
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 20px;
+  line-height: 1.25rem;
+  text-shadow: 0px 1px 1px white;
+  padding: 70px 0 0;
+  background-color: #fafafa;
+  background-image: url("/assets/light_toast.png");
+  margin: 0 0 100px;
+  color: #444;
+}
+
+/* line 40, /forking-recipes/app/assets/stylesheets/application.css.scss */
+#main {
+  padding: 0;
+}
+
+/* line 44, /forking-recipes/app/assets/stylesheets/application.css.scss */
+h1, h2, h3 {
+  font-weight: 300;
+}
+
+/* line 48, /forking-recipes/app/assets/stylesheets/application.css.scss */
+h1, h2, h3, h4, h5, h6, p, ul {
+  margin-top: 0;
+}
+
+/* line 52, /forking-recipes/app/assets/stylesheets/application.css.scss */
+h3 {
+  font-size: 1.4rem;
+}
+
+/* line 56, /forking-recipes/app/assets/stylesheets/application.css.scss */
+a {
+  color: #F78F27;
+  text-decoration: none;
+}
+/* line 60, /forking-recipes/app/assets/stylesheets/application.css.scss */
+a:hover {
+  color: #F9AB20;
+}
+
+/* line 65, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.action-btn {
+  -webkit-appearance: none;
+  background-color: #fafafa;
+  background-image: -webkit-linear-gradient(#fafafa, #eeeeee);
+  background-image: linear-gradient(#fafafa, #eeeeee);
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  color: #666666;
+  height: 34px;
+  padding-bottom: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 6px;
+  text-align: center;
+  cursor: pointer;
+  -webkit-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+  -webkit-font-smoothing: antialiased;
+}
+/* line 86, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.action-btn:hover {
+  background-color: #fcfcfc;
+  background-image: -webkit-linear-gradient(#fcfcfc, #e9e9e9);
+  background-image: linear-gradient(#fcfcfc, #e9e9e9);
+  color: #444;
+  border: 1px solid #bbbbbb;
+}
+/* line 94, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.action-btn.btn-danger i {
+  color: #a94442;
+}
+/* line 98, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.action-btn.btn-danger:hover {
+  background-color: #f9f1f1;
+  background-image: -webkit-linear-gradient(#f9f1f1, rgba(242, 222, 222, 0.95));
+  background-image: linear-gradient(#f9f1f1, rgba(242, 222, 222, 0.95));
+  color: #a94442;
+  border: 1px solid #a94442;
+}
+
+/* line 106, /forking-recipes/app/assets/stylesheets/application.css.scss */
+button.action-btn, input.action-btn {
+  padding-top: 3px;
+  font-size: 14px;
+}
+
+/* line 111, /forking-recipes/app/assets/stylesheets/application.css.scss */
+label {
+  position: relative;
+  display: block;
+}
+/* line 115, /forking-recipes/app/assets/stylesheets/application.css.scss */
+label input[type="text"], label input[type="email"], label input[type="password"], label textarea {
+  -webkit-appearance: none;
+  background-color: white;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  color: #444;
+  display: block;
+  font-size: 16px;
+  font-size: 1rem;
+  padding: 4px 6px;
+  vertical-align: middle;
+  width: 100%;
+  margin: 5px 0 20px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+/* line 129, /forking-recipes/app/assets/stylesheets/application.css.scss */
+label input[type="text"]:hover, label input[type="email"]:hover, label input[type="password"]:hover, label textarea:hover {
+  border-color: #bbbbbb;
+}
+/* line 133, /forking-recipes/app/assets/stylesheets/application.css.scss */
+label input[type="text"]:focus, label input[type="email"]:focus, label input[type="password"]:focus, label textarea:focus {
+  outline: none;
+  border-color: #aaaaaa;
+  box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+}
+/* line 140, /forking-recipes/app/assets/stylesheets/application.css.scss */
+label input[type="text"], label input[type="email"], label input[type="password"] {
+  height: 45px;
+}
+
+/* line 145, /forking-recipes/app/assets/stylesheets/application.css.scss */
+body[data-action="browse"][data-controller="home"] #main-container {
+  max-width: 1280px;
+  max-width: 80rem;
+}
+
+/* line 149, /forking-recipes/app/assets/stylesheets/application.css.scss */
+#main-container {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+}
+/* line 9, /usr/local/bundle/gems/bourbon-4.1.1/app/assets/stylesheets/addons/_clearfix.scss */
+#main-container::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+/* line 154, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.main-content {
+  float: left;
+  display: block;
+  margin-right: 2.3576515979%;
+  width: 100%;
+}
+/* line 87, /usr/local/bundle/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
+.main-content:last-child {
+  margin-right: 0;
+}
+
+/* line 158, /forking-recipes/app/assets/stylesheets/application.css.scss */
+#wmd-preview {
+  float: left;
+  display: block;
+  margin-right: 2.3576515979%;
+  width: 48.821174201%;
+}
+/* line 87, /usr/local/bundle/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
+#wmd-preview:last-child {
+  margin-right: 0;
+}
+/* line 161, /forking-recipes/app/assets/stylesheets/application.css.scss */
+#wmd-preview img {
+  max-width: 100%;
+}
+
+/* line 166, /forking-recipes/app/assets/stylesheets/application.css.scss */
+#recipe-form {
+  float: left;
+  display: block;
+  margin-right: 2.3576515979%;
+  width: 48.821174201%;
+}
+/* line 87, /usr/local/bundle/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
+#recipe-form:last-child {
+  margin-right: 0;
+}
+
+/* line 170, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.sidebar {
+  float: left;
+  display: block;
+  margin-right: 2.3576515979%;
+  width: 31.7615656014%;
+  margin-right: 0;
+}
+/* line 87, /usr/local/bundle/gems/neat-1.7.1/app/assets/stylesheets/grid/_span-columns.scss */
+.sidebar:last-child {
+  margin-right: 0;
+}
+/* line 174, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.sidebar ul.nav-list {
+  display: block;
+  list-style: none;
+  margin-top: 0;
+  padding: 0;
+}
+/* line 180, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.sidebar ul.nav-list li {
+  margin-left: 20px;
+  margin-left: 1.25rem;
+  margin-bottom: 5px;
+  margin-bottom: 0.3125rem;
+}
+/* line 184, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.sidebar ul.nav-list li.nav-header {
+  display: block;
+  margin-left: 0;
+  font-size: 1.4rem;
+  font-weight: 300;
+  margin-bottom: 22.4px;
+}
+
+/* line 195, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.recipe-title {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* line 199, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.recipe {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #fff;
+  border: 3px solid #eeeeee;
+  border-radius: 4px;
+  clear: both;
+}
+/* line 207, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.recipe img {
+  max-width: 100%;
+}
+
+/* line 212, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.recipe-meta {
+  clear: both;
+}
+
+/* line 216, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.edit-wrapper {
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-top: -70px;
+  padding: 70px 20px 20px;
+}
+
+/* line 222, /forking-recipes/app/assets/stylesheets/application.css.scss */
+#new_recipe_form, #edit_recipe_form {
+  clear: both;
+  width: 100%;
+}
+
+/* line 227, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.actions {
+  margin-bottom: 20px;
+  width: 100%;
+}
+/* line 9, /usr/local/bundle/gems/bourbon-4.1.1/app/assets/stylesheets/addons/_clearfix.scss */
+.actions::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+/* line 232, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.actions .back {
+  float: left;
+}
+/* line 236, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.actions .save {
+  float: right;
+}
+
+/* line 241, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.social-actions {
+  float: right;
+  list-style: none;
+}
+
+/* line 246, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.guide-btn {
+  z-index: 10;
+}
+
+/* line 250, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.guide-btn.open {
+  position: absolute;
+  bottom: 0;
+}
+
+/* line 255, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.guide-btn.close {
+  float: right;
+}
+
+/* line 259, /forking-recipes/app/assets/stylesheets/application.css.scss */
+label .guide-btn {
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* line 264, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.zebra tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* line 268, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.zebra tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+/* line 272, /forking-recipes/app/assets/stylesheets/application.css.scss */
+#format-guide ul, #format-guide ol, #format-guide img {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 277, /forking-recipes/app/assets/stylesheets/application.css.scss */
+#wmd-preview {
+  border-style: dotted;
+  border-width: 2px;
+  padding: 5px;
+}
+
+/* line 283, /forking-recipes/app/assets/stylesheets/application.css.scss */
+#format-guide {
+  display: block;
+  width: 100%;
+  border: 1px solid #dddddd;
+  border-collapse: separate;
+  border-spacing: 0px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-size: 0.875rem;
+  overflow: hidden;
+}
+/* line 294, /forking-recipes/app/assets/stylesheets/application.css.scss */
+#format-guide thead, #format-guide tbody, #format-guide tfoot {
+  display: table;
+  width: 100%;
+}
+/* line 299, /forking-recipes/app/assets/stylesheets/application.css.scss */
+#format-guide td, #format-guide th {
+  display: table-cell;
+  width: 50%;
+  border-top: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  padding: 5px;
+}
+/* line 306, /forking-recipes/app/assets/stylesheets/application.css.scss */
+#format-guide td img, #format-guide th img {
+  width: 100%;
+  display: block;
+}
+/* line 311, /forking-recipes/app/assets/stylesheets/application.css.scss */
+#format-guide td ul, #format-guide td ol, #format-guide th ul, #format-guide th ol {
+  list-style-position: inside;
+}
+/* line 316, /forking-recipes/app/assets/stylesheets/application.css.scss */
+#format-guide th {
+  border: 0;
+  background-color: #eee;
+}
+/* line 321, /forking-recipes/app/assets/stylesheets/application.css.scss */
+#format-guide tr td:first-child {
+  font-family: 'Source Code Pro', monospace;
+  white-space: nowrap;
+}
+/* line 326, /forking-recipes/app/assets/stylesheets/application.css.scss */
+#format-guide tr td:first-child.normal-wrap {
+  white-space: normal;
+  font-family: 'Open Sans', sans-serif;
+}
+/* line 331, /forking-recipes/app/assets/stylesheets/application.css.scss */
+#format-guide tr td:last-child {
+  border-right: 0;
+}
+
+/* line 338, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.featured {
+  -webkit-columns: 226px;
+  -moz-columns: 226px;
+  columns: 226px;
+  -moz-column-gap: 20px;
+  -moz-column-gap: 1.25rem;
+  -webkit-column-gap: 20px;
+  -webkit-column-gap: 1.25rem;
+  column-gap: 20px;
+  column-gap: 1.25rem;
+}
+
+/* line 345, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.browse-more {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 7px;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+/* line 353, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.rec-item {
+  display: inline-block;
+  width: 100%;
+  min-height: 50px;
+  margin-bottom: 20px;
+}
+/* line 359, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.rec-item a.recipe-link {
+  position: relative;
+  display: block;
+  padding: 10px;
+  border: 3px solid #eeeeee;
+  background-color: #fff;
+  border-radius: 4px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+/* line 369, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.rec-item img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  border-radius: 2px;
+  -webkit-filter: brightness(1) contrast(100%);
+  filter: brightness(1) contrast(100%);
+  -webkit-transition: filter 0.3s ease-in-out;
+  -moz-transition: filter 0.3s ease-in-out;
+  transition: filter 0.3s ease-in-out;
+}
+/* line 379, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.rec-item .item-text {
+  position: absolute;
+  width: calc(100% - 40px);
+  bottom: 15%;
+  left: 10px;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #666;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  z-index: 500;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+/* line 395, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.rec-item:hover a.recipe-link {
+  border-color: #939d47;
+}
+/* line 399, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.rec-item:hover img {
+  -webkit-filter: brightness(1.1) contrast(110%);
+  filter: brightness(1.1) contrast(110%);
+}
+/* line 404, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.rec-item:hover .item-text {
+  bottom: 19%;
+  color: #333;
+  -webkit-box-shadow: 1px 1px 2px 0px rgba(50, 50, 50, 0.5);
+  -moz-box-shadow: 1px 1px 2px 0px rgba(50, 50, 50, 0.5);
+  box-shadow: 1px 1px 2px 0px rgba(50, 50, 50, 0.5);
+  background-color: white;
+}
+/* line 413, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.rec-item:hover .recipe-stats li {
+  color: #444;
+}
+/* line 418, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.rec-item .recipe-stats {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
+/* line 9, /usr/local/bundle/gems/bourbon-4.1.1/app/assets/stylesheets/addons/_clearfix.scss */
+.rec-item .recipe-stats::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+/* line 424, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.rec-item .recipe-stats li {
+  font-size: 14px;
+  font-size: 0.875rem;
+  color: #666;
+  display: block;
+  width: 50%;
+  padding: 0 5px;
+  float: left;
+  text-align: center;
+}
+
+/* line 436, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.navbar-fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 50px;
+  z-index: 2000;
+  background-color: #fff;
+  color: #ccc;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px 0px;
+  border-bottom: 4px solid #939D47;
+}
+/* line 448, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.navbar-fixed-top .navbar-inner {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1280px;
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+/* line 9, /usr/local/bundle/gems/bourbon-4.1.1/app/assets/stylesheets/addons/_clearfix.scss */
+.navbar-fixed-top .navbar-inner::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+/* line 454, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.navbar-fixed-top a {
+  display: block;
+  color: #666;
+  text-decoration: none;
+  padding: 10px 0;
+  padding:  0.625rem 0;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+/* line 461, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.navbar-fixed-top a:hover {
+  color: #F78F27;
+}
+/* line 466, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.navbar-fixed-top * {
+  line-height: 30px;
+  line-height: 1.875rem;
+}
+/* line 470, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.navbar-fixed-top .brand {
+  display: block;
+  margin: 0 40px 0 20px;
+  margin:  0 2.5rem 0 1.25rem;
+  float: left;
+  font-size: 24px;
+  font-size: 1.5rem;
+  color: #939D47;
+  font-family: 'Merriweather', serif;
+  font-weight: 300;
+}
+/* line 480, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.navbar-fixed-top ul {
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 486, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.navbar-fixed-top ul li {
+  display: list-item;
+  float: left;
+  margin-right: 20px;
+  margin-right: 1.25rem;
+}
+@media screen and (max-width: 480px) {
+  /* line 491, /forking-recipes/app/assets/stylesheets/application.css.scss */
+  .navbar-fixed-top ul li.browse-item {
+    display: none;
+  }
+}
+/* line 497, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.navbar-fixed-top ul li.search-item {
+  padding-top: 10px;
+  padding-top: 0.625rem;
+  position: relative;
+}
+/* line 9, /usr/local/bundle/gems/bourbon-4.1.1/app/assets/stylesheets/addons/_clearfix.scss */
+.navbar-fixed-top ul li.search-item::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+@media screen and (max-width: 480px) {
+  /* line 497, /forking-recipes/app/assets/stylesheets/application.css.scss */
+  .navbar-fixed-top ul li.search-item {
+    display: none;
+  }
+}
+/* line 506, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.navbar-fixed-top ul li.search-item input[type=text] {
+  -webkit-appearance: none;
+  background-color: #fafafa;
+  border: 1px solid #cccccc;
+  border-right: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+  color: #555555;
+  display: block;
+  float: left;
+  font-size: 13px;
+  font-size: 0.8125rem;
+  line-height: 20px;
+  line-height: 1.25rem;
+  height: 30px;
+  padding: 4px 6px;
+  vertical-align: middle;
+  width: 206px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+/* line 526, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.navbar-fixed-top ul li.search-item input[type=text]:focus {
+  border-color: #B5D276;
+  outline: none;
+  background-color: #fff;
+  width: 300px;
+}
+/* line 533, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.navbar-fixed-top ul li.search-item input[type=text]:hover {
+  background-color: #fff;
+}
+/* line 538, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.navbar-fixed-top ul li.search-item i.fa {
+  position: absolute;
+  right: 3.85rem;
+}
+/* line 543, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.navbar-fixed-top ul li.search-item button.btn {
+  -webkit-appearance: none;
+  display: block;
+  float: left;
+  margin: 0;
+  background-color: #fafafa;
+  border: 1px solid #cccccc;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  font-size: 13px;
+  font-size: 0.8125rem;
+  line-height: 20px;
+  line-height: 1.25rem;
+  color: #666;
+  height: 30px;
+  padding: 4px 6px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+/* line 559, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.navbar-fixed-top ul li.search-item button.btn:hover {
+  background-color: #B5D276;
+  color: #fff;
+}
+/* line 564, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.navbar-fixed-top ul li.search-item button.btn:focus {
+  outline: none;
+}
+/* line 572, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.navbar-fixed-top .pull-right {
+  float: right;
+  margin-right: 0;
+}
+/* line 577, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.navbar-fixed-top .pull-left {
+  float: left;
+  margin-right: 0;
+}
+
+/* line 583, /forking-recipes/app/assets/stylesheets/application.css.scss */
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: table;
+  height: 100px;
+  width: 100%;
+  clear: both;
+  padding: 20px;
+  background-color: #B5D276;
+  border-top: 4px solid #939D47;
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+/* line 596, /forking-recipes/app/assets/stylesheets/application.css.scss */
+footer .footer-info {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1280px;
+  display: table-cell;
+  vertical-align: middle;
+  color: #fff;
+  text-shadow: none;
+}
+/* line 9, /usr/local/bundle/gems/bourbon-4.1.1/app/assets/stylesheets/addons/_clearfix.scss */
+footer .footer-info::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+/* line 604, /forking-recipes/app/assets/stylesheets/application.css.scss */
+footer .footer-info a {
+  color: #fff;
+  text-shadow: none;
+}
+/* line 608, /forking-recipes/app/assets/stylesheets/application.css.scss */
+footer .footer-info a:hover {
+  color: #939D47;
+}
+/* line 613, /forking-recipes/app/assets/stylesheets/application.css.scss */
+footer .footer-info .contact-link {
+  display: block;
+  float: left;
+}
+/* line 618, /forking-recipes/app/assets/stylesheets/application.css.scss */
+footer .footer-info .copyright {
+  float: right;
+}
+
+/* line 624, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome {
+  margin: -70px 0 20px;
+  padding: 70px 20px 20px;
+}
+
+/* line 629, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome.logged-out {
+  position: relative;
+  display: table;
+  vertical-align: middle;
+  width: 100%;
+  min-height: 600px;
+  margin: -70px 0 20px;
+  padding: 70px 0 40px;
+  background-image: url("/assets/flickr_auxesis.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  border-bottom: 2px solid #939D47;
+  color: #fff;
+  text-shadow: black 0px 0px 1px, rgba(0, 0, 0, 0.9) 0px 0px 25px;
+}
+/* line 645, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome.logged-out .welcome-inner {
+  display: table;
+  height: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 70px;
+}
+/* line 653, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome.logged-out .welcome-inner .message {
+  display: table-cell;
+  width: 50%;
+  height: 100%;
+  vertical-align: middle;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
+/* line 661, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome.logged-out .welcome-inner .message .center-title {
+  text-align: center;
+  margin-left: 0;
+}
+/* line 666, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome.logged-out .welcome-inner .message h1, .welcome.logged-out .welcome-inner .message h2 {
+  font-family: 'Merriweather', serif;
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.4em;
+}
+/* line 673, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome.logged-out .welcome-inner .message h3 {
+  margin-bottom: 0.5em;
+  padding: 10px;
+  border-radius: 4px;
+}
+/* line 679, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome.logged-out .welcome-inner .message h1 {
+  margin-left: 20%;
+  font-size: 3rem;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+/* line 686, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome.logged-out .welcome-inner .message h2 {
+  margin-left: 20%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-width: 1px 1px 0 1px;
+  padding-bottom: 20px;
+}
+/* line 694, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome.logged-out .welcome-inner .message .description {
+  padding: 10px 20px 10px 20px;
+  line-height: 1.4em;
+  margin-top: 0;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: #fff;
+}
+/* line 702, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome.logged-out .welcome-inner .message .description h3 {
+  font-weight: 300;
+}
+/* line 706, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome.logged-out .welcome-inner .message .description ul {
+  padding: 0;
+  list-style: none;
+}
+/* line 710, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome.logged-out .welcome-inner .message .description ul li {
+  margin-bottom: 0.5em;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border-radius: 4px;
+}
+/* line 721, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome.logged-out .welcome-inner .login {
+  display: table-cell;
+  height: 100%;
+  vertical-align: middle;
+  text-align: center;
+  float: right;
+  width: 75%;
+}
+/* line 729, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome.logged-out .welcome-inner .login .form-wrapper {
+  display: inline-block;
+  margin: 0 auto;
+  text-align: left;
+  width: 100%;
+  max-width: 400px;
+}
+/* line 736, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome.logged-out .welcome-inner .login .form-wrapper h2 {
+  margin-bottom: 40px;
+}
+/* line 739, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome.logged-out .welcome-inner .login .form-wrapper h2 .little {
+  position: relative;
+  top: -2px;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-style: italic;
+  margin: 0 10px;
+}
+/* line 750, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome.logged-out .welcome-inner .login .form-wrapper h2 .signup-tab {
+  border: 2px solid #fff;
+  padding: 1px 5px 5px;
+  border-radius: 3px;
+  background-color: #a4b75e;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  text-shadow: none;
+}
+/* line 759, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome.logged-out .welcome-inner .login .form-wrapper h2 .signup-tab:hover {
+  background-color: #b5d276;
+}
+/* line 763, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome.logged-out .welcome-inner .login .form-wrapper h2 .signup-tab a {
+  color: white;
+}
+/* line 772, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome.logged-out .welcome-footer {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  text-align: right;
+}
+/* line 778, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome.logged-out .welcome-footer a {
+  font-size: 11px;
+  font-size: 0.6875rem;
+  color: #fff;
+}
+/* line 782, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.welcome.logged-out .welcome-footer a:hover {
+  color: #939D47;
+}
+
+/* line 790, /forking-recipes/app/assets/stylesheets/application.css.scss */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+/* line 794, /forking-recipes/app/assets/stylesheets/application.css.scss */
+ul.actions {
+  float: left;
+  list-style: none;
+  padding: 0;
+  display: block;
+}
+/* line 9, /usr/local/bundle/gems/bourbon-4.1.1/app/assets/stylesheets/addons/_clearfix.scss */
+ul.actions::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+/* line 801, /forking-recipes/app/assets/stylesheets/application.css.scss */
+ul.actions li {
+  display: block;
+  float: left;
+  margin-right: 10px;
+}
+
+/* line 808, /forking-recipes/app/assets/stylesheets/application.css.scss */
+h5.fork-note {
+  font-weight: normal;
+}
+
+/* line 812, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.alert {
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  line-height: 20px;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+/* line 820, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.alert .close {
+  float: right;
+  font-size: 18px;
+  font-size: 1.125rem;
+  cursor: pointer;
+}
+/* line 826, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.alert.alert-success {
+  color: #3c763d;
+  border-color: #d6e9c6;
+  background-color: rgba(223, 240, 216, 0.95);
+}
+/* line 831, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.alert.alert-success .close {
+  color: #3c763d;
+}
+/* line 834, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.alert.alert-success .close:hover {
+  color: #2b542c;
+}
+/* line 840, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.alert.alert-info {
+  color: #31708f;
+  border-color: #bce8f1;
+  background-color: rgba(217, 237, 247, 0.95);
+}
+/* line 845, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.alert.alert-info .close {
+  color: #31708f;
+}
+/* line 848, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.alert.alert-info .close:hover {
+  color: #245269;
+}
+/* line 854, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.alert.alert-warning {
+  color: #8a6d3b;
+  border-color: #faebcc;
+  background-color: rgba(252, 248, 227, 0.95);
+}
+/* line 859, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.alert.alert-warning .close {
+  color: #8a6d3b;
+}
+/* line 862, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.alert.alert-warning .close:hover {
+  color: #66512c;
+}
+/* line 868, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.alert.alert-danger, .alert.alert-error {
+  color: #a94442;
+  border-color: #ebccd1;
+  background-color: rgba(242, 222, 222, 0.95);
+}
+/* line 873, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.alert.alert-danger .close, .alert.alert-error .close {
+  color: #a94442;
+}
+/* line 876, /forking-recipes/app/assets/stylesheets/application.css.scss */
+.alert.alert-danger .close:hover, .alert.alert-error .close:hover {
+  color: #843534;
+}
+
+/* line 883, /forking-recipes/app/assets/stylesheets/application.css.scss */
+pre.diffs {
+  white-space: normal;
+  margin-bottom: 40px;
+}
+/* line 887, /forking-recipes/app/assets/stylesheets/application.css.scss */
+pre.diffs .differ {
+  display: block;
+  margin: 10px 0;
+  margin:  0.625rem 0;
+  padding: 10px;
+  border-radius: 4px;
+}
+/* line 894, /forking-recipes/app/assets/stylesheets/application.css.scss */
+pre.diffs del.differ {
+  background-color: rgba(242, 222, 222, 0.95);
+}
+/* line 898, /forking-recipes/app/assets/stylesheets/application.css.scss */
+pre.diffs ins.differ {
+  background-color: rgba(217, 237, 247, 0.95);
+}
+.wmd-input
+{
+  height: 300px;
+  width: 100%;
+  border: 1px solid DarkGray;
+}
+
+.wmd-button-row
+{
+  position: relative;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  padding: 0px;
+  height: 20px;
+}
+
+.wmd-spacer
+{
+  width: 1px;
+  height: 20px;
+  margin-left: 14px;
+
+  position: absolute;
+  background-color: Silver;
+  display: inline-block;
+  list-style: none;
+}
+
+.wmd-button {
+    width: 20px;
+    height: 20px;
+    padding-left: 2px;
+    padding-right: 3px;
+    position: absolute;
+    display: inline-block;
+    list-style: none;
+    cursor: pointer;
+}
+
+.wmd-button > span {
+    background-image: url(/assets/markdown-buttons-1c781cbd46b122a3b28b51fe4e416bc6.png);
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+
+.wmd-spacer1
+{
+    left: 50px;
+}
+.wmd-spacer2
+{
+    left: 175px;
+}
+.wmd-spacer3
+{
+    left: 300px;
+}
+
+.wmd-prompt-background
+{
+  background-color: Black;
+}
+
+.wmd-prompt-dialog
+{
+  border: 1px solid #999999;
+  background-color: #F5F5F5;
+}
+
+.wmd-prompt-dialog > div {
+  font-size: 0.8em;
+  font-family: arial, helvetica, sans-serif;
+}
+
+
+.wmd-prompt-dialog > form > input[type="text"] {
+  border: 1px solid #999999;
+  color: black;
+}
+
+.wmd-prompt-dialog > form > input[type="button"]{
+  border: 1px solid #888888;
+  font-family: trebuchet MS, helvetica, sans-serif;
+  font-size: 0.8em;
+  font-weight: bold;
+}
