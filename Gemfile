@@ -17,6 +17,7 @@ group :development do
 end
 
 gem 'rails', '4.2'
+gem 'rails_12factor'
 gem 'activeresource' # maybe activeresource is not needed
 gem 'pg'
 gem 'exception_notification'
