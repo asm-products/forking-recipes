@@ -1,2 +1,14 @@
+- if @recipe.forked_from.present?
+  %h2= "Forked from #{@recipe.forked_from.title}"
+  - @recipe.forked_from.revisions.each do |rev|
+    %span
+      = link_to "#{rev.revision}", [@user, @recipe, @revision, target_id: rev.id]
+- if @recipe.forks.present?
+  %h2 Forks
+  - @recipe.forks.each do |fork|
+    %p= @recipe.title
+    - fork.revisions.each do |rev|
+      %span
+        = link_to "#{rev.revision}", [@user, @recipe, @revision, target_id: rev.id]
 %pre.diffs
   = @diff
