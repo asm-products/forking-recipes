@@ -1,9 +1,0 @@
-%h2 Your Recipes
-
-%ul.recipes
-  - @recipes.each do |recipe|
-    %li= link_to recipe.title, [recipe.user, recipe]
-
-%br
-%br
-= link_to "New Recipe", new_recipe_path
