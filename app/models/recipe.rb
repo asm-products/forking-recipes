@@ -4,6 +4,9 @@ class Recipe < ActiveRecord::Base
 
   has_many :events
   has_many :recipe_images
+  has_many :forks, class_name: "Recipe", foreign_key: :forked_from_recipe_id
+  has_many :revisions, class_name: "RecipeRevision"
+  has_many :stars
 
   validates :commit_message, :presence => {:message => 'Update Message cannot be blank'}
   validates :title, :presence => {:message => 'Title cannot be blank'}
@@ -16,6 +19,10 @@ class Recipe < ActiveRecord::Base
 
   acts_as_taggable
 
+  def forked_from
+    Recipe.find(forked_from_recipe_id)
+  end
+
   def to_param
     slug
   end
@@ -25,11 +32,11 @@ class Recipe < ActiveRecord::Base
   end
 
   def number_of_forks
-    Recipe.where(:forked_from_recipe_id => self.id).count
+    forks.count
   end
 
   def number_of_stars
-    Star.where(:recipe_id => self.id).count
+    stars.count
   end
 
   def create_recipe_revision!

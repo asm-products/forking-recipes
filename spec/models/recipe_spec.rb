@@ -16,6 +16,24 @@ describe Recipe do
     end
   end
 
+  describe "#forks" do
+    it "should return forked recipes" do
+      recipe = FactoryGirl.create(:recipe)
+      forked = FactoryGirl.create(:recipe, :forked_from_recipe_id => recipe.id)
+
+      expect(recipe.forks).to eq([forked])
+    end
+  end
+
+  describe "#forked_from" do
+    it "should return forked recipes" do
+      recipe = FactoryGirl.create(:recipe)
+      forked = FactoryGirl.create(:recipe, :forked_from_recipe_id => recipe.id)
+
+      expect(forked.forked_from).to eq(recipe)
+    end
+  end
+
   describe "#number of forks" do
     it "returns 0 if there are no forks" do
       recipe = FactoryGirl.create(:recipe)
