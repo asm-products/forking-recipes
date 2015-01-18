@@ -1,6 +1,7 @@
 class RecipeRevisionsController < ApplicationController
   include RecipesHelper
   before_filter :get_recipe
+  before_filter :get_revision, only: [:show]
 
   def index
     @user             = @recipe.user
@@ -9,19 +10,16 @@ class RecipeRevisionsController < ApplicationController
   end
 
   def show
-    @revision = RecipeRevision.find(params[:id])
+    @target_revision = params[:target_id].present? ? RecipeRevision.find(params[:target_id]) : @revision.previous
 
-    if params[:target_id].present?
-      @target_revision = RecipeRevision.find(params[:target_id])
-    elsif @revision.revision > 1
-      @target_revision = RecipeRevision.where(recipe_id: @revision.recipe_id, revision: @revision.revision - 1).first
-    else
-      @diff = "Not Available"
-    end
+    @diff = "Not Available" unless @target_revision.present?
     @diff ||= Differ.diff_by_line(@revision.body, @target_revision.body).format_as(:html).html_safe
   end
 
   private
+  def get_revision
+    @revision = RecipeRevision.find(params[:id])
+  end
 
   def get_recipe
     @user = User.find_by_username(params[:user_id])

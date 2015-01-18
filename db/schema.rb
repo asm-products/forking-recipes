@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20150113191133) do
     t.integer  "user_id"
     t.integer  "recipe_id"
     t.text     "action"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "follow", id: false, force: :cascade do |t|
@@ -32,40 +32,40 @@ ActiveRecord::Schema.define(version: 20150113191133) do
   create_table "pg_search_documents", force: :cascade do |t|
     t.text     "content"
     t.integer  "searchable_id"
-    t.string   "searchable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "searchable_type", limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "recipe_images", force: :cascade do |t|
     t.integer  "recipe_id"
-    t.string   "image"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "image",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "recipe_revisions", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",          limit: 255
     t.text     "body"
-    t.string   "commit_message"
+    t.string   "commit_message", limit: 255
     t.integer  "user_id"
     t.integer  "recipe_id"
     t.integer  "revision"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "recipe_revisions", ["user_id"], name: "index_recipe_revisions_on_user_id", using: :btree
 
   create_table "recipes", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",                 limit: 255
     t.text     "body"
-    t.string   "commit_message"
+    t.string   "commit_message",        limit: 255
     t.integer  "revision"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "slug"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "slug",                  limit: 255
     t.integer  "forked_from_recipe_id"
   end
 
@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 20150113191133) do
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
@@ -85,16 +85,16 @@ ActiveRecord::Schema.define(version: 20150113191133) do
   create_table "stars", id: false, force: :cascade do |t|
     t.integer  "recipe_id"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
-    t.string   "taggable_type"
+    t.string   "taggable_type", limit: 255
     t.integer  "tagger_id"
-    t.string   "tagger_type"
+    t.string   "tagger_type",   limit: 255
     t.string   "context",       limit: 128
     t.datetime "created_at"
   end
@@ -103,27 +103,27 @@ ActiveRecord::Schema.define(version: 20150113191133) do
   add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: :cascade do |t|
-    t.string  "name"
-    t.integer "taggings_count", default: 0
+    t.string  "name",           limit: 255
+    t.integer "taggings_count",             default: 0
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0
+    t.integer  "sign_in_count",                      default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "username"
-    t.string   "slug"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.string   "username",               limit: 255
+    t.string   "slug",                   limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
