@@ -10,7 +10,11 @@ class RecipeRevisionsController < ApplicationController
   end
 
   def show
-    @target_revision = params[:target_id].present? ? RecipeRevision.find(params[:target_id]) : @revision.previous
+    @target_revision = if params[:target_id].present?
+      RecipeRevision.find(params[:target_id])
+    else
+      @revision.previous
+    end
 
     @diff = "Not Available" unless @target_revision.present?
     @diff ||= Differ.diff_by_line(@revision.body, @target_revision.body).format_as(:html).html_safe

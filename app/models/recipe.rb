@@ -20,7 +20,7 @@ class Recipe < ActiveRecord::Base
   acts_as_taggable
 
   def forked_from
-    Recipe.where(id: forked_from_recipe_id).first
+    Recipe.find(forked_from_recipe_id)
   end
 
   def to_param
