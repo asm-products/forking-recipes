@@ -1,0 +1,6 @@
+= "#{@recipe.title} has been forked to"
+
+%ul
+  - @forked_recipes.each do |recipe|
+    %li
+      = link_to "#{recipe.user.username} - #{recipe.title}", recipe_path(recipe)

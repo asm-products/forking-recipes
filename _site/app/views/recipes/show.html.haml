@@ -1,0 +1,25 @@
+%p
+  %h3.recipe-title= "#{link_to(@recipe.user.username, user_recipes_path(@recipe.user))} / #{@recipe.title}".html_safe
+  - if @forked_from_recipe
+    %h5.fork-note= "Forked from #{link_to @forked_from_recipe.user.username, @forked_from_recipe.user} / #{link_to @forked_from_recipe.slug, [@forked_from_recipe.user, @forked_from_recipe]}".html_safe
+
+= render "actions_menu"
+
+%div.recipe
+  = RDiscount.new(@recipe.body).to_html.html_safe
+
+= render "actions_menu"
+
+.recipe-meta
+  %p
+    %i.fa.fa-quote-left
+    %b Update Message:
+    = @recipe.commit_message
+  %p
+    %i.fa.fa-tags
+    %b Tags:
+    = @recipe.tag_list
+  %p
+    %i.fa.fa-clock-o
+    %b Revision:
+    = @recipe.revision

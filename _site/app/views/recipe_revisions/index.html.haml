@@ -1,0 +1,3 @@
+- @revisions.each do |rev|
+  %p
+    = link_to "#{rev.revision} - #{rev.commit_message}", [@user, @recipe, rev]

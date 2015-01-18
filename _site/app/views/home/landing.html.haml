@@ -1,0 +1,21 @@
+%h3
+  Featured Recipes
+%section.featured
+  - @images.each do |image, recipe|
+    %div.rec-item
+      %a.recipe-link{:href => recipe_path(recipe)}
+        %img{:src => image}
+        .item-text
+          = recipe.title
+      %ul.recipe-stats
+        %li.forks
+          %span.label
+            %i.fa.fa-code-fork
+            = pluralize(recipe.number_of_forks, 'fork')
+        %li.saves
+          %span.label
+            %i.fa.fa-star
+            = pluralize(recipe.number_of_stars, 'save')
+
+%div.browse-more.action-btn
+  = link_to('See More Recipes', browse_path)
