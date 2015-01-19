@@ -1,12 +1,16 @@
 # Site settings
-title: Forking Recipes Blog
-email: your-email@domain.com
-description: > # this means to ignore newlines until "baseurl:"
-  Fancy getting to know some more about Forking Recipes? Then you've come to the right spot!
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "blog.forkingrecipes.com" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jekyll
+title: Forking Recipes
+header-img: img/home-bg.jpg
+email: your-email@yourdomain.com
+description: "Fancy getting to know some more about Forking Recipes? Then you've come to the right spot!"
+baseurl: ""
+url: "blog.forkingrecipes.com"
+twitter_username: forkingrecipes
+facebook_username:  forkingrecipes
 
 # Build settings
 markdown: kramdown
+highlighter: pygments
+permalink: pretty
+paginate: 5
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
