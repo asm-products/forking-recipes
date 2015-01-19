@@ -3,8 +3,8 @@ title: Forking Recipes Blog
 email: your-email@domain.com
 description: > # this means to ignore newlines until "baseurl:"
   Fancy getting to know some more about Forking Recipes? Then you've come to the right spot!
-baseurl: "/forking-recipes" # the subpath of your site, e.g. /blog/
-url: "asm-products.github.io/forking-recipes" # the base hostname & protocol for your site
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "blog.forkingrecipes.com" # the base hostname & protocol for your site
 twitter_username: jekyllrb
 github_username:  jekyll
 
