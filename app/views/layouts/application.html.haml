@@ -24,10 +24,18 @@
           = render 'layouts/messages'
           = yield
     %footer
-      %aside.footer-info
+      %aside{:style => "text-align: center;", :class=>"footer-info"}
         %a{:href => "mailto:forkingrecipes@gmail.com", :class=>"contact-link"}
           Contact Us
           %i.fa.fa-envelope
+      
+        %a{:href => "https://twitter.com/forkingrecipes", :target => "_blank"}
+        %i.fa.fa-twitter-square.fa-3x
+        %a{:href => "#", :target => "_blank"}
+          %i.fa.fa-facebook-square.fa-3x
+        %a{:href => "#", :target => "_blank"}          
+          %i.fa.fa-google-plus-square.fa-3x
+
         .copyright
           Copyright &copy; 2014, 
           %a{:href => "https://twitter.com/forkingrecipes", :class=>"forking-recipes"} 
