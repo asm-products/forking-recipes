@@ -35,4 +35,5 @@
 
 %br
 %br
-= link_to "New Recipe", new_user_recipe_path(current_user)
+- if current_user
+  = link_to "New Recipe", new_user_recipe_path(current_user)
