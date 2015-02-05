@@ -13,13 +13,10 @@ class HomeController < ApplicationController
   end
 
   def landing
-    recipe_images = RecipeImage.find([549, 376, 529, 526])
-
-    @images = recipe_images.map do |image|
-      [image.image_url(:thumb), image.recipe]
-    end
-  rescue
-    @images = []
+    @recipes = Recipe.limit(5)
+  #   @recipes = RecipeImage.find([549, 376, 529, 526]).map(&:recipe)
+  # rescue
+  #   @recipes = []
   end
 
   def search
