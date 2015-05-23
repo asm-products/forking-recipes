@@ -14,13 +14,33 @@ Visit [https://assembly.com](https://assembly.com) to learn more.
 
 ### Running the app
 
-Install fig and Docker (boot2docker for a mac)
+#### Requirements
+* With brew: `brew install fig`
+* Without brew:
+  * Install [Docker](https://docs.docker.com/installation/) (requires boot2docker on mac)
+  * Install [Fig](http://www.fig.sh/install.html)
 
+#### Build and Setup
+Container setup
 ```
 fig build
 fig up
-fig run web rake db:create
-fig run web rake db:migrate
 ```
 
-Use `boot2docker ip` to get the ip of your web container and then go to ip:3000 in your browser.
+Just like on your local, run your setup commands.
+```
+fig run web rake db:setup
+fig run web rake db:setup RAILS_ENV=test
+```
+
+#### Development
+
+Speed up your development workflow by running guard. Currently uses guard livereload.
+`fig run web guard`
+
+Use `boot2docker ip` to get the ip of your web container and then go to _containerip_:3000 in your browser.
+
+#### Testing
+
+Run your tests!
+`fig run web rspec`

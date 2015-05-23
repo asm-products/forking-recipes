@@ -1,4 +1,4 @@
-FROM ruby:1.9.3-wheezy
+FROM ruby:2.2.2-wheezy
 
 # Install tools & libs to compile everything
 RUN apt-get update && apt-get install -y build-essential libmagickwand-dev imagemagick
