@@ -49,6 +49,10 @@ group :development do
   gem 'guard'
   gem 'guard-livereload', require: false
   gem 'rack-livereload'
+
+  # Better errors gives a more informative error screen
+  gem 'better_errors',     require: false
+  gem 'binding_of_caller', require: false
 end
 
 group :development, :test do

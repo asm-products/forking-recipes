@@ -45,6 +45,12 @@ GEM
       activerecord (>= 3.2, < 5)
     arel (6.0.0)
     bcrypt (3.1.9)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.1.0)
       sass (~> 3.2)
     bourbon (4.1.1)
@@ -68,6 +74,7 @@ GEM
     coffee-script-source (1.8.0)
     daemons (1.1.9)
     dalli (2.7.2)
+    debug_inspector (0.0.2)
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -367,6 +374,8 @@ PLATFORMS
 DEPENDENCIES
   activeresource
   acts-as-taggable-on (~> 3.4)
+  better_errors
+  binding_of_caller
   bootstrap-sass
   carrierwave
   coffee-rails (~> 4.1.0)
