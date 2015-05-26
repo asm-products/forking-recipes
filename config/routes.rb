@@ -7,9 +7,8 @@ Rails.application.routes.draw do
   end
 
   match "/browse" => "home#browse", via: :get
-  match "/landing" => "home#landing", via: :get
   match "/help" => 'home#help', via: :get
-  match "/search" => "home#search", via: :get
+  match "/search" => "home#search", via: [:get, :post]
 
   root :to => "home#index"
 

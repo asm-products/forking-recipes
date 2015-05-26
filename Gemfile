@@ -1,44 +1,67 @@
 source 'https://rubygems.org'
-ruby "1.9.3"
+ruby '2.2.2'
 
+gem 'rails', '4.2'
 
+# Postgresql
+gem 'pg'
+gem 'pg_search'
+gem 'dalli'
+
+# File/Image upload handler
+gem 'carrierwave'
+gem 'fog', '~> 1.27.0'
+gem 'rmagick', '2.13.2'
+
+# Haml for views, scss stylesheets, uglifier js compressor and coffee-js
 gem 'sass-rails', '~> 5.0'
+gem 'bootstrap-sass'
+gem 'jquery-rails'
+gem 'therubyracer'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'uglifier', '>= 1.3.0'
-gem "haml-rails"
+gem 'haml', '>= 3.0.0'
+gem 'haml-rails'
+gem 'neat'
+gem 'execjs'
 
+# User authentication
+gem 'devise'
+# Markdown
+gem 'rdiscount'
+gem 'pagedown-rails', '~> 1.1.3'
+# Friendly URLs
+gem 'friendly_id'
+# Fast tweet buttons view helper
+gem 'tweet-button'
+# Analytics
+gem 'newrelic_rpm'
+gem 'exception_notification'
+# Quick string diff checker
+gem 'differ'
+# Quick tags for models, and active resource for star model.
+gem 'acts-as-taggable-on', '~> 3.4'
+gem 'activeresource' # maybe activeresource is not needed
 
 group :development do
   gem 'thin'
   gem 'meta_request', '0.2.0'
   gem 'guard'
   gem 'guard-livereload', require: false
-  gem "rack-livereload"
+  gem 'rack-livereload'
+
+  # Better errors gives a more informative error screen
+  gem 'better_errors',     require: false
+  gem 'binding_of_caller', require: false
 end
 
-gem 'rails', '4.2'
-gem 'rails_12factor'
-gem 'activeresource' # maybe activeresource is not needed
-gem 'pg'
-gem 'exception_notification'
-gem 'pagedown-rails', '~> 1.1.3'
-gem 'pg_search'
-gem 'carrierwave'
-gem 'acts-as-taggable-on', '~> 3.4'
-gem "fog", "~> 1.27.0"
-gem "rmagick", '2.13.2'
-gem "tweet-button"
-gem 'dalli'
-gem 'newrelic_rpm'
-gem "devise"
-gem 'rdiscount'
-gem 'friendly_id'
-gem "jquery-rails"
-gem "differ"
-gem 'bootstrap-sass'
-gem "haml", ">= 3.0.0"
-gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
-gem 'neat'
-gem 'execjs'
-gem 'therubyracer'
-gem "factory_girl_rails", "~> 4.5.0"
+group :development, :test do
+  # Rspec for testing
+  gem 'rspec-rails', '>= 2.0.1'
+  gem 'factory_girl_rails', '~> 4.5.0'
+end
+
+group :production do
+  # Requirement to push to Heroku
+  gem 'rails_12factor'
+end
